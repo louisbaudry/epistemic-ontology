@@ -34,3 +34,6 @@ version and the old term is deprecated, not removed.
   candidate decisions open (SPEC-002 §13).
 - Decision: the core ships no default person policy; each profile that records
   persons declares its own (SPEC-002 §9; owner, 2026-10-03).
+- Decision: match confirmation is one rule in the core (a human, on
+  discriminating evidence); a profile may be stricter. Upstream's three review
+  tiers are not adopted (SPEC-002 §7; owner, 2026-10-03).
