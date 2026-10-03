@@ -39,3 +39,5 @@ version and the old term is deprecated, not removed.
   tiers are not adopted (SPEC-002 §7; owner, 2026-10-03).
 - Decision: name types stay a starting list in SPEC-002 §4; a SKOS vocabulary
   follows after the specs are approved (owner, 2026-10-03).
+- Decision: no named minor is recorded as a person unless the profile's policy
+  explicitly allows it and says why (SPEC-002 §9; owner, 2026-10-03).

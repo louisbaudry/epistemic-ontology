@@ -198,13 +198,18 @@ policy** covering:
 5. **How automated output about a person is held:** as `draft` until a human
    adopts it (SPEC-001 §10).
 
-The core states these minimums, which no profile may relax:
+The core states these minimums. No profile may relax the first three; the last
+can only be lifted by an explicit statement in the profile's policy:
 
 - A person's record contains only what the profile's policy allows, however much
   more a source says.
 - A claim about a person that the source attributes to someone else stays
   attributed to that someone.
 - No automated process creates a person referent as `canonical`.
+- **No named minor is recorded as a person** unless the profile's policy says so
+  explicitly and states why. A profile that says nothing about minors does not
+  allow them. Where a minor appears in a source, the excerpt keeps what the
+  source says and no person referent is created.
 
 The core ships no default policy (decided; see the end of this spec).
 
@@ -245,11 +250,12 @@ organisation it stores:
    name similarity alone never confirms;
 5. a rejected match is kept and consulted;
 6. merges and splits leave redirects and lineage, with explicit re-pointing;
-7. any profile that records persons declares the policy of §9.
+7. any profile that records persons declares the policy of §9, takes a
+   position on minors, and applies the minimums of §9.
 
 ## 13. Candidate decisions for the owner
 
-Items 1 to 3 are decided; the last is open.
+All four are decided.
 
 1. ~~**A shared default person policy.**~~ Decided: no default. The core
    requires each profile that records persons to declare a policy (§9), and
@@ -259,7 +265,6 @@ Items 1 to 3 are decided; the last is open.
    Recorded in CHANGELOG 0.1.0.
 3. ~~**Name types.**~~ Decided: a starting list in the spec (§4); a SKOS
    vocabulary follows once the specs are approved. Recorded in CHANGELOG 0.1.0.
-4. **Minors.** The core is silent. One upstream interim ruling (2026-10-01, not yet in a
-   decision record) holds that no named minor is entered as a person until a
-   further decision. Alternative: make that a
-   core minimum in §9.
+4. ~~**Minors.**~~ Decided: a core minimum (§9). No named minor is recorded as a
+   person unless the profile's policy explicitly allows it and says why.
+   Recorded in CHANGELOG 0.1.0.
