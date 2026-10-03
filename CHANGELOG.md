@@ -10,3 +10,6 @@ version and the old term is deprecated, not removed.
 - SPEC-001 (core assertion pattern) drafted.
 - Decision: `fact` is a derived display label for a `finding` with at least one
   active supporting evidence link, not a stored kind (owner, 2026-10-03).
+- Decision: `finding`, `claim` and `assessment` are required kinds;
+  `observation`, `hypothesis` and `project-conclusion` are optional, with a rule
+  for receiving an unsupported kind (owner, 2026-10-03).

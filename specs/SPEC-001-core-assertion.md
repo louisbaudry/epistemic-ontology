@@ -85,8 +85,17 @@ Rules:
    A profile that cannot meet this MUST NOT use the kind.
 3. An attributed claim and a finding with the same wording are different
    assertions. "The company says X" and "X" are never the same record.
-4. A profile MAY use a subset of the kinds. It MUST NOT add a kind without a
-   recorded decision in this repository.
+4. `finding`, `claim` and `assessment` are **required**: every conforming
+   profile supports them. `observation`, `hypothesis` and `project-conclusion`
+   are **optional**: a profile uses them only if it needs them, and a profile
+   MUST NOT give any of the six identifiers another meaning.
+5. A profile MUST NOT add a kind without a recorded decision in this
+   repository.
+6. **Receiving an unsupported kind.** When assertions are exchanged and the
+   receiver does not support a kind, it MUST NOT silently drop the assertion or
+   convert it to another kind. It MUST either store it with its original
+   kind identifier, marked unsupported and held as `draft` (§10), or reject it
+   with a stated reason.
 
 ## 4. The assertion record
 
@@ -213,7 +222,8 @@ act.
 
 An implementation conforms to this core if, for every assertion it stores:
 
-1. exactly one kind from §3, never changed;
+1. exactly one kind from §3, never changed, and the three required kinds
+   supported;
 2. a `finding` has an active supporting evidence link, and the last one's
    withdrawal flags it;
 3. stance lives on the evidence link;
@@ -228,13 +238,13 @@ written.
 
 ## 12. Candidate decisions for the owner
 
-Item 1 is decided; the rest are open and each changes what this spec says.
+Items 1 and 2 are decided; the rest are open and each changes what this spec says.
 
 1. ~~**`fact` as a kind.**~~ Decided: not a stored kind; a derived display
    label (§2). Recorded in CHANGELOG 0.1.0.
-2. **`observation`, `hypothesis`, `project-conclusion`.** Included because the
-   upstream vocabulary has them; one adopting project does not use them.
-   Alternative: mark them optional in the core.
+2. ~~**`observation`, `hypothesis`, `project-conclusion`.**~~ Decided:
+   optional in the core; `finding`, `claim` and `assessment` required; receivers
+   follow §3 rule 6. Recorded in CHANGELOG 0.1.0.
 3. **`not-assessed` confidence.** Not in the upstream scale; added by one
    adopting project. Kept here as a core value. Alternative: leave it to
    profiles.
