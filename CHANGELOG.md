@@ -41,3 +41,9 @@ version and the old term is deprecated, not removed.
   follows after the specs are approved (owner, 2026-10-03).
 - Decision: no named minor is recorded as a person unless the profile's policy
   explicitly allows it and says why (SPEC-002 §9; owner, 2026-10-03).
+- SPEC-003 (sources, captures and excerpts) drafted: the four documentary
+  layers, holdings and completeness, capture series, third-party captures and
+  custody wording, the anchoring rule, quotations with omissions and
+  derivation, declared dependence. Three candidate decisions open (SPEC-003
+  §11). Verified against RFC 7089; LRMoo, PREMIS and WARC mappings not
+  verified.
