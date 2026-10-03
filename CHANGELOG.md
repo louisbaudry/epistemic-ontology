@@ -37,3 +37,5 @@ version and the old term is deprecated, not removed.
 - Decision: match confirmation is one rule in the core (a human, on
   discriminating evidence); a profile may be stricter. Upstream's three review
   tiers are not adopted (SPEC-002 §7; owner, 2026-10-03).
+- Decision: name types stay a starting list in SPEC-002 §4; a SKOS vocabulary
+  follows after the specs are approved (owner, 2026-10-03).

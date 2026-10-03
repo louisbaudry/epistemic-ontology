@@ -249,7 +249,7 @@ organisation it stores:
 
 ## 13. Candidate decisions for the owner
 
-Items 1 and 2 are decided; the rest are open.
+Items 1 to 3 are decided; the last is open.
 
 1. ~~**A shared default person policy.**~~ Decided: no default. The core
    requires each profile that records persons to declare a policy (§9), and
@@ -257,8 +257,8 @@ Items 1 and 2 are decided; the rest are open.
 2. ~~**Review levels.**~~ Decided: one rule in the core (§7), and a profile may
    be stricter if it states the rule. Upstream's three tiers are not adopted.
    Recorded in CHANGELOG 0.1.0.
-3. **Name types.** The list in §4 is a starting set. Alternative: a SKOS
-   vocabulary now, so profiles can extend it.
+3. ~~**Name types.**~~ Decided: a starting list in the spec (§4); a SKOS
+   vocabulary follows once the specs are approved. Recorded in CHANGELOG 0.1.0.
 4. **Minors.** The core is silent. One upstream interim ruling (2026-10-01, not yet in a
    decision record) holds that no named minor is entered as a person until a
    further decision. Alternative: make that a
