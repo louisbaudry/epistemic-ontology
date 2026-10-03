@@ -206,7 +206,7 @@ The core states these minimums, which no profile may relax:
   attributed to that someone.
 - No automated process creates a person referent as `canonical`.
 
-Candidate decisions about a shared default policy are at the end of this spec.
+The core ships no default policy (decided; see the end of this spec).
 
 ## 10. Organisations
 
@@ -249,17 +249,11 @@ organisation it stores:
 
 ## 13. Candidate decisions for the owner
 
-Nothing here is decided.
+Item 1 is decided; the rest are open.
 
-1. **A shared default person policy.** The core requires a declaration (§9) but
-   gives no default. Alternative: ship a recommended default, with one
-   adopting project's rule as the starting point (public roles only; never
-   private individuals, minors, victims or witnesses; never special-category
-   data, contact details, identity numbers, home addresses or precise
-   locations), which a profile may narrow but not widen. Trade-off: a default
-   protects projects that would otherwise record too much; it also imports one
-   project's judgement into a spec that other projects, with different
-   purposes, share.
+1. ~~**A shared default person policy.**~~ Decided: no default. The core
+   requires each profile that records persons to declare a policy (§9), and
+   gives none of its own. Recorded in CHANGELOG 0.1.0.
 2. **Review levels.** Upstream grades match confirmation in three tiers by
    consequence. The core states one rule (§7) and lets profiles be stricter.
    Alternative: adopt the three tiers in the core.

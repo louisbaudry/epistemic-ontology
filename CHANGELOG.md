@@ -32,3 +32,5 @@ version and the old term is deprecated, not removed.
   assignments, referent status, roles as temporal events, the match lifecycle,
   merge and split lineage, and a person policy each profile must declare. Four
   candidate decisions open (SPEC-002 §13).
+- Decision: the core ships no default person policy; each profile that records
+  persons declares its own (SPEC-002 §9; owner, 2026-10-03).
