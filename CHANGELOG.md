@@ -13,3 +13,6 @@ version and the old term is deprecated, not removed.
 - Decision: `finding`, `claim` and `assessment` are required kinds;
   `observation`, `hypothesis` and `project-conclusion` are optional, with a rule
   for receiving an unsupported kind (owner, 2026-10-03).
+- Decision: `not-assessed` is a core analytic-confidence value, a state and not
+  a level, dropped (never mapped to `low`) when exchanging with a three-level
+  system (owner, 2026-10-03).
