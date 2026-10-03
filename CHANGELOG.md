@@ -16,3 +16,5 @@ version and the old term is deprecated, not removed.
 - Decision: `not-assessed` is a core analytic-confidence value, a state and not
   a level, dropped (never mapped to `low`) when exchanging with a three-level
   system (owner, 2026-10-03).
+- Decision: novelty, relevance and any other project-dependent assessment
+  dimension are defined in profiles, not in the core (owner, 2026-10-03).

@@ -161,11 +161,16 @@ and `high`. It is an addition to upstream's three-level scale (DR-0026); an
 exchange with a system that has only the three levels MUST drop the dimension,
 not map it to `low`.
 
-Each assessment that has a level MUST carry a short rationale; `not-assessed`
-needs none. A profile MAY add dimensions
-(for example novelty or relevance to a question) as separate fields; it MUST
-NOT combine any dimensions into a score, and MUST NOT average contradictory
-assessments.
+Each assessment that has a level MUST carry a short rationale;
+`not-assessed` needs none.
+
+Likelihood and analytic confidence are the only assessment dimensions in the
+core. A dimension that depends on something a project owns, such as a baseline
+of what is already known (novelty) or an agreed research question (relevance),
+is defined **in the profile that uses it**, not here. A profile that adds one
+MUST define its values and meaning in the profile, MUST NOT reuse a core
+identifier for it, MUST NOT combine it with any other dimension into a score,
+and MUST NOT average contradictory assessments.
 
 ## 6. Absence
 
@@ -245,7 +250,7 @@ written.
 
 ## 12. Candidate decisions for the owner
 
-Items 1 to 3 are decided; the rest are open and each changes what this spec says.
+Items 1 to 4 are decided; the rest are open and each changes what this spec says.
 
 1. ~~**`fact` as a kind.**~~ Decided: not a stored kind; a derived display
    label (§2). Recorded in CHANGELOG 0.1.0.
@@ -254,9 +259,13 @@ Items 1 to 3 are decided; the rest are open and each changes what this spec says
    follow §3 rule 6. Recorded in CHANGELOG 0.1.0.
 3. ~~**`not-assessed` confidence.**~~ Decided: a core value, as a state and
    not a level (§5.3). Recorded in CHANGELOG 0.1.0.
-4. **Where profile-level assessment dimensions live** (novelty, relevance):
-   in profiles only (this draft), or as optional core fields.
+4. ~~**Where profile-level assessment dimensions live** (novelty,
+   relevance).~~ Decided: in profiles only (§5.3). Recorded in CHANGELOG 0.1.0.
 5. **Likelihood without a value.** `not-assessed` exists for confidence only.
    Whether likelihood needs the same state, or an absent likelihood is
    enough, is open; the question follows from item 3 and the no-silent-nulls
    principle (§6).
+6. **Naming of profile dimensions.** Two profiles may each define "relevance"
+   differently. Whether the core should require a naming convention for
+   profile-defined dimensions (for example a profile prefix), without defining
+   their values, is open.
