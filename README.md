@@ -49,9 +49,9 @@ Project profiles     one short document per adopting project, kept in that proje
 | Spec | Subject | Status |
 |---|---|---|
 | [SPEC-001](specs/SPEC-001-core-assertion.md) | The core assertion pattern: findings, claims, assessments, evidence, uncertainty, absence | Draft |
+| [SPEC-002](specs/SPEC-002-persons-and-organisations.md) | Persons and organisations: names and identifiers as assignments, status, roles over time, matching, merge and split, the person policy a profile must declare | Draft |
 
-Planned, not yet written: persons and organisations in a public role; sources,
-captures and excerpts; vocabularies as SKOS with SHACL validation and JSON-LD
+Planned, not yet written: sources, captures and excerpts; vocabularies as SKOS with SHACL validation and JSON-LD
 contexts; crosswalks to FollowTheMoney, BODS and schema.org.
 
 ## Standards used

@@ -28,3 +28,16 @@ version and the old term is deprecated, not removed.
   excerpt-to-source link is `prov:wasQuotedFrom`; `oa:exact` is normalised, so
   the verbatim excerpt is kept in its own field; CRMinf 1.2.1 has no evidence
   stance property.
+- SPEC-002 (persons and organisations) drafted: names and identifiers as
+  assignments, referent status, roles as temporal events, the match lifecycle,
+  merge and split lineage, and a person policy each profile must declare. Four
+  candidate decisions open (SPEC-002 §13).
+- Decision: the core ships no default person policy; each profile that records
+  persons declares its own (SPEC-002 §9; owner, 2026-10-03).
+- Decision: match confirmation is one rule in the core (a human, on
+  discriminating evidence); a profile may be stricter. Upstream's three review
+  tiers are not adopted (SPEC-002 §7; owner, 2026-10-03).
+- Decision: name types stay a starting list in SPEC-002 §4; a SKOS vocabulary
+  follows after the specs are approved (owner, 2026-10-03).
+- Decision: no named minor is recorded as a person unless the profile's policy
+  explicitly allows it and says why (SPEC-002 §9; owner, 2026-10-03).
