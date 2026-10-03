@@ -18,3 +18,5 @@ version and the old term is deprecated, not removed.
   system (owner, 2026-10-03).
 - Decision: novelty, relevance and any other project-dependent assessment
   dimension are defined in profiles, not in the core (owner, 2026-10-03).
+- Decision: licence is CC BY 4.0 for everything; revisit a separate code
+  licence when the first code or schema files are added (owner, 2026-10-03).

@@ -86,5 +86,8 @@ right.
 
 ## Licence
 
-To be decided by the repository owner before first release. Until then, all
-rights reserved.
+Everything in this repository is licensed under
+[Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0). You may
+share and adapt it, including commercially, if you credit it. If code or schema
+files are added later, a separate code licence may be added for them (see the
+CHANGELOG).
