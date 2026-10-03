@@ -28,3 +28,7 @@ version and the old term is deprecated, not removed.
   excerpt-to-source link is `prov:wasQuotedFrom`; `oa:exact` is normalised, so
   the verbatim excerpt is kept in its own field; CRMinf 1.2.1 has no evidence
   stance property.
+- SPEC-002 (persons and organisations) drafted: names and identifiers as
+  assignments, referent status, roles as temporal events, the match lifecycle,
+  merge and split lineage, and a person policy each profile must declare. Four
+  candidate decisions open (SPEC-002 §13).
