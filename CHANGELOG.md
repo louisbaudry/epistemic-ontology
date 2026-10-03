@@ -20,3 +20,11 @@ version and the old term is deprecated, not removed.
   dimension are defined in profiles, not in the core (owner, 2026-10-03).
 - Decision: licence is CC BY 4.0 for everything; revisit a separate code
   licence when the first code or schema files are added (owner, 2026-10-03).
+- SPEC-001 verified against upstream DR-0024, 0028, 0030, 0031 and the
+  standards' own texts. Corrections: quantity types now include `greater-than`
+  and `fewer-than`, uncertainty and derivation method (DR-0030); source
+  dependence uses upstream's seven typed relations (DR-0028); `basis` maps to
+  the CRMinf I1/I5/I7 pattern, not to a property of the belief; the
+  excerpt-to-source link is `prov:wasQuotedFrom`; `oa:exact` is normalised, so
+  the verbatim excerpt is kept in its own field; CRMinf 1.2.1 has no evidence
+  stance property.

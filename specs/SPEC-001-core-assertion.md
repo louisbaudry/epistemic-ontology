@@ -9,14 +9,17 @@
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
 owner's direction. A draft until the owner approves it.
 
-- **Read in full:** upstream DR-0025, DR-0026, DR-0029, DR-0062; the band
-  table of DR-0065 (identifiers match the upstream registry); upstream
-  SPEC-0001 §1–§2.1; one adopting project's profile of this model.
-- **Read by title only:** upstream DR-0024, DR-0028, DR-0030, DR-0031. Their
-  content is used here as stated in that profile and must be checked against
-  the records before approval.
-- **Not verified:** every mapping in §9 against the text of CRMinf, PROV-O
-  and the Web Annotation Data Model. They are indicative.
+- **Read in full:** upstream DR-0024, DR-0025, DR-0026, DR-0028, DR-0029,
+  DR-0030, DR-0031, DR-0062; the band table of DR-0065 (identifiers match the
+  upstream registry); upstream SPEC-0001 §1–§2.1; one adopting project's
+  profile of this model.
+- **Verified against the standards' own texts (2026-10-03):** the CRMinf 1.2.1
+  class and property definitions used in §9; the PROV-O ontology file (domain,
+  range and subproperty of each property used); the Web Annotation vocabulary
+  file (each class and property used). Fetched from cidoc-crm.org and w3.org.
+- **Not verified:** the CIDOC CRM time-span mapping, the SKOS mapping, the
+  wording of the ICD 203 bands beyond DR-0065's table, and EDTF and BCP 47
+  themselves. §9 marks each.
 
 ---
 
@@ -33,7 +36,10 @@ of automated assistance.
 
 **Out of scope:** persons and organisations (a later spec); sources, captures
 and excerpts beyond what an evidence link needs; vocabularies as data;
-physical schema, storage and interchange formats.
+argument structure (upstream's sixth layer, DR-0024; schemes and defeaters,
+DR-0032 to DR-0037); physical schema, storage and interchange formats.
+The pattern here covers upstream's layers 2 to 5: documentary assertions,
+evidence relations, project assertions and assessments.
 
 The key words MUST, MUST NOT, SHOULD and MAY are used as in RFC 2119 and
 RFC 8174, and only where a conformance check can follow.
@@ -140,10 +146,15 @@ An evidence link joins one excerpt to one assertion with a **stance**:
 ### 5.2 Independence of origin
 
 Corroboration counts **independent origins**, not documents. Five reports
-repeating one release are one origin. A source MAY record what it derives from
-(`derived-from`), and an implementation SHOULD be able to report how many
-independent origins support an assertion. Independence is a researched
-conclusion, never a default. (Upstream DR-0028.)
+repeating one release are one origin. Where it matters, a source's dependence on
+another is recorded as a typed relation, from this list (upstream DR-0028):
+`cites`, `reposts`, `syndicates`, `derives-from`,
+`shares-underlying-document`, `shares-underlying-witness`,
+`common-evidentiary-origin`. An implementation SHOULD be able to report how
+many independent origins support an assertion. Independence is a researched
+conclusion, the established absence of dependence, never a default assumption.
+A profile MAY record only an untyped "derived from" link, and then MUST NOT
+count origins as independent from it alone.
 
 ### 5.3 Assessments
 
@@ -186,11 +197,14 @@ attributed, dated and evidenced.
 
 ## 7. Quantities
 
-A number taken from a source keeps its **original expression** as written,
-together with its type (`exact`, `approximate`, `at-least`, `at-most`,
-`range`), unit and stated precision. A converted or normalised value is
-derived and stored beside the original, never in place of it. (Upstream
-DR-0030.)
+A number taken from a source keeps its **original expression** as written
+(in the original language where relevant), together with its semantic type
+(`exact`, `approximate`, `at-least`, `at-most`, `range`, `greater-than`,
+`fewer-than`), value or values and unit, stated precision, any uncertainty the
+source gives, and, for a computed value, its derivation method. A converted or
+normalised value is derived data, stored beside the original and never in place
+of it. Aggregation respects the semantic type: a sum of `at-least` values is an
+`at-least`. (Upstream DR-0030.)
 
 ## 8. Dates, language and revision
 
@@ -204,18 +218,28 @@ DR-0030.)
   material that must not be kept is a governed exception recorded outside the
   assertion, not an edit.
 
-## 9. Mappings to standards (indicative, unverified)
+## 9. Mappings to standards
 
-| This spec | Standard | Mapping |
-|---|---|---|
-| Assertion | CRMinf | A belief held by the asserter in a proposition (conceptually `I2 Belief` over an `I4 Proposition Set`); `basis` as the belief's grounds. |
-| Assertion, excerpt, source | PROV-O | Assertion as a `prov:Entity`; `asserter` as `prov:wasAttributedTo` an agent; `recorded_by` and the recording activity as `prov:wasGeneratedBy`; `supersedes` as `prov:wasRevisionOf`; excerpt as `prov:wasDerivedFrom` its source. |
-| Excerpt locator | W3C Web Annotation | An excerpt is an annotation whose target is a preserved copy, selected by a text quote selector (exact text with prefix and suffix) and, where stable, a text position selector. |
-| Vocabularies (kinds, stances, bands, absence) | SKOS | Each as a concept scheme, identifiers as concept notations. |
-| `valid_time` | CIDOC CRM | A time-span on the event or state the proposition is about. |
+Verified means checked on 2026-10-03 against the standard's own published
+definitions (CRMinf 1.2.1, the PROV-O ontology file, the Web Annotation
+vocabulary file). They are conceptual mappings, as upstream adopts them
+(DR-0010, DR-0031), not a schema.
 
-These mappings are claims until checked against each standard's text; the
-planned crosswalk spec will verify them and record where they lose information.
+| This spec | Standard | Mapping | Status |
+|---|---|---|---|
+| Assertion | CRMinf | An `I2 Belief` held by the asserter, `J4 that` an `I4 Proposition Set`, with `J5 holds to be` an `I6 Belief Value`. | Verified |
+| How an assertion came about (`basis`) | CRMinf | The belief is concluded (`J2 concluded that`) by an `I1 Argumentation`. For a `finding` or `assessment` that is an `I5 Inference Making`, whose premises are beliefs (`J1 used as premise`). For adopting what a source says it is an `I7 Belief Adoption`, which rests on trust in the source and is `J7 based on evidence from` an `E73 Information Object`, and yields an `I12 Adopted Belief`. A reviewer adopting an automated proposal (§10) is an `I7`. | Verified |
+| Evidence stance (`supports`, `contradicts`, `contextualizes`) | CRMinf | No stance property was found in CRMinf 1.2.1's property list; `J7` and `J1` say only that something is evidence or a premise. Stance is an extension, as upstream's evidence-relation layer (DR-0024, layer 3) treats it. | Verified: gap |
+| Assertion, asserter, recording | PROV-O | The assertion as a `prov:Entity`; `prov:wasAttributedTo` an agent (domain Entity, range Agent); `prov:wasGeneratedBy` the recording activity (domain Entity, range Activity). | Verified |
+| `supersedes` | PROV-O | `prov:wasRevisionOf` (Entity to Entity, a subproperty of `prov:wasDerivedFrom`), where the new assertion revises the old; otherwise `prov:wasDerivedFrom`. | Verified |
+| Excerpt to source | PROV-O | `prov:wasQuotedFrom` (a subproperty of `prov:wasDerivedFrom`); PROV-O says the more specific subproperty should be used where it applies. | Verified |
+| Excerpt locator | Web Annotation | An annotation whose target (`oa:hasTarget`) is a `oa:SpecificResource` with `oa:hasSource` the preserved copy and `oa:hasSelector` a `oa:TextQuoteSelector` (`oa:exact`, `oa:prefix`, `oa:suffix`) and, where stable, a `oa:TextPositionSelector` (`oa:start`, `oa:end`, 0-based). | Verified |
+| Verbatim excerpt text | Web Annotation | `oa:exact` is defined as the selected text "after normalization", so it is not guaranteed verbatim. The excerpt therefore keeps the verbatim passage in its own field and uses the selector only to locate it. Position selectors hold only against the exact preserved copy they were made on, which is why upstream anchors to captures (DR-0018). | Verified: caveat |
+| Vocabularies (kinds, stances, bands, absence) | SKOS | Each as a concept scheme, identifiers as concept notations. | Not verified |
+| `valid_time` | CIDOC CRM | A time-span on the event or state the proposition is about. | Not verified |
+
+The planned crosswalk spec will extend these and record where each loses
+information.
 
 ## 10. Review and automated assistance
 
@@ -228,7 +252,8 @@ evidence, and MUST NOT enter as anything but `draft`. Where a process
 contributed to an assertion, the record MUST carry, fixed at creation: the
 process or model identifier, its role (for example `extraction`, `translation`,
 `suggested-match`) and the date. A reviewer's adoption is a separate, attributed
-act.
+act. Until then the assertion is a belief held by the automated agent, not by
+the project (upstream DR-0031).
 
 ## 11. Conformance
 
