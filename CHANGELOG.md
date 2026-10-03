@@ -8,3 +8,5 @@ version and the old term is deprecated, not removed.
 
 - Repository created.
 - SPEC-001 (core assertion pattern) drafted.
+- Decision: `fact` is a derived display label for a `finding` with at least one
+  active supporting evidence link, not a stored kind (owner, 2026-10-03).

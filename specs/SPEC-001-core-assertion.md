@@ -50,9 +50,18 @@ RFC 8174, and only where a conformance check can follow.
 | **Assessment** | A judgment attached to an assertion: likelihood, analytic confidence, and any profile-defined dimension. |
 | **Asserter** | The agent who holds an assertion: a person, a source, an organisation or a process. |
 
-"Fact" is a word of ordinary speech, not a stored kind. What is ordinarily
-called a fact is a **finding** (§3) that is well supported. Implementations
-MAY label it "fact" in an interface; they MUST store the kind identifier.
+"Fact" is a word of ordinary speech, not a stored kind (decision recorded in
+CHANGELOG 0.1.0). It is a **display label**, derived and never stored:
+
+1. The label "fact" MAY be shown for an assertion of kind `finding` that has at
+   least one active supporting evidence link (§5.1).
+2. It MUST be computed when shown. If the last supporting link is withdrawn,
+   the label disappears with it; nothing is migrated.
+3. A profile MAY apply a stricter rule (for example, a minimum number of
+   independent origins, §5.2, or a `reviewed` state). It MUST state that rule
+   in the profile, and MUST NOT show the label for assertions that fail the
+   rule in rule 1.
+4. No stored field, identifier or export uses `fact` as a kind.
 
 ## 3. Assertion kinds
 
@@ -219,10 +228,10 @@ written.
 
 ## 12. Candidate decisions for the owner
 
-None of these is decided; each changes what this spec says.
+Item 1 is decided; the rest are open and each changes what this spec says.
 
-1. **`fact` as a kind.** This draft omits it, following upstream. Alternative:
-   add a derived display label only (as in §2), never a stored kind.
+1. ~~**`fact` as a kind.**~~ Decided: not a stored kind; a derived display
+   label (§2). Recorded in CHANGELOG 0.1.0.
 2. **`observation`, `hypothesis`, `project-conclusion`.** Included because the
    upstream vocabulary has them; one adopting project does not use them.
    Alternative: mark them optional in the core.
