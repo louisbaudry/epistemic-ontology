@@ -53,9 +53,10 @@ Project profiles     one short document per adopting project, kept in that proje
 | [SPEC-001](specs/SPEC-001-core-assertion.md) | The core assertion pattern: findings, claims, assessments, evidence, uncertainty, absence | Draft |
 | [SPEC-002](specs/SPEC-002-persons-and-organisations.md) | Persons and organisations: names and identifiers as assignments, status, roles over time, matching, merge and split, the person policy a profile must declare | Draft |
 | [SPEC-003](specs/SPEC-003-sources-captures-excerpts.md) | Sources, captures and excerpts: documentary layers, holdings and completeness, capture series, third-party captures, the anchoring rule, quotations and their derivations, declared dependence | Draft |
+| [SPEC-004](specs/SPEC-004-crosswalks.md) | Crosswalks to FollowTheMoney, BODS and schema.org: term-by-term mappings, what each loses, and the rules for exports and imports | Draft |
 
 Planned, not yet written: vocabularies as SKOS with SHACL validation and JSON-LD
-contexts; crosswalks to FollowTheMoney, BODS and schema.org.
+contexts.
 
 ## Standards used
 

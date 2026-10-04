@@ -50,3 +50,11 @@ version and the old term is deprecated, not removed.
 - Decision: the upstream archive has no profile of the core and does not name
   it; the core cites upstream decision records and follows them, and nothing
   flows back (owner, 2026-10-04).
+- SPEC-004 (crosswalks to FollowTheMoney, BODS and schema.org) drafted:
+  term-by-term mappings with what each loses, and rules for every export and
+  import (loss list, no upgrade of a claim, flattened exports, imports enter
+  as `draft` claims held by the exporter). No core term minted or changed.
+  Four candidate decisions open (SPEC-004 §10). Verified on 2026-10-04 against
+  FtM's schema files and documentation, BODS v0.4's published schema
+  reference, and schema.org's vocabulary file; FtM schemas, BODS codelists
+  and schema.org date rules not read are listed in its provenance block.
