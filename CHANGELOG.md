@@ -54,7 +54,12 @@ version and the old term is deprecated, not removed.
   term-by-term mappings with what each loses, and rules for every export and
   import (loss list, no upgrade of a claim, flattened exports, imports enter
   as `draft` claims held by the exporter). No core term minted or changed.
-  Four candidate decisions open (SPEC-004 §10). Verified on 2026-10-04 against
+  Verified on 2026-10-04 against
   FtM's schema files and documentation, BODS v0.4's published schema
   reference, and schema.org's vocabulary file; FtM schemas, BODS codelists
   and schema.org date rules not read are listed in its provenance block.
+- Decision: imports from an external standard enter as `draft` claims held by
+  the exporter; both directions are mapped; a BODS export rounds a partial
+  date and annotates it; schema.org pending terms (`Quotation`,
+  `translationOfWork`) are allowed in exports and named in the loss list
+  (SPEC-004 §3.4, §3.5, §6.2, §10; owner, 2026-10-04).

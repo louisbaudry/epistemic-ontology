@@ -287,8 +287,8 @@ but it has no assertion model. Its `Claim` class is the nearest term.
 
 ### 6.2 Notes
 
-1. The pending-area terms (`Quotation`, `translationOfWork`) MAY be used only
-   under the owner's decision in §10.4.
+1. The pending-area terms (`Quotation`, `translationOfWork`) MAY be used in
+   exports (§10.4). The loss list MUST name them as pending terms.
 2. schema.org is primarily an export target. §3.4 applies to anything imported
    from it.
 
@@ -345,21 +345,14 @@ a changelog entry.
 
 ## 10. Candidate decisions for the owner
 
-1. **Starting state of an import.** §3.4.1 puts every imported record in
-   `draft`, because SPEC-001 §10 uses `draft` for anything a process proposed,
-   and a batch import is a process. The alternative is `unreviewed`: it keeps
-   imports out of the "proposal" queue but treats a bulk file as if an analyst
-   had entered it. *Recommended: `draft`.*
-2. **Direction.** Both directions are mapped. Exports are the main use; the
-   import rules are minimal on purpose. A different choice is to make this
-   spec export-only until a profile asks for an import. *Recommended: keep both,
-   as drafted.*
-3. **BODS dates.** §3.5 lets an export round a partial date and annotate it.
-   The alternative is to refuse to export an interest whose date is partial.
-   Rounding keeps more data in the exchange; refusing never puts a day in the
-   target that the source did not give. *Recommended: round and annotate.*
-4. **Pending schema.org terms.** §6.2 would allow `Quotation` and
-   `translationOfWork` in exports only on your decision. Allowing them gives a
-   usable excerpt and translation mapping; not allowing them keeps exports to
-   the stable terms and leaves excerpts out. *Recommended: allow, marked in the
-   loss list as pending terms.*
+All four are decided (owner, 2026-10-04), each as recommended. Recorded in
+CHANGELOG 0.1.0.
+
+1. ~~**Starting state of an import.**~~ Decided: `draft` (§3.4.1).
+2. ~~**Direction.**~~ Decided: both directions are mapped; the import rules stay
+   minimal.
+3. ~~**BODS dates.**~~ Decided: an export rounds a partial date and annotates it
+   (§3.5).
+4. ~~**Pending schema.org terms.**~~ Decided: `Quotation` and `translationOfWork`
+   are allowed in exports and are listed in the loss list as pending terms
+   (§6.2).
