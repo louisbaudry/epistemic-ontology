@@ -53,3 +53,8 @@ version and the old term is deprecated, not removed.
 - Decision: likelihood has no `not-assessed` value; a likelihood that is not
   given records why with a SPEC-001 §6 absence state, such as `not-applicable`
   (SPEC-001 §5.3, §12 item 5; owner, 2026-10-04).
+- Decision: a profile-defined assessment dimension's identifier carries the
+  profile's own prefix, `<profile>:<name>`; the core defines no values for it
+  (SPEC-001 §5.3, §12 item 6; owner, 2026-10-04). Existing profiles that name
+  novelty or relevance without a prefix have not adopted this yet and follow it
+  when they next change or exchange.

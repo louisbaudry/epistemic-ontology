@@ -188,6 +188,12 @@ MUST define its values and meaning in the profile, MUST NOT reuse a core
 identifier for it, MUST NOT combine it with any other dimension into a score,
 and MUST NOT average contradictory assessments.
 
+The identifier of a profile-defined dimension MUST carry the profile's own
+prefix, written `<profile>:<name>` (for example `example-project:relevance`),
+where the profile declares its prefix as a short lowercase token. The core
+defines no such dimension and no values for one, so two profiles that both
+use the word "relevance" never share an identifier.
+
 ## 6. Absence
 
 A missing value never means "no". Where a gap matters it is recorded with one
@@ -280,7 +286,7 @@ written.
 
 ## 12. Candidate decisions for the owner
 
-Items 1 to 5 are decided; the rest are open and each changes what this spec says.
+Items 1 to 6 are decided.
 
 1. ~~**`fact` as a kind.**~~ Decided: not a stored kind; a derived display
    label (§2). Recorded in CHANGELOG 0.1.0.
@@ -294,7 +300,6 @@ Items 1 to 5 are decided; the rest are open and each changes what this spec says
 5. ~~**Likelihood without a value.**~~ Decided: no new likelihood value; a
    likelihood that is not given records why with a §6 absence state (§5.3).
    Recorded in CHANGELOG 0.1.0.
-6. **Naming of profile dimensions.** Two profiles may each define "relevance"
-   differently. Whether the core should require a naming convention for
-   profile-defined dimensions (for example a profile prefix), without defining
-   their values, is open.
+6. ~~**Naming of profile dimensions.**~~ Decided: a profile-defined dimension's
+   identifier carries the profile's prefix, `<profile>:<name>` (§5.3). Recorded
+   in CHANGELOG 0.1.0.
