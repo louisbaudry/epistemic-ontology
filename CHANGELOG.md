@@ -58,3 +58,6 @@ version and the old term is deprecated, not removed.
   (SPEC-001 §5.3, §12 item 6; owner, 2026-10-04). Existing profiles that name
   novelty or relevance without a prefix have not adopted this yet and follow it
   when they next change or exchange.
+- Decision: SPEC-001 and SPEC-002 approved as 0.1 by the owner on 2026-10-04.
+  SPEC-003 remains a draft with three open points. Before 1.0 a term may still
+  change, by a recorded decision.

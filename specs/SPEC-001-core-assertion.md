@@ -1,13 +1,13 @@
 # SPEC-001 — Core assertion pattern
 
-**Version:** 0.1 (draft) | **Status:** Draft, awaiting owner review
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04
 **Supersedes:** — | **Superseded by:** —
 **Upstream:** UkraineIndependenceWar DR-0024, DR-0025, DR-0026, DR-0028, DR-0029, DR-0030, DR-0065; its SPEC-0001 §2.1
 
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction. A draft until the owner approves it.
+owner's direction. Approved by the owner on 2026-10-04; the text is otherwise unchanged by the approval.
 
 - **Read in full:** upstream DR-0024, DR-0025, DR-0026, DR-0028, DR-0029,
   DR-0030, DR-0031, DR-0062; the band table of DR-0065 (identifiers match the
