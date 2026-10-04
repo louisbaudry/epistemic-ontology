@@ -175,6 +175,11 @@ not map it to `low`.
 Each assessment that has a level MUST carry a short rationale;
 `not-assessed` needs none.
 
+Likelihood has no `not-assessed` value. An assessment whose likelihood is not
+given, where the gap matters, records why with an absence state from §6
+(for example `not-applicable` for an assessment of a capability, or
+`not-researched`); it does not use a likelihood value.
+
 Likelihood and analytic confidence are the only assessment dimensions in the
 core. A dimension that depends on something a project owns, such as a baseline
 of what is already known (novelty) or an agreed research question (relevance),
@@ -275,7 +280,7 @@ written.
 
 ## 12. Candidate decisions for the owner
 
-Items 1 to 4 are decided; the rest are open and each changes what this spec says.
+Items 1 to 5 are decided; the rest are open and each changes what this spec says.
 
 1. ~~**`fact` as a kind.**~~ Decided: not a stored kind; a derived display
    label (§2). Recorded in CHANGELOG 0.1.0.
@@ -286,10 +291,9 @@ Items 1 to 4 are decided; the rest are open and each changes what this spec says
    not a level (§5.3). Recorded in CHANGELOG 0.1.0.
 4. ~~**Where profile-level assessment dimensions live** (novelty,
    relevance).~~ Decided: in profiles only (§5.3). Recorded in CHANGELOG 0.1.0.
-5. **Likelihood without a value.** `not-assessed` exists for confidence only.
-   Whether likelihood needs the same state, or an absent likelihood is
-   enough, is open; the question follows from item 3 and the no-silent-nulls
-   principle (§6).
+5. ~~**Likelihood without a value.**~~ Decided: no new likelihood value; a
+   likelihood that is not given records why with a §6 absence state (§5.3).
+   Recorded in CHANGELOG 0.1.0.
 6. **Naming of profile dimensions.** Two profiles may each define "relevance"
    differently. Whether the core should require a naming convention for
    profile-defined dimensions (for example a profile prefix), without defining

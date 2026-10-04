@@ -50,3 +50,6 @@ version and the old term is deprecated, not removed.
 - Decision: the upstream archive has no profile of the core and does not name
   it; the core cites upstream decision records and follows them, and nothing
   flows back (owner, 2026-10-04).
+- Decision: likelihood has no `not-assessed` value; a likelihood that is not
+  given records why with a SPEC-001 §6 absence state, such as `not-applicable`
+  (SPEC-001 §5.3, §12 item 5; owner, 2026-10-04).
