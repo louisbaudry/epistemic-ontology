@@ -47,3 +47,6 @@ version and the old term is deprecated, not removed.
   derivation, declared dependence. Three candidate decisions open (SPEC-003
   §11). Verified against RFC 7089; LRMoo, PREMIS and WARC mappings not
   verified.
+- Decision: the upstream archive has no profile of the core and does not name
+  it; the core cites upstream decision records and follows them, and nothing
+  flows back (owner, 2026-10-04).
