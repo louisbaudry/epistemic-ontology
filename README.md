@@ -42,7 +42,9 @@ Project profiles     one short document per adopting project, kept in that proje
   archive settled most of this model through numbered Decision Records. This
   repository cites them rather than restating their reasoning, and follows
   them where it adopts a term. If an upstream record is superseded, the core
-  follows by a new version, not an edit.
+  follows by a new version, not an edit. The upstream archive keeps no
+  profile of this core and does not refer to it: the dependency runs one way
+  only (owner, 2026-10-04).
 
 ## Specifications
 
