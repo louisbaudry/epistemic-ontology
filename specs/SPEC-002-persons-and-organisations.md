@@ -1,6 +1,6 @@
 # SPEC-002 — Persons and organisations
 
-**Version:** 0.1 (draft) | **Status:** Draft, awaiting owner review
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern)
 **Upstream:** UkraineIndependenceWar DR-0012, DR-0013, DR-0014, DR-0062, DR-0063, DR-0064; its SPEC-0002 (identity and entity resolution)
@@ -8,7 +8,7 @@
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction. A draft until the owner approves it.
+owner's direction. Approved by the owner on 2026-10-04; the text is otherwise unchanged by the approval.
 
 - **Read in full:** upstream DR-0012, DR-0013, DR-0014, DR-0062, DR-0063,
   DR-0064; upstream SPEC-0002.
