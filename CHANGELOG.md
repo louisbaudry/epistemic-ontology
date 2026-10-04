@@ -61,3 +61,16 @@ version and the old term is deprecated, not removed.
 - Decision: SPEC-001 and SPEC-002 approved as 0.1 by the owner on 2026-10-04.
   SPEC-003 remains a draft with three open points. Before 1.0 a term may still
   change, by a recorded decision.
+- SPEC-004 (crosswalks to FollowTheMoney, BODS and schema.org) drafted:
+  term-by-term mappings with what each loses, and rules for every export and
+  import (loss list, no upgrade of a claim, flattened exports, imports enter
+  as `draft` claims held by the exporter). No core term minted or changed.
+  Verified on 2026-10-04 against
+  FtM's schema files and documentation, BODS v0.4's published schema
+  reference, and schema.org's vocabulary file; FtM schemas, BODS codelists
+  and schema.org date rules not read are listed in its provenance block.
+- Decision: imports from an external standard enter as `draft` claims held by
+  the exporter; both directions are mapped; a BODS export rounds a partial
+  date and annotates it; schema.org pending terms (`Quotation`,
+  `translationOfWork`) are allowed in exports and named in the loss list
+  (SPEC-004 §3.4, §3.5, §6.2, §10; owner, 2026-10-04).
