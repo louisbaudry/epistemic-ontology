@@ -50,6 +50,17 @@ version and the old term is deprecated, not removed.
 - Decision: the upstream archive has no profile of the core and does not name
   it; the core cites upstream decision records and follows them, and nothing
   flows back (owner, 2026-10-04).
+- Decision: likelihood has no `not-assessed` value; a likelihood that is not
+  given records why with a SPEC-001 §6 absence state, such as `not-applicable`
+  (SPEC-001 §5.3, §12 item 5; owner, 2026-10-04).
+- Decision: a profile-defined assessment dimension's identifier carries the
+  profile's own prefix, `<profile>:<name>`; the core defines no values for it
+  (SPEC-001 §5.3, §12 item 6; owner, 2026-10-04). Existing profiles that name
+  novelty or relevance without a prefix have not adopted this yet and follow it
+  when they next change or exchange.
+- Decision: SPEC-001 and SPEC-002 approved as 0.1 by the owner on 2026-10-04.
+  SPEC-003 remains a draft with three open points. Before 1.0 a term may still
+  change, by a recorded decision.
 - SPEC-004 (crosswalks to FollowTheMoney, BODS and schema.org) drafted:
   term-by-term mappings with what each loses, and rules for every export and
   import (loss list, no upgrade of a claim, flattened exports, imports enter

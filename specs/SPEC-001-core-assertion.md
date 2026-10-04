@@ -1,13 +1,13 @@
 # SPEC-001 — Core assertion pattern
 
-**Version:** 0.1 (draft) | **Status:** Draft, awaiting owner review
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04
 **Supersedes:** — | **Superseded by:** —
 **Upstream:** UkraineIndependenceWar DR-0024, DR-0025, DR-0026, DR-0028, DR-0029, DR-0030, DR-0065; its SPEC-0001 §2.1
 
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction. A draft until the owner approves it.
+owner's direction. Approved by the owner on 2026-10-04; the text is otherwise unchanged by the approval.
 
 - **Read in full:** upstream DR-0024, DR-0025, DR-0026, DR-0028, DR-0029,
   DR-0030, DR-0031, DR-0062; the band table of DR-0065 (identifiers match the
@@ -175,6 +175,11 @@ not map it to `low`.
 Each assessment that has a level MUST carry a short rationale;
 `not-assessed` needs none.
 
+Likelihood has no `not-assessed` value. An assessment whose likelihood is not
+given, where the gap matters, records why with an absence state from §6
+(for example `not-applicable` for an assessment of a capability, or
+`not-researched`); it does not use a likelihood value.
+
 Likelihood and analytic confidence are the only assessment dimensions in the
 core. A dimension that depends on something a project owns, such as a baseline
 of what is already known (novelty) or an agreed research question (relevance),
@@ -182,6 +187,12 @@ is defined **in the profile that uses it**, not here. A profile that adds one
 MUST define its values and meaning in the profile, MUST NOT reuse a core
 identifier for it, MUST NOT combine it with any other dimension into a score,
 and MUST NOT average contradictory assessments.
+
+The identifier of a profile-defined dimension MUST carry the profile's own
+prefix, written `<profile>:<name>` (for example `example-project:relevance`),
+where the profile declares its prefix as a short lowercase token. The core
+defines no such dimension and no values for one, so two profiles that both
+use the word "relevance" never share an identifier.
 
 ## 6. Absence
 
@@ -275,7 +286,7 @@ written.
 
 ## 12. Candidate decisions for the owner
 
-Items 1 to 4 are decided; the rest are open and each changes what this spec says.
+Items 1 to 6 are decided.
 
 1. ~~**`fact` as a kind.**~~ Decided: not a stored kind; a derived display
    label (§2). Recorded in CHANGELOG 0.1.0.
@@ -286,11 +297,9 @@ Items 1 to 4 are decided; the rest are open and each changes what this spec says
    not a level (§5.3). Recorded in CHANGELOG 0.1.0.
 4. ~~**Where profile-level assessment dimensions live** (novelty,
    relevance).~~ Decided: in profiles only (§5.3). Recorded in CHANGELOG 0.1.0.
-5. **Likelihood without a value.** `not-assessed` exists for confidence only.
-   Whether likelihood needs the same state, or an absent likelihood is
-   enough, is open; the question follows from item 3 and the no-silent-nulls
-   principle (§6).
-6. **Naming of profile dimensions.** Two profiles may each define "relevance"
-   differently. Whether the core should require a naming convention for
-   profile-defined dimensions (for example a profile prefix), without defining
-   their values, is open.
+5. ~~**Likelihood without a value.**~~ Decided: no new likelihood value; a
+   likelihood that is not given records why with a §6 absence state (§5.3).
+   Recorded in CHANGELOG 0.1.0.
+6. ~~**Naming of profile dimensions.**~~ Decided: a profile-defined dimension's
+   identifier carries the profile's prefix, `<profile>:<name>` (§5.3). Recorded
+   in CHANGELOG 0.1.0.

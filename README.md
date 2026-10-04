@@ -8,7 +8,7 @@ It is written once, as a common core, and adopted by several independent
 projects through short **profiles** that each declare the subset they use.
 It is built from established standards rather than invented terms.
 
-**Status:** draft, version 0.1. Nothing here is stable yet; see
+**Status:** version 0.1. SPEC-001 and SPEC-002 are approved; SPEC-003 is a draft. Before 1.0 any term may still change by a recorded decision; see
 [CHANGELOG.md](CHANGELOG.md).
 
 ## Why a common core
@@ -50,8 +50,8 @@ Project profiles     one short document per adopting project, kept in that proje
 
 | Spec | Subject | Status |
 |---|---|---|
-| [SPEC-001](specs/SPEC-001-core-assertion.md) | The core assertion pattern: findings, claims, assessments, evidence, uncertainty, absence | Draft |
-| [SPEC-002](specs/SPEC-002-persons-and-organisations.md) | Persons and organisations: names and identifiers as assignments, status, roles over time, matching, merge and split, the person policy a profile must declare | Draft |
+| [SPEC-001](specs/SPEC-001-core-assertion.md) | The core assertion pattern: findings, claims, assessments, evidence, uncertainty, absence | Approved 0.1 |
+| [SPEC-002](specs/SPEC-002-persons-and-organisations.md) | Persons and organisations: names and identifiers as assignments, status, roles over time, matching, merge and split, the person policy a profile must declare | Approved 0.1 |
 | [SPEC-003](specs/SPEC-003-sources-captures-excerpts.md) | Sources, captures and excerpts: documentary layers, holdings and completeness, capture series, third-party captures, the anchoring rule, quotations and their derivations, declared dependence | Draft |
 | [SPEC-004](specs/SPEC-004-crosswalks.md) | Crosswalks to FollowTheMoney, BODS and schema.org: term-by-term mappings, what each loses, and the rules for exports and imports | Draft |
 
