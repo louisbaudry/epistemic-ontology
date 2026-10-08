@@ -7,12 +7,7 @@
 
 # CLAUDE.md
 
-> Shared rules for working with Louis live in the public repo
-> [`louisbaudry/claude-shared`](https://github.com/louisbaudry/claude-shared/blob/main/CLAUDE.md).
-> Read that file at the start of every session. Where this file contradicts it,
-> the shared file wins. This file only adds what is specific to this repo.
-
-Also read the shared [non-coding rules](https://github.com/louisbaudry/claude-shared/blob/main/NON-CODING.md).
+> Shared rules for working with Louis are imported at the top of this file (the managed block above, synced from `louisbaudry/claude-shared`). Do not edit the synced copies in `.claude/shared/`; change the rules in `shared/` of `claude-shared`. This file only adds what is specific to this repo.
 
 ## Repository-specific conventions
 
