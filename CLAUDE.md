@@ -7,7 +7,7 @@
 
 # CLAUDE.md
 
-> Shared rules for working with Louis are imported at the top of this file (the managed block above, synced from [`louisbaudry/claude-shared`](https://github.com/louisbaudry/claude-shared)). Do not edit the synced copies in `.claude/shared/`; change the rules in `shared/` of `claude-shared`. This file only adds what is specific to this repo.
+> Shared rules for working with Louis are imported at the top of this file (the managed block above, synced from `louisbaudry/claude-shared`). Do not edit the synced copies in `.claude/shared/`; change the rules in `shared/` of `claude-shared`. This file only adds what is specific to this repo.
 
 ## Repository-specific conventions
 
