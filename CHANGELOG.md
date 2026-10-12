@@ -74,3 +74,12 @@ version and the old term is deprecated, not removed.
   date and annotates it; schema.org pending terms (`Quotation`,
   `translationOfWork`) are allowed in exports and named in the loss list
   (SPEC-004 §3.4, §3.5, §6.2, §10; owner, 2026-10-04).
+- SPEC-003 mappings checked on 2026-10-11 against LRMoo 1.0 and 1.1.1
+  (class and property declarations), PREMIS 3.0 (data dictionary), WARC 1.1
+  (IIPC text) and the Web Annotation vocabulary (`oa:hasState`,
+  `oa:TimeState`). Findings: LRMoo `F5 Item` is a physical class, so a digital
+  copy does not clearly map to it; a PREMIS `Representation` is a complete
+  rendition, so a `fragment` or `metadata-only` holding does not map to it;
+  `capture` is a PREMIS glossary term and not a listed `eventType` example;
+  the PREMIS `eventType` vocabulary could not be read. No core term minted or
+  changed; SPEC-003 stays a draft with its three open points.
