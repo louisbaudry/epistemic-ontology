@@ -287,10 +287,10 @@ but it has no assertion model. Its `Claim` class is the nearest term.
 | Other kinds | `Statement` (a `CreativeWork`: "a statement about something, for example a fun or interesting fact"), or none | none | `Statement` invites the reading "this is a fact". An export MUST NOT use it for a `claim` or `hypothesis` (§3.2.1). Not used for other kinds. |
 | `assessment` of a claim | `ClaimReview` (a `Review`; `claimReviewed`, `itemReviewed`, `reviewRating`) | partial | A review of a claim. A `Rating` takes `ratingValue` as a number or text, and `reviewAspect` names a facet. The core's two dimensions can each be a `Rating` with a text value (the band identifier) and a distinguishing `reviewAspect`. This is valid in the vocabulary. How consumers treat a non-numeric `ratingValue` was not checked. |
 | Evidence link | `citation`, `isBasedOn`, `appearance` | partial | None carries a stance or a passage. |
-| Excerpt (a quotation) | `Quotation` (use `isBasedOn` to link to the origin) | partial | `Quotation` is in the pending area of schema.org. It has no selector. The verbatim passage can go in `text`; the locator cannot be expressed. |
+| Excerpt (a quotation) | `Quotation` (use `isBasedOn` to link to the origin) | partial | `Quotation` was read as pending on 2026-10-04; on 2026-10-12 its page says the "new" area (§6.2). It has no selector. The verbatim passage can go in `text`; the locator cannot be expressed. |
 | Source: work and expression | `CreativeWork`, `exampleOfWork`, `workExample`, `inLanguage` (BCP 47) | partial | The four layers of SPEC-003 §3 are not separate classes. |
 | Source: web page, document, dataset | `WebPage`, `DigitalDocument`, `Dataset`, `ArchiveComponent` | partial | A choice of class, not a layer. |
-| Translation | `translator`, `translationOfWork` | partial | `translationOfWork` is in the pending area. |
+| Translation | `translator`, `translationOfWork` | partial | `translationOfWork` was read as pending on 2026-10-04; on 2026-10-12 its page says only that it is defined in the "bib" section (§6.2). |
 | Derivation | `isBasedOn` (`isBasedOnUrl` is superseded by it) | partial | One undifferentiated relation. SPEC-001 §5.2's seven dependence relations collapse to it. |
 | Holding, digest, location | `sha256`, `contentUrl`, `encodingFormat`, `archivedAt`, `license` | partial | `archivedAt` says a page or link is "involved in archival". It has no original capture time, no series and no completeness. |
 | Person | `Person` (`birthDate`, `deathDate`, `taxID`, `vatID`) | exact for the kind | No referent status. |
@@ -326,7 +326,7 @@ read. It is not a claim about the standard as a whole.
 | Assertion kinds | No | Partly (claims only) | Partly (`Claim`) |
 | Asserter | Partly (dataset) | Carried | Partly |
 | Basis, evidence stance | No | No | No |
-| Verbatim excerpt and locator | Partly (page text) | No | Partly (`Quotation`, pending) |
+| Verbatim excerpt and locator | Partly (page text) | No | Partly (`Quotation`) |
 | Likelihood and confidence, kept apart | No | No | Partly (`Rating`) |
 | Absence states | No | Partly (unspecified party) | No |
 | Partial dates | Carried | No (rounding) | Not verified |
