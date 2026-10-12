@@ -83,3 +83,14 @@ version and the old term is deprecated, not removed.
   `capture` is a PREMIS glossary term and not a listed `eventType` example;
   the PREMIS `eventType` vocabulary could not be read. No core term minted or
   changed; SPEC-003 stays a draft with its three open points.
+- SPEC-004 mappings checked on 2026-10-12 against FtM schema files and
+  documentation, BODS v0.4's schema reference (codelists read in full) and
+  schema.org pages. Findings: the BODS `unspecifiedReason` codelist has seven
+  values and all are mapped; BODS `nameType`, `interestType` and `entityType`
+  now mapped (a group without legal personality has no BODS counterpart;
+  `entityType` and FtM `Organization` both assume legal personality); FtM
+  `Directorship` and `Employment` added as role-event targets; schema.org's
+  `Quotation` page says "new" and `translationOfWork` "bib", not "pending", so
+  the wording of SPEC-004 §6.2 and decision 4 may be stale. Whether schema.org
+  accepts partial dates is still unresolved. No core term minted or changed;
+  SPEC-004 stays a draft.
