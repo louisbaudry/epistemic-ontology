@@ -8,8 +8,9 @@
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction. A draft until the owner approves it. Everything below was
-read on 2026-10-04.
+owner's direction. A draft until the owner approves it. The first reads below
+were made on 2026-10-04; a second round of reads on 2026-10-12 is listed after
+them.
 
 - **FollowTheMoney (FtM), read from the source:** the `main` branch schema files
   `Thing`, `Interval`, `Event`, `LegalEntity`, `Person`, `Document`, `Pages`,
@@ -28,14 +29,30 @@ read on 2026-10-04.
   For most terms only the opening of the definition text was read. The release
   history page lists "Version 30.1" first; the version of the downloaded file
   was not read from the file itself.
-- **Not verified:** FtM `Organization`, `Company`, `PublicBody`, `Directorship`,
-  `Employment`, `Family`, `Associate`, `Address`, `Value` and `Asset`; FtM
-  property types other than `date`; BODS Person and Entity record details in
-  full, the `nameType`, `interestType` and `entityType` codelists, the
-  modelling and system requirements, and the JSON Schema file itself (not
-  retrieved: the paths tried in the source repository returned 404); how any consumer
-  (Aleph, OpenSanctions, a BODS validator, a search engine) treats data in
-  these shapes; schema.org's rules for partial dates.
+- **Read on 2026-10-12** (web pages through a summarising fetch, so phrases in
+  quotation marks come from that summary and not from a verbatim copy; YAML
+  was summarised, not copied):
+  - FtM `main` branch schema files `Organization`, `PublicBody`, `Company`,
+    `LegalEntity`, `Thing`, `Membership`, `Directorship`, `Employment` and
+    `Interest` (`followthemoney/schema/*.yaml`), and the "Statements"
+    documentation page (the `lang`, `first_seen`, `external` and `canonical_id`
+    columns).
+  - BODS v0.4 schema reference page: `statementId` and `recordId`, the
+    `recordStatus`, `source.type`, `unspecifiedReason`, `nameType`,
+    `interestType` and `entityType` codelists, in full.
+  - schema.org pages for `Date`, `Statement`, `Quotation` and
+    `translationOfWork`, and the releases page (latest release "30.1",
+    2026-09-16).
+- **Not verified:** FtM `Family`, `Associate`, `Address`, `Value` and `Asset`
+  (the last only through `Company`); FtM property types other than `date`;
+  BODS Person and Entity record details in full, the modelling and system
+  requirements, and the JSON Schema file itself (not retrieved: the paths
+  tried in the source repository returned 404); how any consumer (Aleph,
+  OpenSanctions, a BODS validator, a search engine) treats data in these
+  shapes; whether schema.org accepts partial dates (the `Date` page says only
+  "a date value in ISO 8601 date format"); the version of the schema.org file
+  read on 2026-10-04 (the releases page names 30.1 as the latest on
+  2026-10-12, which is not a reading of that file).
 - **Not decided here:** file formats, JSON-LD contexts, converters, code. Those
   follow once the specs are approved (`CLAUDE.md`).
 
@@ -149,7 +166,7 @@ separate statement-based form adds metadata per property value.
 | Core | FtM term | Strength | What is lost or added |
 |---|---|---|---|
 | `person` | `Person` (extends `LegalEntity`, extends `Thing`) | exact | None for the kind. FtM has no referent status. |
-| `organisation` | `LegalEntity`, or `Organization` / `Company` / `PublicBody` | partial | `LegalEntity` is described as used when "raw data does not specify if something is a person or company". The legal-versus-no-legal-personality split of SPEC-002 §10.2 has no counterpart in the terms read. |
+| `organisation` | `LegalEntity`, or `Organization` / `Company` / `PublicBody` | partial | `LegalEntity` is described as used when "raw data does not specify if something is a person or company". `Organization` extends `LegalEntity` and is described as an incorporated entity that cannot be owned by another; `Company` extends `Organization` and `Asset` and can be owned; `PublicBody` extends `Organization` (ministry, department or state company). A group without legal personality (SPEC-002 §10.2) therefore has no clear counterpart other than `LegalEntity`; the split itself is not carried. |
 | Referent status (`canonical`, `candidate`, `fabricated`, `disproved`) | none | none | Export: `fabricated` and `disproved` referents MUST NOT be exported as ordinary entities. They are left out and listed. |
 | Name assignment, type `alias` | `Thing.alias` | exact | Basis and period are lost in the entity form (kept in the statement form's dataset and times). |
 | Name, type `former` | `Thing.previousName` | exact | Period lost. |
@@ -158,7 +175,7 @@ separate statement-based form adds metadata per property value.
 | FtM `weakAlias` (import) | name of type `other` | partial | FtM marks it as not used for matching; the core has no such flag, so the reduced reliability is lost. |
 | Name language (BCP 47) | statement `lang` | partial | The statement table's `lang` is a 3-letter code. Script and region subtags (`uk-Latn`) cannot be carried. |
 | Identifier assignment | Typed properties: `registrationNumber`, `idNumber`, `taxNumber`, `licenseNumber`, `vatCode`, `leiCode`, `wikidataId`, and others on `LegalEntity` and `Thing` | partial | The scheme is the property name. The issuing authority is a separate entity-level property (`jurisdiction`), so an entity with several numbers cannot say which authority issued which. Identifier assignments with no matching property have no FtM home. |
-| Role event | `Membership` (`member`, `organization`; role and status from `Interest`; dates from `Interval`) | partial | The qualifier (`acting`, `interim`, `de-facto`, `disputed`) can only travel inside the free `role` or `status` text. The event has no `proof` link: `proof` is defined on `Thing`, and `Interval` does not extend `Thing` in the files read. It has `sourceUrl`, `publisher` and `retrievedAt`. |
+| Role event | `Membership` (`member` (`LegalEntity`), `organization` (`Organization`); `role` and `status` from `Interest`, which extends `Interval`), or `Directorship` (`director` (`LegalEntity`), `organization`, `secretary`) or `Employment` (`employee` (`Person`), `employer` (`Organization`)) | partial | The qualifier (`acting`, `interim`, `de-facto`, `disputed`) can only travel inside the free `role` or `status` text. The event has no `proof` link: `proof` is defined on `Thing`, and `Interval` does not extend `Thing` in the files read. It has `sourceUrl`, `publisher` and `retrievedAt`. |
 | Ownership or control relation | `Ownership` (`owner`, `asset`, `percentage` and others) | out of scope | SPEC-002 §10.3 leaves these to a later spec. |
 | Event (SPEC-002 §3, profile-added kind) | `Event` (`Interval`, with `involved`, `organizer`) | partial | Only mapped for profiles that add the kind. |
 | Partial dates | `date` property type | exact | FtM carries date prefixes (`2021`, `2021-08`) and uses them as precision. Approximate dates and ranges are stated as not yet supported. EDTF is not carried. |
@@ -200,7 +217,7 @@ an update is a new Statement with the same `recordId`.
 |---|---|---|---|
 | `claim` | A Statement | exact for `claim`; none for the other kinds | Every BODS Statement is a claim. `observation`, `hypothesis`, `finding`, `assessment` and `project-conclusion` have no counterpart. A `finding` exported as a Statement loses its kind and is read as a source's claim. The export MUST say so (§3.2.1). |
 | Referent `person` | Person record (`recordType: person`) | partial | Referent status is lost. Only persons that are beneficial owners or related officials belong in the BODS scope. |
-| Referent `organisation` | Entity record (`recordType: entity`) | partial | The `entityType` codelist was not read. |
+| Referent `organisation` | Entity record (`recordType: entity`) | partial | `entityType` takes `registeredEntity`, `legalEntity`, `arrangement`, `anonymousEntity`, `unknownEntity`, `state` or `stateBody`. All but `arrangement` (a legal arrangement such as a trust) are bodies with legal personality or unidentified, so a group without legal personality (SPEC-002 §10.2) has no counterpart. An export chooses `registeredEntity` only where an official register identifier is held, else `legalEntity`, and says which rule it used; `anonymousEntity` and `unknownEntity` correspond to the absence states `withheld` and `unknown`, not to a kind of organisation. |
 | Assertion `id` | `statementId` (32 to 64 characters, persistent, globally unique) | partial | Core ids are opaque and need not meet the length rule; the export maps them reversibly. |
 | Referent `id` | `recordId` | partial | `recordId` groups the Statements about one record over time. It is a publisher-local id. |
 | Supersession (`supersedes`) | A new Statement with the same `recordId`, `recordStatus: updated` | exact | The earlier Statement stays published. This is the same append-only rule as SPEC-001 §8. |
@@ -211,9 +228,9 @@ an update is a new Statement with the same `recordId`.
 | `asserted_at` | `publicationDetails.publicationDate` | partial | The publication date of the Statement, not the date the importer or exporter recorded it. |
 | Date the source made the declaration | `statementDate` | none | The core's `asserted_at` is recording time (SPEC-001 §4). `statementDate` is the declaration time. It belongs to the source or excerpt it came from, not to `asserted_at`. An import MUST store it on the source side. |
 | Recorder (`recorded_by`) | `publicationDetails.publisher`, `annotations[].createdBy` | partial | The publisher of the statement is not necessarily the recorder. |
-| Role event / interest | `Interest` in a Relationship record (`type`, `directOrIndirect`, `details`, `startDate`, `endDate`, `share`) | partial | Only for interests in an entity. Roles in an organisation that are not interests have no Statement shape in the terms read. |
+| Role event / interest | `Interest` in a Relationship record (`type`, `directOrIndirect`, `details`, `startDate`, `endDate`, `share`) | partial | Only for interests in an entity. `type` has 23 values; the ones that name a role are `boardMember`, `boardChair`, `seniorManagingOfficial`, `appointmentOfBoard`, `trustee`, `settlor`, `protector` and `nominee`. A role with no such value has no Statement shape. |
 | Beneficial ownership or control flag | `Interest.beneficialOwnershipOrControl` | none in the core | A classification under a jurisdiction's definition. It is a profile term. The core gives it no meaning. |
-| Name | `Name` (`type`, `fullName`, `familyName`, `givenName`, `patronymicName`) | partial | `Name` is for persons. The `nameType` codelist was not read, so the type mapping is open. |
+| Name | `Name` (`type`, `fullName`, `familyName`, `givenName`, `patronymicName`) | partial | `Name` is for persons. `nameType` takes `legal`, `translation`, `transliteration`, `former`, `alternative` or `birth`. Export: `legal`, `transliteration` and `former` map to the same-named core types, `alias` to `alternative`; `brand` and `other` go to `alternative` and the core type is lost. Import: `alternative` becomes `alias`; `translation` and `birth` have no core type and enter as `other`, the BODS type being kept as a note on the claim. |
 | Identifier assignment | `Identifier` (`id`, `scheme`, `schemeName`, `uri`) | exact | `scheme` is an org-id.guide code for entities, or `{JURISDICTION}-{TYPE}` for persons. This is the best fit among the three: scheme and value stay together. |
 | Partial dates | `startDate`, `endDate` (full `YYYY-MM-DD`) | partial | BODS says an unknown month or day "may be rounded to the first day" with the rounding noted in guidance. An export follows §3.5 and adds an annotation (below). An import cannot tell exact from rounded. |
 | Quantities (`share`) | `Interest.share` (exact, or `minimum` / `maximum` and exclusive forms) | partial | Maps `exact` and `range`. The semantic types `approximate`, `at-least`, `at-most`, `greater-than`, `fewer-than` have no named counterpart; some can be expressed with a bound. Original expression is lost. |
@@ -237,8 +254,9 @@ declaration by a publisher about a network, not an absence state of a field.
 | `subjectExemptFromDisclosure`, `interestedPartyExemptFromDisclosure` | `not-applicable`, with the exemption as the stated reason. |
 | `unknown`, `informationUnknownToPublisher` | `unknown` |
 
-The codelist was read only in part. Reasons not listed here MUST NOT be
-mapped until read.
+The codelist has seven values and all seven are mapped above (read in full on
+2026-10-12). A reason added in a later BODS version MUST NOT be mapped until
+read.
 
 ### 5.3 Worked example (invented)
 
@@ -283,12 +301,17 @@ but it has no assertion model. Its `Claim` class is the nearest term.
 | Likelihood, confidence (as ratings) | `Rating` | partial | See `assessment`. |
 | Absence states | none found in the terms read | none | Left out and listed. |
 | Review state | none | none | Left out and listed. |
-| Partial dates | `Date` values | not verified | Whether partial ISO 8601 dates are valid values was not checked. An exporter keeps them and lists the uncertainty. |
+| Partial dates | `Date` values | not verified | schema.org describes `Date` as "a date value in ISO 8601 date format" and does not say whether a year or year-month alone is valid. An exporter keeps them and lists the uncertainty. |
 
 ### 6.2 Notes
 
 1. The pending-area terms (`Quotation`, `translationOfWork`) MAY be used in
    exports (§10.4). The loss list MUST name them as pending terms.
+   *Status check, 2026-10-12:* schema.org's `Quotation` page says the term is
+   in the "new" area, and its `translationOfWork` page says only that it is
+   defined in the "bib" section; neither page says "pending". The rule above
+   and decision 4 of §10 were made on the 2026-10-04 reading. The owner
+   decides whether to reword them; this check changes neither.
 2. schema.org is primarily an export target. §3.4 applies to anything imported
    from it.
 
