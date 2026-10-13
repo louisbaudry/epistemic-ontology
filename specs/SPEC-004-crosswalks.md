@@ -287,10 +287,10 @@ but it has no assertion model. Its `Claim` class is the nearest term.
 | Other kinds | `Statement` (a `CreativeWork`: "a statement about something, for example a fun or interesting fact"), or none | none | `Statement` invites the reading "this is a fact". An export MUST NOT use it for a `claim` or `hypothesis` (§3.2.1). Not used for other kinds. |
 | `assessment` of a claim | `ClaimReview` (a `Review`; `claimReviewed`, `itemReviewed`, `reviewRating`) | partial | A review of a claim. A `Rating` takes `ratingValue` as a number or text, and `reviewAspect` names a facet. The core's two dimensions can each be a `Rating` with a text value (the band identifier) and a distinguishing `reviewAspect`. This is valid in the vocabulary. How consumers treat a non-numeric `ratingValue` was not checked. |
 | Evidence link | `citation`, `isBasedOn`, `appearance` | partial | None carries a stance or a passage. |
-| Excerpt (a quotation) | `Quotation` (use `isBasedOn` to link to the origin) | partial | `Quotation` was read as pending on 2026-10-04; on 2026-10-12 its page says the "new" area (§6.2). It has no selector. The verbatim passage can go in `text`; the locator cannot be expressed. |
+| Excerpt (a quotation) | `Quotation` (use `isBasedOn` to link to the origin) | partial | `Quotation` is in schema.org's "new" area (version 30.1, checked 2026-10-12; §6.2). It has no selector. The verbatim passage can go in `text`; the locator cannot be expressed. |
 | Source: work and expression | `CreativeWork`, `exampleOfWork`, `workExample`, `inLanguage` (BCP 47) | partial | The four layers of SPEC-003 §3 are not separate classes. |
 | Source: web page, document, dataset | `WebPage`, `DigitalDocument`, `Dataset`, `ArchiveComponent` | partial | A choice of class, not a layer. |
-| Translation | `translator`, `translationOfWork` | partial | `translationOfWork` was read as pending on 2026-10-04; on 2026-10-12 its page says only that it is defined in the "bib" section (§6.2). |
+| Translation | `translator`, `translationOfWork` | partial | `translationOfWork` is defined in schema.org's "bib" section (version 30.1, checked 2026-10-12; §6.2). |
 | Derivation | `isBasedOn` (`isBasedOnUrl` is superseded by it) | partial | One undifferentiated relation. SPEC-001 §5.2's seven dependence relations collapse to it. |
 | Holding, digest, location | `sha256`, `contentUrl`, `encodingFormat`, `archivedAt`, `license` | partial | `archivedAt` says a page or link is "involved in archival". It has no original capture time, no series and no completeness. |
 | Person | `Person` (`birthDate`, `deathDate`, `taxID`, `vatID`) | exact for the kind | No referent status. |
@@ -305,13 +305,12 @@ but it has no assertion model. Its `Claim` class is the nearest term.
 
 ### 6.2 Notes
 
-1. The pending-area terms (`Quotation`, `translationOfWork`) MAY be used in
-   exports (§10.4). The loss list MUST name them as pending terms.
-   *Status check, 2026-10-12:* schema.org's `Quotation` page says the term is
-   in the "new" area, and its `translationOfWork` page says only that it is
-   defined in the "bib" section; neither page says "pending". The rule above
-   and decision 4 of §10 were made on the 2026-10-04 reading. The owner
-   decides whether to reword them; this check changes neither.
+1. `Quotation` and `translationOfWork` MAY be used in exports (§10.4). The
+   loss list MUST name each with the schema.org section its page gives and
+   the schema.org version checked. At version 30.1 (checked 2026-10-12),
+   `Quotation` is in the "new" area and `translationOfWork` is defined in the
+   "bib" section; neither page says "pending". A later schema.org version is a
+   new check (§9).
 2. schema.org is primarily an export target. §3.4 applies to anything imported
    from it.
 
@@ -376,6 +375,8 @@ CHANGELOG 0.1.0.
    minimal.
 3. ~~**BODS dates.**~~ Decided: an export rounds a partial date and annotates it
    (§3.5).
-4. ~~**Pending schema.org terms.**~~ Decided: `Quotation` and `translationOfWork`
-   are allowed in exports and are listed in the loss list as pending terms
-   (§6.2).
+4. ~~**Pending schema.org terms.**~~ Decided (2026-10-04): `Quotation` and
+   `translationOfWork` are allowed in exports and are listed in the loss list as
+   pending terms. Reworded (owner, 2026-10-13): they are listed with the
+   schema.org section their page gives and the version checked, because the
+   pages no longer say "pending" (§6.2).
