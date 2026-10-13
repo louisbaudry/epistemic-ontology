@@ -94,3 +94,9 @@ version and the old term is deprecated, not removed.
   the wording of SPEC-004 §6.2 and decision 4 may be stale. Whether schema.org
   accepts partial dates is still unresolved. No core term minted or changed;
   SPEC-004 stays a draft.
+- Decision: SPEC-004's loss-list rule for `Quotation` and `translationOfWork`
+  names each term with the schema.org section its page gives and the version
+  checked (version 30.1: `Quotation` "new", `translationOfWork` "bib"), instead
+  of calling them pending; exports may still use both (SPEC-004 §6.1, §6.2,
+  §10.4; owner, 2026-10-13). Replaces the wording of the 2026-10-04 decision;
+  its substance (allowed, listed) is unchanged.
