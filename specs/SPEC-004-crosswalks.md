@@ -1,6 +1,6 @@
 # SPEC-004 — Crosswalks to FollowTheMoney, BODS and schema.org
 
-**Version:** 0.1 (draft) | **Status:** Draft, awaiting owner review
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-13
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-002 (persons and organisations), SPEC-003 (sources, captures and excerpts)
 **Upstream:** none cited. The mappings here are to external standards, not to upstream decision records.
@@ -8,7 +8,9 @@
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction. A draft until the owner approves it. The first reads below
+owner's direction. Approved by the owner on 2026-10-13, after the mapping checks
+and open-point decisions recorded in the CHANGELOG; the text is otherwise
+unchanged by the approval. The first reads below
 were made on 2026-10-04; a second round of reads on 2026-10-12 is listed after
 them.
 

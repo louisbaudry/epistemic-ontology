@@ -109,3 +109,7 @@ version and the old term is deprecated, not removed.
   item 6, §11 item 2; owner, 2026-10-13).
 - Decision: the core names WARC as an acceptable capture format and commits to
   no format (SPEC-003 §9, §11 item 3; owner, 2026-10-13). No text change.
+- Decision: SPEC-003 and SPEC-004 approved as 0.1 by the owner on 2026-10-13, after the
+  mapping checks and open-point decisions recorded above. Their provenance
+  blocks keep the lists of what was not verified. Before 1.0 a term may still
+  change, by a recorded decision.
