@@ -77,6 +77,7 @@ check can follow.
 | **Representation** | One preserved form of a holding: the original bytes as acquired, or a derivative of them (OCR text, transcript, normalised copy, translation). |
 | **Capture** | An event in which a custodian acquired a state of an original resource and produced a holding (§5). |
 | **Capture series** | The holdings produced by successive captures of the same original resource (§5.2). |
+| **Truncated** | A flag on a holding whose capture was cut short (§4.6). Not the same as the completeness value `fragment`. |
 | **Custodian** | The agent that holds a copy. Not necessarily the project. |
 | **Locator** | The address of an original resource at capture time (for example a URL). Context, never an anchor (§6). |
 | **Anchor** | The pinned representation an excerpt targets (§6). |
@@ -130,6 +131,14 @@ carries a **completeness** value:
    check is a dated event with an outcome, failures included. A matching digest
    is a bit-level statement only: it says nothing about authenticity or truth.
 5. Different captures of the same locator are **different holdings** (§5.2).
+6. **`fragment` and `truncated` are different things.** `fragment` is a
+   completeness value: the holding is deliberately only a part of the item, such
+   as an excerpted section. `truncated` is a flag any holding may carry: its
+   capture was cut short, so the representation is less than what the original
+   resource served. A truncated holding records the captured length and, whatever
+   its completeness value, MUST NOT be presented as the document. The flag keeps
+   a truncated copy of an otherwise complete document distinguishable from a
+   deliberate excerpt.
 
 ## 5. Captures
 
@@ -145,9 +154,9 @@ outcome; and the completeness (§4).
 1. A **failed** capture is recorded with its outcome and reason. It is never
    silently retried into invisibility.
 2. A **partial** capture (for example a truncated payload) is admitted as a
-   holding of completeness `fragment`, with the captured length recorded. It is
-   never treated as the complete page, and is not refused merely for being
-   incomplete.
+   holding carrying the `truncated` flag (§4.6), with the captured length
+   recorded. It is never treated as the complete page, and is not refused merely
+   for being incomplete.
 
 ### 5.2 Capture series
 
@@ -180,6 +189,11 @@ derivative of the custodian's own captures and not a new series.
    two observations of what a server sent, at different times by different
    means. Whether they count as independent for corroboration is decided under
    SPEC-001 §5.2, never by default.
+6. **Qualifying archives are a profile matter.** Which third-party archives a
+   project accepts, and on what conditions (for example that the archive
+   supplies the original response record, does no new crawling and leaves
+   rights with the publisher), is stated in the profile. The core sets no such
+   criteria; it requires only the recording rule of item 1.
 
 ## 6. The anchoring rule
 
@@ -254,7 +268,7 @@ explicit value, never a blank) and its lifecycle events.
 | Excerpt locator | Web Annotation | `oa:SpecificResource` with `oa:hasSource` the pinned representation and `oa:hasSelector` text-quote and text-position selectors. | Verified (SPEC-001 §9) |
 | Version pinning of the target | Web Annotation | `oa:hasState` (domain `oa:ResourceSelection`, of which `oa:SpecificResource` is a subclass; range `oa:State`) to an `oa:TimeState`, whose `oa:cachedSource` is "a copy of the Source resource's representation" and whose `oa:sourceDate` (`xsd:dateTime`) is the time the source is to be read as applicable. The pinned representation is the `oa:cachedSource`. | Verified |
 | Original resource, prior state, series | Memento (RFC 7089) | Original Resource = the live locator; Memento = a state of it; `Memento-Datetime` = the original capture time; TimeMap = a list of the series. A capture series corresponds to a TimeMap. | Verified (RFC 7089 definitions) |
-| Preserved bytes, events, fixity | PREMIS 3.0 | `File` for preserved bytes; Event with `eventType`, `eventDateTime`, `eventOutcomeInformation` and `linkingAgentIdentifier` for ingestion and fixity checks. `capture` is a PREMIS glossary term (the process by which a repository actively obtains digital objects, preceding ingest), not a listed example of `eventType`. | Verified: the structure. Partial: a PREMIS `Representation` is "the set of stored Files and Structural Metadata needed to provide a complete rendition of the Intellectual Entity", so §4's `fragment` and `metadata-only` holdings are not PREMIS Representations. Not verified: the `eventType` vocabulary |
+| Preserved bytes, events, fixity | PREMIS 3.0 | `File` for preserved bytes; Event with `eventType`, `eventDateTime`, `eventOutcomeInformation` and `linkingAgentIdentifier` for ingestion and fixity checks. `capture` is a PREMIS glossary term (the process by which a repository actively obtains digital objects, preceding ingest), not a listed example of `eventType`. | Verified: the structure. Partial: a PREMIS `Representation` is "the set of stored Files and Structural Metadata needed to provide a complete rendition of the Intellectual Entity", so §4's `fragment` and `metadata-only` holdings, and any `truncated` holding, are not PREMIS Representations. Not verified: the `eventType` vocabulary |
 | Web capture record | WARC (ISO 28500) | One acceptable capture format for web pages. A `response` record block "should contain the full HTTP response received over the network, including headers" (so headers and payload as served); `WARC-Date` is "the instant that data capture for record creation began", the original capture time. A `revisit` record notes content already archived, so a repeat capture may be stored without its bytes (§5.2 still treats it as its own holding). | Verified against the IIPC text of WARC 1.1; the ISO text itself is not read |
 | Capturing agent, custodian | PROV-O | `prov:Agent`; the capture is a `prov:Activity`. | Verified (PROV-O) |
 
@@ -272,21 +286,21 @@ An implementation conforms if it can show that:
    custody" status;
 6. no quotation derives from a paraphrase or summary, and omissions and
    derivation steps are shown;
-7. a holding states its completeness and no holding implies possession it does
-   not have;
+7. a holding states its completeness, a truncated capture carries the
+   `truncated` flag and is not presented as the document, and no holding
+   implies possession it does not have;
 8. a source's rights position is stated, with `unknown` where it is.
 
 ## 11. Open points for the owner
 
-1. **Whether `fragment` should be a completeness value or a flag.** Upstream
-   lists `fragment` among completeness values and uses a separate "incomplete"
-   flag for a truncated third-party capture. This draft folds them into
-   `fragment`. A separate flag would keep a truncated copy of an otherwise
-   complete document distinguishable from a deliberately excerpted one.
-2. **Third-party archive qualifying criteria.** Upstream decided by criteria
-   (supplies the original response record; no new crawling; rights stay with
-   the publisher). This draft keeps only the rule that the capturing agent is
-   recorded (§5.3). Whether the criteria belong in the core or in profiles is
-   open.
-3. **Format commitments.** Upstream commits to WARC for high-value web
-   captures. This draft names WARC as acceptable and commits to no format.
+All three are decided (owner, 2026-10-13), each as recommended. Recorded in
+CHANGELOG 0.1.0.
+
+1. ~~**Whether `fragment` should be a completeness value or a flag.**~~ Decided:
+   both. `fragment` stays a completeness value for a deliberately partial
+   holding; a `truncated` flag, with the captured length, marks a capture cut
+   short (§4.6, §5.1).
+2. ~~**Third-party archive qualifying criteria.**~~ Decided: in profiles. The
+   core keeps only the rule that the capturing agent is recorded (§5.3).
+3. ~~**Format commitments.**~~ Decided: the core names WARC as acceptable and
+   commits to no format (§9).
