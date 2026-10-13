@@ -100,3 +100,12 @@ version and the old term is deprecated, not removed.
   of calling them pending; exports may still use both (SPEC-004 §6.1, §6.2,
   §10.4; owner, 2026-10-13). Replaces the wording of the 2026-10-04 decision;
   its substance (allowed, listed) is unchanged.
+- Decision: `fragment` stays a completeness value for a deliberately partial
+  holding, and a new `truncated` flag, with the captured length, marks a capture
+  cut short; a truncated holding is never presented as the document (SPEC-003
+  §4.6, §5.1, §10, §11 item 1; owner, 2026-10-13). New term: `truncated`.
+- Decision: qualifying criteria for third-party archives belong in profiles; the
+  core keeps only the rule that the capturing agent is recorded (SPEC-003 §5.3
+  item 6, §11 item 2; owner, 2026-10-13).
+- Decision: the core names WARC as an acceptable capture format and commits to
+  no format (SPEC-003 §9, §11 item 3; owner, 2026-10-13). No text change.

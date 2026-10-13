@@ -34,6 +34,7 @@ reading by the drafter that the owner has not yet confirmed.
 | fact | A display label, computed when shown, for a `finding` with at least one active supporting evidence link; never a stored kind. | A kind `fact`; a stored field, identifier or export value `fact`. | SPEC-001 §2 |
 | `finding` | An assertion kind: a conclusion of a defined investigation, with its scope and method, needing an active supporting evidence link. | "Fact" as a kind. | SPEC-001 §3 |
 | flattened export | An export that drops attribution, evidence or assessment because the target cannot carry them. | | SPEC-004 §3.3 |
+| `fragment` | A completeness value for a holding that is deliberately only a part of the item, such as an excerpted section. | Using it for a capture cut short (that is `truncated`). | SPEC-003 §4 |
 | holding | The statement that a custodian possesses one item, in one or more preserved representations, at a stated completeness. | Assuming possession from a citation. | SPEC-003 §4 |
 | identifier assignment | An assertion that an identifier from a scheme belongs to a referent. | Identifying a referent by an identifier alone. | SPEC-002 §2, §4 |
 | import | Reading data in an external standard's shape into core records; it enters as `draft` claims held by the exporter. | | SPEC-004 §2, §3.4 |
@@ -64,6 +65,7 @@ reading by the drafter that the owner has not yet confirmed.
 | strength | The rating of a crosswalk row: `exact`, `partial` or `none`. | | SPEC-004 §2 |
 | summary | A condensed account of a larger passage, labelled as such. | "Quote". | SPEC-003 §7 |
 | `supersedes` | The element naming the earlier assertion a correction replaces; the earlier one stays readable. | Editing or overwriting. | SPEC-001 §4, §8 |
+| `truncated` | A flag on a holding whose capture was cut short, recorded with the captured length; whatever its completeness value, it is not presented as the document. | Marking a cut-short capture `fragment`. | SPEC-003 §4, §5.1 |
 | upstream | The UkraineIndependenceWar archive's numbered decision records, cited by DR number and followed; nothing flows back. | | README |
 | `valid_time` | When a proposition holds in the world, partial dates allowed. | Using it for when the record was made. | SPEC-001 §4 |
 | work | The intellectual creation, the first of the four documentary layers. | | SPEC-003 §3 |

@@ -130,6 +130,14 @@ carries a **completeness** value:
    check is a dated event with an outcome, failures included. A matching digest
    is a bit-level statement only: it says nothing about authenticity or truth.
 5. Different captures of the same locator are **different holdings** (§5.2).
+6. **`fragment` and `truncated` are different things.** `fragment` is a
+   completeness value: the holding is deliberately only a part of the item, such
+   as an excerpted section. `truncated` is a flag any holding may carry: its
+   capture was cut short, so the representation is less than what the original
+   resource served. A truncated holding records the captured length and, whatever
+   its completeness value, MUST NOT be presented as the document. The flag keeps
+   a truncated copy of an otherwise complete document distinguishable from a
+   deliberate excerpt.
 
 ## 5. Captures
 
@@ -145,9 +153,9 @@ outcome; and the completeness (§4).
 1. A **failed** capture is recorded with its outcome and reason. It is never
    silently retried into invisibility.
 2. A **partial** capture (for example a truncated payload) is admitted as a
-   holding of completeness `fragment`, with the captured length recorded. It is
-   never treated as the complete page, and is not refused merely for being
-   incomplete.
+   holding carrying the `truncated` flag (§4.6), with the captured length
+   recorded. It is never treated as the complete page, and is not refused merely
+   for being incomplete.
 
 ### 5.2 Capture series
 
@@ -180,6 +188,11 @@ derivative of the custodian's own captures and not a new series.
    two observations of what a server sent, at different times by different
    means. Whether they count as independent for corroboration is decided under
    SPEC-001 §5.2, never by default.
+6. **Qualifying archives are a profile matter.** Which third-party archives a
+   project accepts, and on what conditions (for example that the archive
+   supplies the original response record, does no new crawling and leaves
+   rights with the publisher), is stated in the profile. The core sets no such
+   criteria; it requires only the recording rule of item 1.
 
 ## 6. The anchoring rule
 
@@ -272,21 +285,21 @@ An implementation conforms if it can show that:
    custody" status;
 6. no quotation derives from a paraphrase or summary, and omissions and
    derivation steps are shown;
-7. a holding states its completeness and no holding implies possession it does
-   not have;
+7. a holding states its completeness, a truncated capture carries the
+   `truncated` flag and is not presented as the document, and no holding
+   implies possession it does not have;
 8. a source's rights position is stated, with `unknown` where it is.
 
 ## 11. Open points for the owner
 
-1. **Whether `fragment` should be a completeness value or a flag.** Upstream
-   lists `fragment` among completeness values and uses a separate "incomplete"
-   flag for a truncated third-party capture. This draft folds them into
-   `fragment`. A separate flag would keep a truncated copy of an otherwise
-   complete document distinguishable from a deliberately excerpted one.
-2. **Third-party archive qualifying criteria.** Upstream decided by criteria
-   (supplies the original response record; no new crawling; rights stay with
-   the publisher). This draft keeps only the rule that the capturing agent is
-   recorded (§5.3). Whether the criteria belong in the core or in profiles is
-   open.
-3. **Format commitments.** Upstream commits to WARC for high-value web
-   captures. This draft names WARC as acceptable and commits to no format.
+All three are decided (owner, 2026-10-13), each as recommended. Recorded in
+CHANGELOG 0.1.0.
+
+1. ~~**Whether `fragment` should be a completeness value or a flag.**~~ Decided:
+   both. `fragment` stays a completeness value for a deliberately partial
+   holding; a `truncated` flag, with the captured length, marks a capture cut
+   short (§4.6, §5.1).
+2. ~~**Third-party archive qualifying criteria.**~~ Decided: in profiles. The
+   core keeps only the rule that the capturing agent is recorded (§5.3).
+3. ~~**Format commitments.**~~ Decided: the core names WARC as acceptable and
+   commits to no format (§9).
