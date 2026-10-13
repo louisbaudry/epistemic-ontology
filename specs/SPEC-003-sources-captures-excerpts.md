@@ -1,6 +1,6 @@
 # SPEC-003 — Sources, captures and excerpts
 
-**Version:** 0.1 (draft) | **Status:** Draft, awaiting owner review
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-13
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-002 (persons and organisations)
 **Upstream:** UkraineIndependenceWar DR-0003, DR-0005, DR-0006, DR-0008, DR-0011, DR-0017, DR-0018, DR-0019, DR-0023, DR-0060, DR-0061, DR-0067, DR-0074, DR-0094; its SPEC-0001 §3.3 and §4
@@ -8,7 +8,9 @@
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction. A draft until the owner approves it.
+owner's direction. Approved by the owner on 2026-10-13, after the mapping checks
+and open-point decisions recorded in the CHANGELOG; the text is otherwise
+unchanged by the approval.
 
 - **Read in full:** upstream DR-0003, DR-0005, DR-0006, DR-0008, DR-0011,
   DR-0012, DR-0017, DR-0018, DR-0019, DR-0023, DR-0060, DR-0061, DR-0067,
