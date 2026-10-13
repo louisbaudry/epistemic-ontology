@@ -15,7 +15,7 @@ reading by the drafter that the owner has not yet confirmed.
 | `asserted_at` | When an assertion entered the record. | Using it for when the proposition holds. | SPEC-001 §4 |
 | assertion | A recorded statement about a referent, with a kind, a holder, a basis and its uncertainty. | `Statement` outside a crosswalk. | SPEC-001 §2 |
 | asserter | The agent who holds an assertion; for a `claim`, the source or actor making it, not the recorder. | "Recorder" (that is `recorded_by`). | SPEC-001 §4 |
-| assessment | A judgment by a named assessor on a stated basis; as a kind, an assertion of that sort, and as an attachment, the likelihood and analytic confidence given to another assertion. `unconfirmed` (SPEC-001 §2 and §3 use both senses) | Treating it as a score. | SPEC-001 §2, §3, §5.3 |
+| assessment | A judgment by a named assessor on a stated basis, used in two related senses: the assertion kind `assessment`, and the likelihood and analytic confidence attached to another assertion. | Treating it as a score; mixing the two senses in one sentence. | SPEC-001 §2, §3, §5.3 |
 | candidate | The referent status of a provisionally distinct, not yet consolidated referent; a lead enters here. | | SPEC-002 §5 |
 | canonical | The referent status of a referent treated as real and distinct. | | SPEC-002 §5 |
 | capture | An event in which a custodian or another party acquired a state of an original resource and produced a holding. | | SPEC-003 §5 |

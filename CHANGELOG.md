@@ -113,3 +113,7 @@ version and the old term is deprecated, not removed.
   mapping checks and open-point decisions recorded above. Their provenance
   blocks keep the lists of what was not verified. Before 1.0 a term may still
   change, by a recorded decision.
+- Decision: `assessment` keeps both senses, the assertion kind (SPEC-001 §3) and
+  the likelihood and analytic confidence attached to another assertion
+  (SPEC-001 §5.3), and the glossary says so; no spec text and no term changes
+  (GLOSSARY.md; owner, 2026-10-13).
