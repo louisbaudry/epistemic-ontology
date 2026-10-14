@@ -1,0 +1,63 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:likelihood-bands a skos:ConceptScheme ;
+    dcterms:title "Likelihood bands"@en ;
+    dcterms:source "SPEC-001 §5.3" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "The ICD 203 likelihood bands, stored by identifier and never as a number. Listed here from least to most probable in the ordered collection. The specification gives no numeric ranges and none are added. There is no `not-assessed` likelihood: a likelihood that is not given records why with an absence state. Identifiers follow upstream DR-0065."@en ;
+    skos:hasTopConcept :likelihood-bands-almost-no-chance, :likelihood-bands-very-unlikely, :likelihood-bands-unlikely, :likelihood-bands-roughly-even-chance, :likelihood-bands-likely, :likelihood-bands-very-likely, :likelihood-bands-almost-certain .
+
+:likelihood-bands-almost-no-chance a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "almost-no-chance" ;
+    skos:prefLabel "almost-no-chance"@en .
+
+:likelihood-bands-very-unlikely a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "very-unlikely" ;
+    skos:prefLabel "very-unlikely"@en .
+
+:likelihood-bands-unlikely a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "unlikely" ;
+    skos:prefLabel "unlikely"@en .
+
+:likelihood-bands-roughly-even-chance a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "roughly-even-chance" ;
+    skos:prefLabel "roughly-even-chance"@en .
+
+:likelihood-bands-likely a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "likely" ;
+    skos:prefLabel "likely"@en .
+
+:likelihood-bands-very-likely a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "very-likely" ;
+    skos:prefLabel "very-likely"@en .
+
+:likelihood-bands-almost-certain a skos:Concept ;
+    skos:inScheme :likelihood-bands ;
+    skos:topConceptOf :likelihood-bands ;
+    skos:notation "almost-certain" ;
+    skos:prefLabel "almost-certain"@en .
+
+:likelihood-bands-ordered a skos:OrderedCollection ;
+    skos:prefLabel "Likelihood bands (ordered)"@en ;
+    skos:member :likelihood-bands-almost-no-chance, :likelihood-bands-very-unlikely, :likelihood-bands-unlikely, :likelihood-bands-roughly-even-chance, :likelihood-bands-likely, :likelihood-bands-very-likely, :likelihood-bands-almost-certain ;
+    skos:memberList (:likelihood-bands-almost-no-chance :likelihood-bands-very-unlikely :likelihood-bands-unlikely :likelihood-bands-roughly-even-chance :likelihood-bands-likely :likelihood-bands-very-likely :likelihood-bands-almost-certain) .

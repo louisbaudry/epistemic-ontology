@@ -1,0 +1,64 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:assertion-kinds a skos:ConceptScheme ;
+    dcterms:title "Assertion kinds"@en ;
+    dcterms:source "SPEC-001 §3" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "Every assertion carries exactly one kind, never changed. `finding`, `claim` and `assessment` are required of every conforming profile; the other three are optional. A profile must not give any of the six identifiers another meaning. Identifiers follow upstream's epistemic vocabulary v1 (DR-0025)."@en ;
+    skos:hasTopConcept :assertion-kinds-observation, :assertion-kinds-claim, :assertion-kinds-assessment, :assertion-kinds-hypothesis, :assertion-kinds-finding, :assertion-kinds-project-conclusion .
+
+:assertion-kinds-observation a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "observation" ;
+    skos:prefLabel "observation"@en ;
+    skos:definition "A direct record of what was perceived or measured, by a named observer, with the instrument or method."@en ;
+    skos:scopeNote "Optional kind."@en .
+
+:assertion-kinds-claim a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "claim" ;
+    skos:prefLabel "claim"@en ;
+    skos:definition "A proposition asserted by a source or actor, held by them, recorded with attribution. Recording a claim does not establish it."@en ;
+    skos:scopeNote "Required kind."@en .
+
+:assertion-kinds-assessment a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "assessment" ;
+    skos:prefLabel "assessment"@en ;
+    skos:definition "An evaluative judgment by a named assessor on a stated basis."@en ;
+    skos:scopeNote "Required kind. Also the name of the likelihood and analytic confidence attached to another assertion (SPEC-001 §5.3); see GLOSSARY.md."@en .
+
+:assertion-kinds-hypothesis a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "hypothesis" ;
+    skos:prefLabel "hypothesis"@en ;
+    skos:definition "A proposition put forward for testing, with no commitment that it is true."@en ;
+    skos:scopeNote "Optional kind."@en .
+
+:assertion-kinds-finding a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "finding" ;
+    skos:prefLabel "finding"@en ;
+    skos:definition "A conclusion of a defined investigation, with its scope and method."@en ;
+    skos:scopeNote "Required kind. Needs at least one active supporting evidence link."@en .
+
+:assertion-kinds-project-conclusion a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "project-conclusion" ;
+    skos:prefLabel "project-conclusion"@en ;
+    skos:definition "A conclusion the project as a whole adopts after review."@en ;
+    skos:scopeNote "Optional kind."@en .

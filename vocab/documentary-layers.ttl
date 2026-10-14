@@ -1,0 +1,44 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:documentary-layers a skos:ConceptScheme ;
+    dcterms:title "Documentary layers"@en ;
+    dcterms:source "SPEC-003 §3" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "The four layers of a source, kept distinct. An identifier, hash or URL identifies at most one layer, and a record says which. The specification's examples are invented and are not repeated here."@en ;
+    skos:hasTopConcept :documentary-layers-work, :documentary-layers-expression, :documentary-layers-manifestation, :documentary-layers-item .
+
+:documentary-layers-work a skos:Concept ;
+    skos:inScheme :documentary-layers ;
+    skos:topConceptOf :documentary-layers ;
+    skos:notation "work" ;
+    skos:prefLabel "work"@en ;
+    skos:definition "The intellectual creation."@en .
+
+:documentary-layers-expression a skos:Concept ;
+    skos:inScheme :documentary-layers ;
+    skos:topConceptOf :documentary-layers ;
+    skos:notation "expression" ;
+    skos:prefLabel "expression"@en ;
+    skos:definition "A particular realisation of the work: a language, a version, a text."@en .
+
+:documentary-layers-manifestation a skos:Concept ;
+    skos:inScheme :documentary-layers ;
+    skos:topConceptOf :documentary-layers ;
+    skos:notation "manifestation" ;
+    skos:prefLabel "manifestation"@en ;
+    skos:definition "A published or embodied form of an expression."@en .
+
+:documentary-layers-item a skos:Concept ;
+    skos:inScheme :documentary-layers ;
+    skos:topConceptOf :documentary-layers ;
+    skos:notation "item" ;
+    skos:prefLabel "item"@en ;
+    skos:definition "One individual copy of a manifestation."@en .

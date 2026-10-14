@@ -1,0 +1,31 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:referent-kinds a skos:ConceptScheme ;
+    dcterms:title "Referent kinds"@en ;
+    dcterms:source "SPEC-002 §2, §3" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "The core defines two referent kinds. A profile may use either or both and may add kinds without giving these identifiers another meaning."@en ;
+    skos:hasTopConcept :referent-kinds-person, :referent-kinds-organisation .
+
+:referent-kinds-person a skos:Concept ;
+    skos:inScheme :referent-kinds ;
+    skos:topConceptOf :referent-kinds ;
+    skos:notation "person" ;
+    skos:prefLabel "person"@en ;
+    skos:definition "A real, living or historical human individual, or one assumed to be, as the sources refer to them."@en .
+
+:referent-kinds-organisation a skos:Concept ;
+    skos:inScheme :referent-kinds ;
+    skos:topConceptOf :referent-kinds ;
+    skos:notation "organisation" ;
+    skos:prefLabel "organisation"@en ;
+    skos:definition "A company, agency, association, unit or other group that acts collectively."@en ;
+    skos:scopeNote "A legal entity and a group without legal personality are both `organisation`; a profile that needs to tell them apart defines its own type (SPEC-002 §10.2)."@en .

@@ -55,8 +55,9 @@ Project profiles     one short document per adopting project, kept in that proje
 | [SPEC-003](specs/SPEC-003-sources-captures-excerpts.md) | Sources, captures and excerpts: documentary layers, holdings and completeness, capture series, third-party captures, the anchoring rule, quotations and their derivations, declared dependence | Approved 0.1 |
 | [SPEC-004](specs/SPEC-004-crosswalks.md) | Crosswalks to FollowTheMoney, BODS and schema.org: term-by-term mappings, what each loses, and the rules for exports and imports | Approved 0.1 |
 
-Planned, not yet written: vocabularies as SKOS with SHACL validation and JSON-LD
-contexts.
+Vocabularies as SKOS: first draft in [vocab/](vocab/), 17 concept schemes for
+the controlled values the specifications define. Planned, not yet written:
+SHACL validation and JSON-LD contexts.
 
 ## Standards used
 

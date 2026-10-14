@@ -1,0 +1,50 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:analytic-confidence-levels a skos:ConceptScheme ;
+    dcterms:title "Analytic confidence levels"@en ;
+    dcterms:source "SPEC-001 §5.3" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "How good the basis for a judgment is. `low`, `moderate` and `high` are ordered levels. `not-assessed` is a state, not a level: it is never ordered between or compared with the levels, and an exchange with a system that has only three levels drops the dimension rather than mapping it to `low`."@en ;
+    skos:hasTopConcept :analytic-confidence-levels-low, :analytic-confidence-levels-moderate, :analytic-confidence-levels-high, :analytic-confidence-levels-not-assessed .
+
+:analytic-confidence-levels-low a skos:Concept ;
+    skos:inScheme :analytic-confidence-levels ;
+    skos:topConceptOf :analytic-confidence-levels ;
+    skos:notation "low" ;
+    skos:prefLabel "low"@en ;
+    skos:scopeNote "Ordered level."@en .
+
+:analytic-confidence-levels-moderate a skos:Concept ;
+    skos:inScheme :analytic-confidence-levels ;
+    skos:topConceptOf :analytic-confidence-levels ;
+    skos:notation "moderate" ;
+    skos:prefLabel "moderate"@en ;
+    skos:scopeNote "Ordered level."@en .
+
+:analytic-confidence-levels-high a skos:Concept ;
+    skos:inScheme :analytic-confidence-levels ;
+    skos:topConceptOf :analytic-confidence-levels ;
+    skos:notation "high" ;
+    skos:prefLabel "high"@en ;
+    skos:scopeNote "Ordered level."@en .
+
+:analytic-confidence-levels-not-assessed a skos:Concept ;
+    skos:inScheme :analytic-confidence-levels ;
+    skos:topConceptOf :analytic-confidence-levels ;
+    skos:notation "not-assessed" ;
+    skos:prefLabel "not-assessed"@en ;
+    skos:definition "Nobody has yet judged the basis."@en ;
+    skos:scopeNote "A state, not a level."@en .
+
+:analytic-confidence-levels-ordered a skos:OrderedCollection ;
+    skos:prefLabel "Analytic confidence levels (ordered)"@en ;
+    skos:member :analytic-confidence-levels-low, :analytic-confidence-levels-moderate, :analytic-confidence-levels-high ;
+    skos:memberList (:analytic-confidence-levels-low :analytic-confidence-levels-moderate :analytic-confidence-levels-high) .

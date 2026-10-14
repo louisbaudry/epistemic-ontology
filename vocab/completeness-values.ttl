@@ -1,0 +1,60 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:completeness-values a skos:ConceptScheme ;
+    dcterms:title "Holding completeness values"@en ;
+    dcterms:source "SPEC-003 §4" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "The stated completeness of a holding. Completeness is stated, never implied, and a holding that is not `original` or `archival-copy` must not be presented as the document. A cut-short capture carries the separate `truncated` flag, not a value of this scheme."@en ;
+    skos:hasTopConcept :completeness-values-original, :completeness-values-archival-copy, :completeness-values-derivative, :completeness-values-screenshot, :completeness-values-transcript, :completeness-values-fragment, :completeness-values-metadata-only .
+
+:completeness-values-original a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "original" ;
+    skos:prefLabel "original"@en .
+
+:completeness-values-archival-copy a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "archival-copy" ;
+    skos:prefLabel "archival-copy"@en .
+
+:completeness-values-derivative a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "derivative" ;
+    skos:prefLabel "derivative"@en .
+
+:completeness-values-screenshot a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "screenshot" ;
+    skos:prefLabel "screenshot"@en .
+
+:completeness-values-transcript a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "transcript" ;
+    skos:prefLabel "transcript"@en .
+
+:completeness-values-fragment a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "fragment" ;
+    skos:prefLabel "fragment"@en ;
+    skos:definition "A holding that is deliberately only a part of the item, such as an excerpted section."@en ;
+    skos:scopeNote "Not the same as the `truncated` flag (SPEC-003 §4.6)."@en .
+
+:completeness-values-metadata-only a skos:Concept ;
+    skos:inScheme :completeness-values ;
+    skos:topConceptOf :completeness-values ;
+    skos:notation "metadata-only" ;
+    skos:prefLabel "metadata-only"@en .
