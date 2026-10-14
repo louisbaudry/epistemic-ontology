@@ -1,0 +1,9 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: fails SPEC-001 11.5 (excerpt text without a language tag).
+
+ex:ex-1 a core:Excerpt ;
+    core:text "The footbridge opens on Monday." .

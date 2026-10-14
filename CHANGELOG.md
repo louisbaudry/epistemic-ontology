@@ -126,3 +126,17 @@ version and the old term is deprecated, not removed.
   The SKOS terms used were checked against the W3C SKOS Reference on 2026-10-14
   (SPEC-001 §9 still lists the SKOS mapping as not verified; its text is
   unchanged).
+- Shapes drafted (`shapes/`): SHACL for the SPEC-001 §11 rules a single record
+  can show, with 17 example files tested under pyshacl 0.40.1. Rules about a
+  system over time (kind never changed, required kinds supported, original left
+  unchanged on correction) are listed as not checked. EDTF in `valid_time` and
+  profile dimensions are not checked either.
+- Decision (proposed, owner approval pending): the core mints RDF terms in
+  `core/core.ttl`, named exactly after the record elements of SPEC-001 (`kind`,
+  `subject`, `content`, `valid_time`, `asserted_at`, `asserter`, `recorded_by`,
+  `basis`, `assessment`, `review`, `supersedes`) and the classes `Assertion`,
+  `EvidenceLink`, `Excerpt`, `Assessment`, `Quantity`, `Automation`. Added
+  beyond the spec's element names, only to make rules checkable: `contributed_by`
+  (links an assertion to its automation marker), `excerpt`, `assertion`,
+  `withdrawn_reason`, `text` and the Automation and Assessment fields. The
+  namespace base is still unconfirmed.

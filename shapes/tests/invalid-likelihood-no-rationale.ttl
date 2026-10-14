@@ -1,0 +1,9 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: fails SPEC-001 5.3 (a likelihood with no rationale).
+
+ex:j1 a core:Assessment ;
+    core:likelihood vocab:likelihood-bands-likely .

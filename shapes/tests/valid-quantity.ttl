@@ -1,0 +1,10 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: conforms.
+
+ex:q1 a core:Quantity ;
+    core:original_expression "about 40 metres" ;
+    core:semantic_type vocab:quantity-types-approximate .

@@ -56,8 +56,9 @@ Project profiles     one short document per adopting project, kept in that proje
 | [SPEC-004](specs/SPEC-004-crosswalks.md) | Crosswalks to FollowTheMoney, BODS and schema.org: term-by-term mappings, what each loses, and the rules for exports and imports | Approved 0.1 |
 
 Vocabularies as SKOS: first draft in [vocab/](vocab/), 17 concept schemes for
-the controlled values the specifications define. Planned, not yet written:
-SHACL validation and JSON-LD contexts.
+the controlled values the specifications define. SHACL shapes for the SPEC-001
+conformance rules, first draft, in [shapes/](shapes/), with the RDF names they
+use in [core/](core/). Planned, not yet written: JSON-LD contexts.
 
 ## Standards used
 
