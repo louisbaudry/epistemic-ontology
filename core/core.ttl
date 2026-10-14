@@ -6,10 +6,10 @@
 @prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
 @prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
 
-# Version 0.1, first draft. RDF names for the record elements SPEC-001 defines,
+# Version 0.1, approved by the owner on 2026-10-14. RDF names for the record elements SPEC-001 defines,
 # so that the shapes in ../shapes/ can state the conformance rules. The names
 # are the spec's own (SPEC-001 4, 5.1, 5.3, 7, 10); the specification is the
-# authority. Proposed for the owner's approval. The namespace base is
+# authority. Before 1.0 a term may still change by a recorded decision. The namespace base is
 # unconfirmed: these IRIs resolve only once GitHub Pages is enabled.
 
 <https://louisbaudry.github.io/epistemic-ontology/core/> a rdfs:Resource ;

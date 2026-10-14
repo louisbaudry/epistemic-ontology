@@ -7,7 +7,7 @@ specification is the authority; each shape message cites the rule it checks.
 | File | Content |
 |---|---|
 | [spec-001.ttl](spec-001.ttl) | The shapes |
-| [../core/core.ttl](../core/core.ttl) | The RDF names the shapes use, one per record element of SPEC-001 §4, §5.1, §5.3, §7, §10 (proposed for approval, see CHANGELOG) |
+| [../core/core.ttl](../core/core.ttl) | The RDF names the shapes use, one per record element of SPEC-001 §4, §5.1, §5.3, §7, §10 (approved 0.1, see CHANGELOG) |
 | [tests/](tests/) | Example data: files named `valid-*` must conform, files named `invalid-*` must not |
 
 Run the tests with `python3 shapes/tests/run.py` (needs `pyshacl` and `rdflib`).

@@ -140,3 +140,11 @@ version and the old term is deprecated, not removed.
   (links an assertion to its automation marker), `excerpt`, `assertion`,
   `withdrawn_reason`, `text` and the Automation and Assessment fields. The
   namespace base is still unconfirmed.
+- Decision: the core RDF terms in `core/core.ttl`, as proposed in the entry
+  above, are approved as 0.1: the classes `Assertion`, `EvidenceLink`,
+  `Excerpt`, `Assessment`, `Quantity`, `Automation`, the properties named after
+  the SPEC-001 record elements, and the added `contributed_by`, `excerpt`,
+  `assertion`, `withdrawn_reason`, `text` and the Automation and Assessment
+  fields (owner, 2026-10-14). The shapes in `shapes/` stay a draft. The
+  namespace base is still unconfirmed. Before 1.0 a term may still change by a
+  recorded decision.
