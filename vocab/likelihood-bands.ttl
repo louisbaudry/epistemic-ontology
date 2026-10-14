@@ -59,4 +59,5 @@
 
 :likelihood-bands-ordered a skos:OrderedCollection ;
     skos:prefLabel "Likelihood bands (ordered)"@en ;
+    skos:member :likelihood-bands-almost-no-chance, :likelihood-bands-very-unlikely, :likelihood-bands-unlikely, :likelihood-bands-roughly-even-chance, :likelihood-bands-likely, :likelihood-bands-very-likely, :likelihood-bands-almost-certain ;
     skos:memberList (:likelihood-bands-almost-no-chance :likelihood-bands-very-unlikely :likelihood-bands-unlikely :likelihood-bands-roughly-even-chance :likelihood-bands-likely :likelihood-bands-very-likely :likelihood-bands-almost-certain) .

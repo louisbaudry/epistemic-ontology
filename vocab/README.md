@@ -48,6 +48,15 @@ checked.
   ordered collections (`skos:OrderedCollection`) in the order the specification
   lists them. `not-assessed` is in no order, as SPEC-001 §5.3 requires. The
   bands carry no numeric ranges.
+- **SKOS terms checked** on 2026-10-14 against the W3C SKOS Reference
+  (`ConceptScheme`, `Concept`, `inScheme`, `hasTopConcept`, `topConceptOf`,
+  `notation`, `prefLabel`, `definition`, `scopeNote`, `OrderedCollection`,
+  `member`, `memberList`; first 100,000 characters of the page, read through a
+  summarising fetch). It found one integrity condition the first draft broke:
+  every item of a `skos:memberList` must also be a `skos:member`. The two
+  ordered collections now declare both, and the check above covers it.
+  `skos:notation` is given as a plain literal; the Reference says its datatype
+  is by convention tied to a notation system, and none is defined here.
 - **Not checked:** that the ICD 203 band wording matches ICD 203 itself (the
   specification does not verify it either); SKOS validation beyond parsing
   (no SHACL or `skosify` run); rendering.

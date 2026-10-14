@@ -46,4 +46,5 @@
 
 :analytic-confidence-levels-ordered a skos:OrderedCollection ;
     skos:prefLabel "Analytic confidence levels (ordered)"@en ;
+    skos:member :analytic-confidence-levels-low, :analytic-confidence-levels-moderate, :analytic-confidence-levels-high ;
     skos:memberList (:analytic-confidence-levels-low :analytic-confidence-levels-moderate :analytic-confidence-levels-high) .

@@ -123,3 +123,6 @@ version and the old term is deprecated, not removed.
   minted or changed. Open for the owner: the namespace base (GitHub Pages,
   unconfirmed) and whether a separate licence is wanted for these first schema
   files (see the 0.1.0 licence decision).
+  The SKOS terms used were checked against the W3C SKOS Reference on 2026-10-14
+  (SPEC-001 §9 still lists the SKOS mapping as not verified; its text is
+  unchanged).
