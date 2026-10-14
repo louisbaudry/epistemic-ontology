@@ -1,0 +1,58 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:source-dependence-relations a skos:ConceptScheme ;
+    dcterms:title "Source dependence relations"@en ;
+    dcterms:source "SPEC-001 §5.2" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "The typed relations by which one source's dependence on another is recorded (upstream DR-0028). Corroboration counts independent origins, not documents. The specification gives no definition text for the values of this scheme; none is added here."@en ;
+    skos:hasTopConcept :source-dependence-relations-cites, :source-dependence-relations-reposts, :source-dependence-relations-syndicates, :source-dependence-relations-derives-from, :source-dependence-relations-shares-underlying-document, :source-dependence-relations-shares-underlying-witness, :source-dependence-relations-common-evidentiary-origin .
+
+:source-dependence-relations-cites a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "cites" ;
+    skos:prefLabel "cites"@en .
+
+:source-dependence-relations-reposts a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "reposts" ;
+    skos:prefLabel "reposts"@en .
+
+:source-dependence-relations-syndicates a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "syndicates" ;
+    skos:prefLabel "syndicates"@en .
+
+:source-dependence-relations-derives-from a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "derives-from" ;
+    skos:prefLabel "derives-from"@en .
+
+:source-dependence-relations-shares-underlying-document a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "shares-underlying-document" ;
+    skos:prefLabel "shares-underlying-document"@en .
+
+:source-dependence-relations-shares-underlying-witness a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "shares-underlying-witness" ;
+    skos:prefLabel "shares-underlying-witness"@en .
+
+:source-dependence-relations-common-evidentiary-origin a skos:Concept ;
+    skos:inScheme :source-dependence-relations ;
+    skos:topConceptOf :source-dependence-relations ;
+    skos:notation "common-evidentiary-origin" ;
+    skos:prefLabel "common-evidentiary-origin"@en .

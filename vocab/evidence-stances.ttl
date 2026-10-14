@@ -1,0 +1,34 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. Generated from the approved specifications; the
+# specification text is the authority. The namespace base is unconfirmed: these
+# IRIs resolve only once GitHub Pages is enabled for the repository.
+
+:evidence-stances a skos:ConceptScheme ;
+    dcterms:title "Evidence stances"@en ;
+    dcterms:source "SPEC-001 §5.1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" ;
+    skos:scopeNote "The stance of an evidence link toward an assertion. Stance belongs to the link, not to the excerpt. The specification gives no definition text for the values of this scheme; none is added here."@en ;
+    skos:hasTopConcept :evidence-stances-supports, :evidence-stances-contradicts, :evidence-stances-contextualizes .
+
+:evidence-stances-supports a skos:Concept ;
+    skos:inScheme :evidence-stances ;
+    skos:topConceptOf :evidence-stances ;
+    skos:notation "supports" ;
+    skos:prefLabel "supports"@en .
+
+:evidence-stances-contradicts a skos:Concept ;
+    skos:inScheme :evidence-stances ;
+    skos:topConceptOf :evidence-stances ;
+    skos:notation "contradicts" ;
+    skos:prefLabel "contradicts"@en .
+
+:evidence-stances-contextualizes a skos:Concept ;
+    skos:inScheme :evidence-stances ;
+    skos:topConceptOf :evidence-stances ;
+    skos:notation "contextualizes" ;
+    skos:prefLabel "contextualizes"@en .

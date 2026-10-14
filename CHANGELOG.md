@@ -117,3 +117,9 @@ version and the old term is deprecated, not removed.
   the likelihood and analytic confidence attached to another assertion
   (SPEC-001 §5.3), and the glossary says so; no spec text and no term changes
   (GLOSSARY.md; owner, 2026-10-13).
+- Vocabularies drafted as SKOS (`vocab/`): 17 concept schemes, 84 concepts, one
+  Turtle file per scheme, covering the controlled values of SPEC-001 to
+  SPEC-004. Definitions only where the specifications give them. No core term
+  minted or changed. Open for the owner: the namespace base (GitHub Pages,
+  unconfirmed) and whether a separate licence is wanted for these first schema
+  files (see the 0.1.0 licence decision).
