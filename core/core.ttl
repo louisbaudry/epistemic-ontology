@@ -1,0 +1,110 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+
+# Version 0.1, first draft. RDF names for the record elements SPEC-001 defines,
+# so that the shapes in ../shapes/ can state the conformance rules. The names
+# are the spec's own (SPEC-001 4, 5.1, 5.3, 7, 10); the specification is the
+# authority. Proposed for the owner's approval. The namespace base is
+# unconfirmed: these IRIs resolve only once GitHub Pages is enabled.
+
+<https://louisbaudry.github.io/epistemic-ontology/core/> a rdfs:Resource ;
+    dcterms:title "Core record elements"@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:hasVersion "0.1" .
+
+# --- Classes ----------------------------------------------------------------
+
+core:Assertion a rdfs:Class ;
+    rdfs:label "Assertion"@en ;
+    rdfs:comment "A recorded statement about a referent, with a kind, a holder, a basis and its uncertainty (SPEC-001 2)."@en .
+
+core:EvidenceLink a rdfs:Class ;
+    rdfs:label "Evidence link"@en ;
+    rdfs:comment "A relation from one excerpt to one assertion, with a stance (SPEC-001 5.1)."@en .
+
+core:Excerpt a rdfs:Class ;
+    rdfs:label "Excerpt"@en ;
+    rdfs:comment "A passage of a source, kept verbatim in its original language (SPEC-001 2, 5.1)."@en .
+
+core:Assessment a rdfs:Class ;
+    rdfs:label "Assessment"@en ;
+    rdfs:comment "The likelihood and analytic confidence attached to an assertion (SPEC-001 5.3). Not the assertion kind `assessment`, which is a concept in the assertion-kinds scheme."@en .
+
+core:Quantity a rdfs:Class ;
+    rdfs:label "Quantity"@en ;
+    rdfs:comment "A number taken from a source, with its original expression and semantic type (SPEC-001 7)."@en .
+
+core:Automation a rdfs:Class ;
+    rdfs:label "Automated contribution"@en ;
+    rdfs:comment "The marker a process leaves on an assertion it contributed to: the process or model identifier, its role and the date (SPEC-001 10)."@en .
+
+# --- Properties of an assertion (SPEC-001 4) -------------------------------
+
+core:kind a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range skos:Concept ;
+    rdfs:label "kind"@en ;
+    rdfs:comment "Exactly one concept of the assertion-kinds scheme."@en .
+core:subject a rdf:Property ; rdfs:domain core:Assertion ; rdfs:label "subject"@en ;
+    rdfs:comment "The referent the assertion is about."@en .
+core:content a rdf:Property ; rdfs:domain core:Assertion ; rdfs:label "content"@en ;
+    rdfs:comment "The proposition: a typed relation, a value with a quantity, a status, or an absence."@en .
+core:valid_time a rdf:Property ; rdfs:domain core:Assertion ; rdfs:label "valid_time"@en ;
+    rdfs:comment "When the proposition holds in the world. Partial dates allowed."@en .
+core:asserted_at a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range xsd:dateTime ; rdfs:label "asserted_at"@en ;
+    rdfs:comment "When the assertion entered the record."@en .
+core:asserter a rdf:Property ; rdfs:domain core:Assertion ; rdfs:label "asserter"@en ;
+    rdfs:comment "Who holds the assertion."@en .
+core:recorded_by a rdf:Property ; rdfs:domain core:Assertion ; rdfs:label "recorded_by"@en ;
+    rdfs:comment "Who entered the assertion."@en .
+core:basis a rdf:Property ; rdfs:domain core:Assertion ; rdfs:label "basis"@en ;
+    rdfs:comment "The reasoning, in prose, for a judgment. Evidence links are separate records pointing at the assertion."@en .
+core:assessment a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range core:Assessment ; rdfs:label "assessment"@en ;
+    rdfs:comment "The likelihood and confidence, where assessed."@en .
+core:review a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range skos:Concept ; rdfs:label "review"@en ;
+    rdfs:comment "Exactly one concept of the review-states scheme."@en .
+core:supersedes a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range core:Assertion ; rdfs:label "supersedes"@en ;
+    rdfs:comment "The assertion this one replaces. The earlier one stays readable."@en .
+core:contributed_by a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range core:Automation ; rdfs:label "contributed_by"@en ;
+    rdfs:comment "The marker of an automated contribution (SPEC-001 10)."@en .
+
+# --- Evidence links and excerpts (SPEC-001 5.1) -----------------------------
+
+core:excerpt a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range core:Excerpt ; rdfs:label "excerpt"@en .
+core:assertion a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range core:Assertion ; rdfs:label "assertion"@en .
+core:stance a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range skos:Concept ; rdfs:label "stance"@en ;
+    rdfs:comment "Exactly one concept of the evidence-stances scheme. Stance belongs to the link, never to the excerpt."@en .
+core:withdrawn_reason a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:label "withdrawn_reason"@en ;
+    rdfs:comment "Present when the link has been withdrawn, with the reason. A link is withdrawn, never deleted; a link without this property is active."@en .
+core:text a rdf:Property ; rdfs:domain core:Excerpt ; rdfs:label "text"@en ;
+    rdfs:comment "The passage verbatim, as a language-tagged literal in its original language."@en .
+
+# --- Assessments (SPEC-001 5.3) ---------------------------------------------
+
+core:likelihood a rdf:Property ; rdfs:domain core:Assessment ; rdfs:range skos:Concept ; rdfs:label "likelihood"@en ;
+    rdfs:comment "A concept of the likelihood-bands scheme, never a number."@en .
+core:analytic_confidence a rdf:Property ; rdfs:domain core:Assessment ; rdfs:range skos:Concept ; rdfs:label "analytic_confidence"@en ;
+    rdfs:comment "A concept of the analytic-confidence-levels scheme."@en .
+core:rationale a rdf:Property ; rdfs:domain core:Assessment ; rdfs:label "rationale"@en ;
+    rdfs:comment "A short rationale. Required for each assessment that has a level."@en .
+core:absence_state a rdf:Property ; rdfs:domain core:Assessment ; rdfs:range skos:Concept ; rdfs:label "absence_state"@en ;
+    rdfs:comment "Why a likelihood is not given, a concept of the absence-states scheme (SPEC-001 5.3, 6)."@en .
+
+# --- Quantities (SPEC-001 7) -------------------------------------------------
+
+core:original_expression a rdf:Property ; rdfs:domain core:Quantity ; rdfs:label "original_expression"@en ;
+    rdfs:comment "The number as written in the source, in the original language where relevant."@en .
+core:semantic_type a rdf:Property ; rdfs:domain core:Quantity ; rdfs:range skos:Concept ; rdfs:label "semantic_type"@en ;
+    rdfs:comment "A concept of the quantity-types scheme."@en .
+
+# --- Automated contributions (SPEC-001 10) ---------------------------------
+
+core:process a rdf:Property ; rdfs:domain core:Automation ; rdfs:label "process"@en ;
+    rdfs:comment "The process or model identifier."@en .
+core:role a rdf:Property ; rdfs:domain core:Automation ; rdfs:label "role"@en ;
+    rdfs:comment "The process's role, for example extraction, translation or suggested-match."@en .
+core:date a rdf:Property ; rdfs:domain core:Automation ; rdfs:label "date"@en ;
+    rdfs:comment "The date of the contribution, fixed at creation."@en .

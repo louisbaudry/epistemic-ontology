@@ -1,0 +1,192 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix shape: <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001/> .
+
+# SHACL shapes for the conformance rules of SPEC-001 11 (first draft, version 0.1).
+# The specification is the authority; each shape cites the rule it checks.
+# A shape checks one record at a time: "never changed" (rule 1) and "the three
+# required kinds supported" (rule 1) are properties of a system over time, not
+# of a record, and are not checked here. The namespace base is unconfirmed.
+
+# --- SPEC-001 11 rule 1, and 4: the assertion record -------------------------
+
+shape:Assertion a sh:NodeShape ;
+    sh:targetClass core:Assertion ;
+    sh:property [
+        sh:path core:kind ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:assertion-kinds-observation vocab:assertion-kinds-claim vocab:assertion-kinds-assessment
+                vocab:assertion-kinds-hypothesis vocab:assertion-kinds-finding vocab:assertion-kinds-project-conclusion ) ;
+        sh:message "SPEC-001 11.1: an assertion has exactly one kind from SPEC-001 3."
+    ] ;
+    sh:property [
+        sh:path core:subject ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 4: an assertion has exactly one subject."
+    ] ;
+    sh:property [
+        sh:path core:content ; sh:minCount 1 ;
+        sh:message "SPEC-001 4: an assertion has content."
+    ] ;
+    sh:property [
+        sh:path core:asserted_at ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ;
+        sh:message "SPEC-001 4: an assertion has exactly one asserted_at, a dateTime."
+    ] ;
+    sh:property [
+        sh:path core:valid_time ; sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:gYear ] [ sh:datatype xsd:gYearMonth ] [ sh:datatype xsd:date ] ) ;
+        sh:message "SPEC-001 8, 11.5: valid_time is a partial or full date as given (year, year-month or date), never padded. EDTF is not checked by this shape."
+    ] ;
+    sh:property [
+        sh:path core:asserter ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 4: an assertion has an asserter."
+    ] ;
+    sh:property [
+        sh:path core:recorded_by ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 4: an assertion records who entered it."
+    ] ;
+    sh:property [
+        sh:path core:review ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:review-states-draft vocab:review-states-unreviewed vocab:review-states-reviewed ) ;
+        sh:message "SPEC-001 4, 10: an assertion has exactly one review state."
+    ] ;
+    sh:property [
+        sh:path core:supersedes ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 8, 11.6: supersedes names the earlier assertion by IRI."
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 8, 11.6: an assertion cannot supersede itself." ;
+        sh:select """
+            SELECT $this ?value WHERE { $this <https://louisbaudry.github.io/epistemic-ontology/core/supersedes> ?value . FILTER ($this = ?value) }
+        """
+    ] ;
+    # Rule 2: a finding has at least one active supporting evidence link.
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 11.2: a finding needs at least one active supporting evidence link (a link is active when it has no withdrawn_reason)." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                $this core:kind vocab:assertion-kinds-finding .
+                FILTER NOT EXISTS {
+                    ?link a core:EvidenceLink ; core:assertion $this ; core:stance vocab:evidence-stances-supports .
+                    FILTER NOT EXISTS { ?link core:withdrawn_reason ?why }
+                }
+            }
+        """
+    ] ;
+    # SPEC-001 4: a basis is required for a finding or an assessment.
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 4: a finding or an assessment carries a basis (the reasoning in prose)." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                $this core:kind ?k .
+                FILTER (?k IN (vocab:assertion-kinds-finding, vocab:assertion-kinds-assessment))
+                FILTER NOT EXISTS { $this core:basis ?b }
+            }
+        """
+    ] ;
+    # Rule 7: automated output enters as draft.
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 10, 11.7: an assertion an automated process contributed to is held as draft until a reviewer adopts it." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                $this core:contributed_by ?m ; core:review ?r .
+                FILTER (?r != vocab:review-states-draft)
+            }
+        """
+    ] .
+
+# --- Rule 7: the marker of an automated contribution -------------------------
+
+shape:Automation a sh:NodeShape ;
+    sh:targetClass core:Automation ;
+    sh:property [ sh:path core:process ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "SPEC-001 10: the marker names the process or model identifier." ] ;
+    sh:property [ sh:path core:role ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "SPEC-001 10: the marker names the process's role." ] ;
+    sh:property [ sh:path core:date ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:date ] [ sh:datatype xsd:dateTime ] ) ;
+        sh:message "SPEC-001 10: the marker carries the date, fixed at creation." ] .
+
+# --- Rule 3: stance lives on the evidence link -------------------------------
+
+shape:EvidenceLink a sh:NodeShape ;
+    sh:targetClass core:EvidenceLink ;
+    sh:property [ sh:path core:excerpt ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 5.1: a link joins exactly one excerpt." ] ;
+    sh:property [ sh:path core:assertion ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 5.1: a link joins exactly one assertion." ] ;
+    sh:property [ sh:path core:stance ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:evidence-stances-supports vocab:evidence-stances-contradicts vocab:evidence-stances-contextualizes ) ;
+        sh:message "SPEC-001 5.1, 11.3: a link has exactly one stance." ] ;
+    sh:property [ sh:path core:withdrawn_reason ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ;
+        sh:message "SPEC-001 5.1: a withdrawn link carries a non-empty reason." ] .
+
+shape:Excerpt a sh:NodeShape ;
+    sh:targetClass core:Excerpt ;
+    sh:property [ sh:path core:stance ; sh:maxCount 0 ;
+        sh:message "SPEC-001 5.1, 11.3: stance belongs to the evidence link, not to the excerpt." ] ;
+    sh:property [ sh:path core:text ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype rdf:langString ;
+        sh:message "SPEC-001 5.1, 11.5: an excerpt keeps the passage verbatim as a language-tagged literal in its original language." ] .
+
+# --- Rule 4 and 5: assessments and quantities --------------------------------
+
+shape:Assessment a sh:NodeShape ;
+    sh:targetClass core:Assessment ;
+    sh:property [ sh:path core:likelihood ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:likelihood-bands-almost-no-chance vocab:likelihood-bands-very-unlikely vocab:likelihood-bands-unlikely
+                vocab:likelihood-bands-roughly-even-chance vocab:likelihood-bands-likely vocab:likelihood-bands-very-likely
+                vocab:likelihood-bands-almost-certain ) ;
+        sh:message "SPEC-001 5.3: a likelihood is one of the seven bands, stored by identifier, never as a number." ] ;
+    sh:property [ sh:path core:analytic_confidence ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:analytic-confidence-levels-low vocab:analytic-confidence-levels-moderate
+                vocab:analytic-confidence-levels-high vocab:analytic-confidence-levels-not-assessed ) ;
+        sh:message "SPEC-001 5.3: analytic confidence is low, moderate, high or not-assessed." ] ;
+    sh:property [ sh:path core:absence_state ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:absence-states-unknown vocab:absence-states-not-researched vocab:absence-states-no-evidence-found
+                vocab:absence-states-unavailable vocab:absence-states-withheld vocab:absence-states-redacted
+                vocab:absence-states-lost-or-destroyed vocab:absence-states-not-applicable vocab:absence-states-indeterminate ) ;
+        sh:message "SPEC-001 5.3, 6: a likelihood that is not given records why with an absence state." ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 5.3, 11.4: no number may stand on an assessment; likelihood and confidence are never collapsed into a score." ;
+        sh:select """
+            SELECT $this ?value WHERE { $this ?p ?value . FILTER (isNumeric(?value)) }
+        """
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 5.3: an assessment with a likelihood or a confidence level carries a rationale." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                { $this core:likelihood ?l } UNION { $this core:analytic_confidence ?c . FILTER (?c != vocab:analytic-confidence-levels-not-assessed) }
+                FILTER NOT EXISTS { $this core:rationale ?r }
+            }
+        """
+    ] .
+
+shape:Quantity a sh:NodeShape ;
+    sh:targetClass core:Quantity ;
+    sh:property [ sh:path core:original_expression ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ;
+        sh:message "SPEC-001 7, 11.5: a quantity keeps its original expression as written." ] ;
+    sh:property [ sh:path core:semantic_type ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:quantity-types-exact vocab:quantity-types-approximate vocab:quantity-types-at-least vocab:quantity-types-at-most
+                vocab:quantity-types-range vocab:quantity-types-greater-than vocab:quantity-types-fewer-than ) ;
+        sh:message "SPEC-001 7: a quantity has one semantic type from the seven." ] .
+
+# --- Prefix declarations used by the SPARQL constraints -----------------------
+
+<https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> a <http://www.w3.org/2002/07/owl#Ontology> ;
+    <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/shacl#> ;
+    sh:declare
+        [ sh:prefix "core" ; sh:namespace "https://louisbaudry.github.io/epistemic-ontology/core/"^^xsd:anyURI ] ,
+        [ sh:prefix "vocab" ; sh:namespace "https://louisbaudry.github.io/epistemic-ontology/vocab/"^^xsd:anyURI ] .

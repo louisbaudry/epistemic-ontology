@@ -281,8 +281,9 @@ An implementation conforms to this core if, for every assertion it stores:
 6. corrections supersede and never overwrite;
 7. automated output enters as `draft` with its marker.
 
-Machine-readable conformance tests (SHACL shapes) are planned and not yet
-written.
+Machine-readable conformance tests (SHACL shapes) are drafted in
+[`shapes/`](../shapes/spec-001.ttl) and not yet approved; they check what a
+single record can show and say which rules they leave out.
 
 ## 12. Candidate decisions for the owner
 
