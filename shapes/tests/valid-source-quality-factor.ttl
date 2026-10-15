@@ -1,0 +1,16 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: conforms. A judgment about one factor of a source: an assessment with a factor and its reasoning, no level, grade or number.
+ex:f1 a core:Assertion ;
+    core:kind vocab:assertion-kinds-assessment ;
+    core:subject ex:notice-1 ;
+    core:content "The author of the notice probably has direct access to the opening." ;
+    core:factor vocab:source-quality-factors-access ;
+    core:asserted_at "2026-03-01T10:00:00Z"^^xsd:dateTime ;
+    core:asserter ex:agent-a ;
+    core:recorded_by ex:agent-a ;
+    core:review vocab:review-states-unreviewed ;
+    core:basis "The notice is signed by the works office and describes the opening ceremony first-hand." .

@@ -1,6 +1,6 @@
 # SPEC-005 — Mapping to the IC Analytic Standards (ICD 203)
 
-**Version:** 0.1 | **Status:** Draft, not approved
+**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; decision 6 (ICD 206) open
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-003 (sources, captures and excerpts)
 **Upstream:** none cited. The mapping is to an external directive, not to upstream decision records.
@@ -8,8 +8,13 @@
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
-owner's direction, on 2026-10-15. Nothing in it is adopted until the owner
-approves it; the candidate decisions in §7 are proposals.
+owner's direction, on 2026-10-15. The owner decided §7 decisions 1 to 5 on the
+same day, each as recommended; decision 6 stays open until an ICD 206 text is
+supplied. The recommendations were implemented in the same change: SPEC-001
+(§3, §5.3, §5.4, §11), the vocabularies, the core terms, the shapes and the
+JSON-LD context. Those machine-readable files were run (22 shape tests and the
+context checks pass under pyshacl and rdflib); they were checked against this
+text, not against any second tool.
 
 - **Read in full:** Intelligence Community Directive (ICD) 203, *Analytic
   Standards*, signed 2 January 2015, from the text layer of the copy kept in
@@ -75,6 +80,8 @@ No core identifier is minted or changed by this specification.
 ## 3. The nine Analytic Tradecraft Standards
 
 Numbers follow ICD 203 D.6.e. The "asks" column paraphrases the directive.
+The strengths are those found when the specification was drafted; §4 records
+what each decision of 2026-10-15 changed.
 
 | ICD 203 standard | What it asks | Core element | Strength | What is missing |
 |---|---|---|---|---|
@@ -98,10 +105,10 @@ on all available sources") asks analysts to "identify and address critical
 information gaps". The core carries that gap as an absence state, such as
 `not-researched` or `no-evidence-found` (SPEC-001 §6), which is `carried`.
 
-## 4. Gaps and proposals
+## 4. Gaps and decisions
 
-Each subsection states the gap, the options, and a recommendation. None is
-adopted. §7 turns them into decisions for the owner.
+Each subsection states the gap, the options, the recommendation and, for
+decisions 1 to 5, the decision (owner, 2026-10-15).
 
 ### 4.1 Assumptions (ICD 203 standard 3)
 
@@ -131,9 +138,16 @@ judgments if it is wrong.
 
 **Recommendation: A**, as an optional kind (like `observation`), with the
 dependent assertion required to name it. It is the one gap in standard 3 that
-cannot be closed without a new element. Open question for the owner: whether
-the "implications if wrong" is a field of the assumption or of each dependent
-assessment (the implication differs per judgment).
+cannot be closed without a new element.
+
+**Decided: A** (owner, 2026-10-15). Written up in SPEC-001 §3 and §5.4. The open
+question was settled as a routine call: the implication if the assumption is
+wrong is required text on the **dependency** (one record per dependent), because
+it differs between judgments that rest on the same assumption. A dependency is
+not required of every assertion, because whether a judgment rests on an
+unrecorded assumption cannot be checked (SPEC-001 §5.4 rule 6). The kind is the
+core's own addition: upstream's epistemic vocabulary (DR-0025) does not define
+it.
 
 ### 4.2 Indicators (ICD 203 standards 2, 3 and 4)
 
@@ -153,6 +167,9 @@ would change a stated assertion. The text read gives no further definition.
 **Recommendation: A.** B invites a monitoring and warning workflow that the core
 does not need, and the directive asks only that products identify them.
 Revisit B if an adopter needs to track whether an indicator occurred.
+
+**Decided: A** (owner, 2026-10-15). `indicators` is optional prose on an
+assessment (SPEC-001 §5.3).
 
 ### 4.3 Source-quality factors and the source summary (ICD 203 standard 1)
 
@@ -182,6 +199,29 @@ lets projects exchange them. Two cautions: a factor judgment is an assessment
 by a named assessor (SPEC-001 §3) and so carries `recorded_by`, a rationale and
 a review state; and a letter-and-number reliability grade is a separate
 question (see §4.7).
+
+**Decided: A** (owner, 2026-10-15). Normative rules:
+
+1. A source-quality judgment is an assertion of kind `assessment` whose subject
+   is the source (a referent, SPEC-001 §2) and that carries `factor`, one
+   concept of the `source-quality-factors` scheme (`vocab/`): `accuracy`,
+   `information-completeness`, `denial-and-deception`, `currency`,
+   `collection-technical`, `access`, `validation`, `motivation`, `bias`,
+   `expertise`. The list is ICD 203 D.6.e(1)'s, in the directive's words; no
+   definition is added. `information-completeness` is not the `completeness`
+   of a holding (SPEC-003 §4).
+2. It has the usual elements of an assessment (SPEC-001 §4): a `basis` stating
+   what was found, `recorded_by`, a review state, `asserted_at`. It carries no
+   level, grade, letter or number for the factor, and an implementation MUST
+   NOT combine factor judgments into one value.
+3. One factor per assertion. A factor nobody has judged has no record: the core
+   holds no empty one. This replaces option A's idea of a `not-assessed` factor
+   (a routine call: `not-assessed` is a confidence level, SPEC-001 §5.3, and
+   reusing it here would give the identifier a second meaning). Where it
+   matters that a factor was looked at and nothing could be determined, the
+   `basis` says so.
+4. A letter-and-number reliability or credibility grade is not part of this
+   decision (§4.7). A judgment of one factor is never converted to one.
 
 **Source summary statement.** ICD 203 calls it "strongly encouraged". It is a
 holistic statement about the whole source base and "which sources are most
@@ -217,6 +257,12 @@ rule that an assessment never carries a number (SPEC-001 §5.3). C risks a
 consumer reading an assessment as a probability. Whether to add the ranges
 needs the owner because the existing vocabulary states that none are added.
 
+**Decided: B** (owner, 2026-10-15). The second row is `skos:altLabel`, and each
+concept's scope note quotes the range ICD 203 prints for it, as documentation
+(`vocab/likelihood-bands.ttl`). No range is a value an assessment carries; the
+shapes still refuse a number on an assessment. The first-row terms remain the
+identifiers.
+
 ### 4.5 The same-sentence rule (ICD 203 standard 2(b))
 
 **Gap.** ICD 203 says a product that uses a confidence level "must not combine a
@@ -234,6 +280,9 @@ to the core.
 **Recommendation: adopt.** It is a one-sentence rule with a clear test, and the
 directive is explicit.
 
+**Decided: adopt** (owner, 2026-10-15). SPEC-001 §5.3 (rendering) and §11 item 9.
+The shapes cannot check it: it concerns generated text, not a record.
+
 ### 4.6 Competing hypotheses (ICD 203 standard 4)
 
 **Gap.** `hypothesis` exists (optional). Nothing says which hypotheses compete
@@ -244,6 +293,9 @@ structured evidence-by-hypothesis matrix; (C) defer.
 
 **Recommendation: C.** A relation can follow when an adopter uses `hypothesis`
 in earnest. A matrix is a method, and the core does not prescribe methods.
+
+**Not among the six decisions;** left at the recommendation (C, defer). Nothing
+changed.
 
 ### 4.7 What is not proposed
 
@@ -271,26 +323,23 @@ A later amendment to ICD 203 is a new verification, not an edit. The mapping
 stays at the text read; the provenance block records which text. Reading ICD
 206 is a new round of the same kind.
 
-## 7. Candidate decisions for the owner
+## 7. Decisions
 
-Each has a recommendation in the section cited. None is decided.
+Decided by the owner on 2026-10-15, each as recommended in the section cited.
 
-1. **Assumptions (§4.1).** (A) add an optional kind `assumption` with a
-   `depends-on` relation; (B) record in `basis` prose only. *Recommended: A.*
-   Cost of A: a new kind touches SPEC-001, the vocabulary, the SHACL shapes and
-   the JSON-LD context.
-2. **Indicators (§4.2).** (A) a prose field on an assessment; (B) a structured
-   element. *Recommended: A.*
-3. **Source-quality factors (§4.3).** (A) an optional core record with the ICD 203
-   factor list, no levels, no combining; (B) left to profiles; (C) nothing.
-   *Recommended: A.*
-4. **Likelihood ranges and alternative terms (§4.4).** (A) keep as is; (B) alt
-   labels and printed ranges in the scope note; (C) machine-readable ranges.
-   *Recommended: B.* It amends a statement in `vocab/likelihood-bands.ttl`.
-5. **Same-sentence rule (§4.5).** Move it into SPEC-001 §5.3 as a rendering
-   rule. *Recommended: adopt.* This amends an approved spec.
-6. **ICD 206.** The owner supplies a text copy of ICD 206 (the retrievable
+1. ~~**Assumptions (§4.1).**~~ Decided: an optional kind `assumption` with a
+   dependency record that states what follows if it is wrong (SPEC-001 §3, §5.4).
+2. ~~**Indicators (§4.2).**~~ Decided: an optional prose field on an assessment
+   (SPEC-001 §5.3).
+3. ~~**Source-quality factors (§4.3).**~~ Decided: an optional core record, an
+   assessment with a `factor` from the ICD 203 list, no levels, no combining
+   (§4.3 rules 1 to 4).
+4. ~~**Likelihood ranges and alternative terms (§4.4).**~~ Decided: alternative
+   labels and the printed ranges as documentation; no stored number.
+5. ~~**Same-sentence rule (§4.5).**~~ Decided: in the core, as a rendering rule
+   (SPEC-001 §5.3, §11 item 9).
+6. **ICD 206.** Open. The owner supplies a text copy of ICD 206 (the retrievable
    PDF is an image scan), after which a further pass maps its source
-   descriptors and source summary statement. *Recommended: yes, before any
-   source-quality element (decision 3) is built, since ICD 206 may define the
-   descriptors that decision 3 would otherwise invent.*
+   descriptors and source summary statement. Recommended before any further
+   source-quality element is built, since ICD 206 may define the descriptors
+   that §4.3 takes from ICD 203.

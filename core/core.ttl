@@ -35,6 +35,10 @@ core:Assessment a rdfs:Class ;
     rdfs:label "Assessment"@en ;
     rdfs:comment "The likelihood and analytic confidence attached to an assertion (SPEC-001 5.3). Not the assertion kind `assessment`, which is a concept in the assertion-kinds scheme."@en .
 
+core:Dependency a rdfs:Class ;
+    rdfs:label "Dependency"@en ;
+    rdfs:comment "A relation from one assertion to an assumption it depends on, with what follows for the assertion if the assumption proves wrong (SPEC-001 5.4)."@en .
+
 core:Quantity a rdfs:Class ;
     rdfs:label "Quantity"@en ;
     rdfs:comment "A number taken from a source, with its original expression and semantic type (SPEC-001 7)."@en .
@@ -77,8 +81,8 @@ core:excerpt a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range core:Ex
 core:assertion a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range core:Assertion ; rdfs:label "assertion"@en .
 core:stance a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range skos:Concept ; rdfs:label "stance"@en ;
     rdfs:comment "Exactly one concept of the evidence-stances scheme. Stance belongs to the link, never to the excerpt."@en .
-core:withdrawn_reason a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:label "withdrawn_reason"@en ;
-    rdfs:comment "Present when the link has been withdrawn, with the reason. A link is withdrawn, never deleted; a link without this property is active."@en .
+core:withdrawn_reason a rdf:Property ; rdfs:label "withdrawn_reason"@en ;
+    rdfs:comment "Present when an evidence link (SPEC-001 5.1) or a dependency (SPEC-001 5.4) has been withdrawn, with the reason. A link is withdrawn, never deleted; one without this property is active. No domain is declared, since it applies to two classes."@en .
 core:text a rdf:Property ; rdfs:domain core:Excerpt ; rdfs:label "text"@en ;
     rdfs:comment "The passage verbatim, as a language-tagged literal in its original language."@en .
 
@@ -92,6 +96,23 @@ core:rationale a rdf:Property ; rdfs:domain core:Assessment ; rdfs:label "ration
     rdfs:comment "A short rationale. Required for each assessment that has a level."@en .
 core:absence_state a rdf:Property ; rdfs:domain core:Assessment ; rdfs:range skos:Concept ; rdfs:label "absence_state"@en ;
     rdfs:comment "Why a likelihood is not given, a concept of the absence-states scheme (SPEC-001 5.3, 6)."@en .
+
+core:indicators a rdf:Property ; rdfs:domain core:Assessment ; rdfs:label "indicators"@en ;
+    rdfs:comment "Short prose naming observable conditions that, if detected, would change the judgment, its likelihood or its confidence (SPEC-001 5.3, SPEC-005 4.2). Text only."@en .
+
+# --- Assumptions and dependencies (SPEC-001 5.4) ------------------------------
+
+core:dependent a rdf:Property ; rdfs:domain core:Dependency ; rdfs:range core:Assertion ; rdfs:label "dependent"@en ;
+    rdfs:comment "The assertion that rests on the assumption."@en .
+core:assumption a rdf:Property ; rdfs:domain core:Dependency ; rdfs:range core:Assertion ; rdfs:label "assumption"@en ;
+    rdfs:comment "The assertion of kind `assumption` that the dependent assertion rests on."@en .
+core:if_wrong a rdf:Property ; rdfs:domain core:Dependency ; rdfs:label "if_wrong"@en ;
+    rdfs:comment "What follows for the dependent assertion if the assumption proves incorrect. Required; it differs between dependents of one assumption."@en .
+
+# --- Source-quality factors (SPEC-005 4.3) ------------------------------------
+
+core:factor a rdf:Property ; rdfs:domain core:Assertion ; rdfs:range skos:Concept ; rdfs:label "factor"@en ;
+    rdfs:comment "On an assertion of kind `assessment` whose subject is a source: one concept of the source-quality-factors scheme naming what the judgment is about. Carries no level, grade or number."@en .
 
 # --- Quantities (SPEC-001 7) -------------------------------------------------
 

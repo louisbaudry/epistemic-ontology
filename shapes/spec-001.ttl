@@ -19,7 +19,8 @@ shape:Assertion a sh:NodeShape ;
     sh:property [
         sh:path core:kind ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
         sh:in ( vocab:assertion-kinds-observation vocab:assertion-kinds-claim vocab:assertion-kinds-assessment
-                vocab:assertion-kinds-hypothesis vocab:assertion-kinds-finding vocab:assertion-kinds-project-conclusion ) ;
+                vocab:assertion-kinds-hypothesis vocab:assertion-kinds-assumption vocab:assertion-kinds-finding
+                vocab:assertion-kinds-project-conclusion ) ;
         sh:message "SPEC-001 11.1: an assertion has exactly one kind from SPEC-001 3."
     ] ;
     sh:property [
@@ -51,6 +52,15 @@ shape:Assertion a sh:NodeShape ;
         sh:path core:review ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
         sh:in ( vocab:review-states-draft vocab:review-states-unreviewed vocab:review-states-reviewed ) ;
         sh:message "SPEC-001 4, 10: an assertion has exactly one review state."
+    ] ;
+    sh:property [
+        sh:path core:factor ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:in ( vocab:source-quality-factors-accuracy vocab:source-quality-factors-information-completeness
+                vocab:source-quality-factors-denial-and-deception vocab:source-quality-factors-currency
+                vocab:source-quality-factors-collection-technical vocab:source-quality-factors-access
+                vocab:source-quality-factors-validation vocab:source-quality-factors-motivation
+                vocab:source-quality-factors-bias vocab:source-quality-factors-expertise ) ;
+        sh:message "SPEC-005 4.3: a source-quality factor is one of the ten listed, and an assertion names at most one."
     ] ;
     sh:property [
         sh:path core:supersedes ; sh:nodeKind sh:IRI ;
@@ -88,6 +98,18 @@ shape:Assertion a sh:NodeShape ;
                 $this core:kind ?k .
                 FILTER (?k IN (vocab:assertion-kinds-finding, vocab:assertion-kinds-assessment))
                 FILTER NOT EXISTS { $this core:basis ?b }
+            }
+        """
+    ] ;
+    # SPEC-005 4.3: a source-quality factor judgment is an assessment.
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-005 4.3: only an assertion of kind assessment carries a source-quality factor." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                $this core:factor ?f ; core:kind ?k .
+                FILTER (?k != vocab:assertion-kinds-assessment)
             }
         """
     ] ;
@@ -137,6 +159,41 @@ shape:Excerpt a sh:NodeShape ;
     sh:property [ sh:path core:text ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype rdf:langString ;
         sh:message "SPEC-001 5.1, 11.5: an excerpt keeps the passage verbatim as a language-tagged literal in its original language." ] .
 
+# --- SPEC-001 5.4: dependencies on assumptions --------------------------------
+
+shape:Dependency a sh:NodeShape ;
+    sh:targetClass core:Dependency ;
+    sh:property [ sh:path core:dependent ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 5.4: a dependency names exactly one dependent assertion." ] ;
+    sh:property [ sh:path core:assumption ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "SPEC-001 5.4: a dependency names exactly one assumption." ] ;
+    sh:property [ sh:path core:if_wrong ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ;
+        sh:message "SPEC-001 5.4, 11.8: a dependency states what follows for the dependent assertion if the assumption proves wrong." ] ;
+    sh:property [ sh:path core:withdrawn_reason ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ;
+        sh:message "SPEC-001 5.4: a withdrawn dependency carries a non-empty reason." ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 5.4, 11.8: the assertion a dependency names as its assumption has the kind assumption (and is in the graph checked)." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                $this core:assumption ?a .
+                FILTER NOT EXISTS { ?a core:kind vocab:assertion-kinds-assumption }
+            }
+        """
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "SPEC-001 5.4: an assumption cannot depend on itself, and a dependent is not itself of the kind assumption." ;
+        sh:prefixes <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001> ;
+        sh:select """
+            SELECT $this WHERE {
+                $this core:dependent ?d ; core:assumption ?a .
+                FILTER (?d = ?a || EXISTS { ?d core:kind vocab:assertion-kinds-assumption })
+            }
+        """
+    ] .
+
 # --- Rule 4 and 5: assessments and quantities --------------------------------
 
 shape:Assessment a sh:NodeShape ;
@@ -150,6 +207,8 @@ shape:Assessment a sh:NodeShape ;
         sh:in ( vocab:analytic-confidence-levels-low vocab:analytic-confidence-levels-moderate
                 vocab:analytic-confidence-levels-high vocab:analytic-confidence-levels-not-assessed ) ;
         sh:message "SPEC-001 5.3: analytic confidence is low, moderate, high or not-assessed." ] ;
+    sh:property [ sh:path core:indicators ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ;
+        sh:message "SPEC-001 5.3: indicators are one non-empty piece of prose naming what would change the judgment." ] ;
     sh:property [ sh:path core:absence_state ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
         sh:in ( vocab:absence-states-unknown vocab:absence-states-not-researched vocab:absence-states-no-evidence-found
                 vocab:absence-states-unavailable vocab:absence-states-withheld vocab:absence-states-redacted
