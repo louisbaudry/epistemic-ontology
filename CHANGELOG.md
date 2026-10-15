@@ -160,3 +160,10 @@ version and the old term is deprecated, not removed.
   lists of what was not checked. The vocabularies in `vocab/` they read remain
   a first draft; a change to a concept IRI would change both. Before 1.0 a term
   may still change by a recorded decision.
+- Decision: the 17 SKOS concept schemes in `vocab/` (84 concepts) are approved as
+  0.1 (owner, 2026-10-15). Their provenance block keeps the list of what was not
+  checked (the ICD 203 band wording, SKOS validation beyond parsing). The core
+  terms, shapes and JSON-LD context that read their concept IRIs are approved
+  as well, so the whole machine-readable set is now 0.1. Open for the owner: the
+  namespace base (GitHub Pages) and a separate licence for the schema files.
+  Before 1.0 a term may still change by a recorded decision.
