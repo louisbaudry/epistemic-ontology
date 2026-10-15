@@ -1,0 +1,36 @@
+{
+  "@context": [
+    "../spec-001.jsonld",
+    {
+      "ex": "https://example.org/"
+    }
+  ],
+  "@graph": [
+    {
+      "id": "ex:a1",
+      "type": "Assertion",
+      "kind": "claim",
+      "subject": "ex:bridge-1",
+      "content": "The footbridge opened to pedestrians.",
+      "asserted_at": "2026-03-01T10:00:00Z",
+      "asserter": "ex:agent-a",
+      "recorded_by": "ex:agent-b",
+      "review": "draft",
+      "valid_time": {
+        "@value": "2021",
+        "@type": "xsd:gYear"
+      },
+      "contributed_by": "ex:auto-1"
+    },
+    {
+      "id": "ex:auto-1",
+      "type": "Automation",
+      "process": "extraction-pipeline",
+      "role": "proposed the record",
+      "date": {
+        "@value": "2026-03-01",
+        "@type": "xsd:date"
+      }
+    }
+  ]
+}

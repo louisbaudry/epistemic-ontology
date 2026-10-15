@@ -1,0 +1,163 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "core": "https://louisbaudry.github.io/epistemic-ontology/core/",
+    "vocab": "https://louisbaudry.github.io/epistemic-ontology/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "@id",
+    "type": "@type",
+    "Assertion": "core:Assertion",
+    "Assessment": "core:Assessment",
+    "Automation": "core:Automation",
+    "EvidenceLink": "core:EvidenceLink",
+    "Excerpt": "core:Excerpt",
+    "Quantity": "core:Quantity",
+    "absence_state": {
+      "@id": "core:absence_state",
+      "@type": "@vocab",
+      "@context": {
+        "indeterminate": "vocab:absence-states-indeterminate",
+        "lost-or-destroyed": "vocab:absence-states-lost-or-destroyed",
+        "no-evidence-found": "vocab:absence-states-no-evidence-found",
+        "not-applicable": "vocab:absence-states-not-applicable",
+        "not-researched": "vocab:absence-states-not-researched",
+        "redacted": "vocab:absence-states-redacted",
+        "unavailable": "vocab:absence-states-unavailable",
+        "unknown": "vocab:absence-states-unknown",
+        "withheld": "vocab:absence-states-withheld"
+      }
+    },
+    "analytic_confidence": {
+      "@id": "core:analytic_confidence",
+      "@type": "@vocab",
+      "@context": {
+        "high": "vocab:analytic-confidence-levels-high",
+        "low": "vocab:analytic-confidence-levels-low",
+        "moderate": "vocab:analytic-confidence-levels-moderate",
+        "not-assessed": "vocab:analytic-confidence-levels-not-assessed"
+      }
+    },
+    "asserted_at": {
+      "@id": "core:asserted_at",
+      "@type": "xsd:dateTime"
+    },
+    "asserter": {
+      "@id": "core:asserter",
+      "@type": "@id"
+    },
+    "assertion": {
+      "@id": "core:assertion",
+      "@type": "@id"
+    },
+    "assessment": {
+      "@id": "core:assessment",
+      "@type": "@id"
+    },
+    "basis": {
+      "@id": "core:basis"
+    },
+    "content": {
+      "@id": "core:content"
+    },
+    "contributed_by": {
+      "@id": "core:contributed_by",
+      "@type": "@id"
+    },
+    "date": {
+      "@id": "core:date"
+    },
+    "excerpt": {
+      "@id": "core:excerpt",
+      "@type": "@id"
+    },
+    "kind": {
+      "@id": "core:kind",
+      "@type": "@vocab",
+      "@context": {
+        "assessment": "vocab:assertion-kinds-assessment",
+        "claim": "vocab:assertion-kinds-claim",
+        "finding": "vocab:assertion-kinds-finding",
+        "hypothesis": "vocab:assertion-kinds-hypothesis",
+        "observation": "vocab:assertion-kinds-observation",
+        "project-conclusion": "vocab:assertion-kinds-project-conclusion"
+      }
+    },
+    "likelihood": {
+      "@id": "core:likelihood",
+      "@type": "@vocab",
+      "@context": {
+        "almost-certain": "vocab:likelihood-bands-almost-certain",
+        "almost-no-chance": "vocab:likelihood-bands-almost-no-chance",
+        "likely": "vocab:likelihood-bands-likely",
+        "roughly-even-chance": "vocab:likelihood-bands-roughly-even-chance",
+        "unlikely": "vocab:likelihood-bands-unlikely",
+        "very-likely": "vocab:likelihood-bands-very-likely",
+        "very-unlikely": "vocab:likelihood-bands-very-unlikely"
+      }
+    },
+    "original_expression": {
+      "@id": "core:original_expression"
+    },
+    "process": {
+      "@id": "core:process"
+    },
+    "rationale": {
+      "@id": "core:rationale"
+    },
+    "recorded_by": {
+      "@id": "core:recorded_by",
+      "@type": "@id"
+    },
+    "review": {
+      "@id": "core:review",
+      "@type": "@vocab",
+      "@context": {
+        "draft": "vocab:review-states-draft",
+        "reviewed": "vocab:review-states-reviewed",
+        "unreviewed": "vocab:review-states-unreviewed"
+      }
+    },
+    "role": {
+      "@id": "core:role"
+    },
+    "semantic_type": {
+      "@id": "core:semantic_type",
+      "@type": "@vocab",
+      "@context": {
+        "approximate": "vocab:quantity-types-approximate",
+        "at-least": "vocab:quantity-types-at-least",
+        "at-most": "vocab:quantity-types-at-most",
+        "exact": "vocab:quantity-types-exact",
+        "fewer-than": "vocab:quantity-types-fewer-than",
+        "greater-than": "vocab:quantity-types-greater-than",
+        "range": "vocab:quantity-types-range"
+      }
+    },
+    "stance": {
+      "@id": "core:stance",
+      "@type": "@vocab",
+      "@context": {
+        "contextualizes": "vocab:evidence-stances-contextualizes",
+        "contradicts": "vocab:evidence-stances-contradicts",
+        "supports": "vocab:evidence-stances-supports"
+      }
+    },
+    "subject": {
+      "@id": "core:subject",
+      "@type": "@id"
+    },
+    "supersedes": {
+      "@id": "core:supersedes",
+      "@type": "@id"
+    },
+    "text": {
+      "@id": "core:text"
+    },
+    "valid_time": {
+      "@id": "core:valid_time"
+    },
+    "withdrawn_reason": {
+      "@id": "core:withdrawn_reason"
+    }
+  }
+}

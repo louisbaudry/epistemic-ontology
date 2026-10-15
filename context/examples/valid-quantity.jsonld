@@ -1,0 +1,16 @@
+{
+  "@context": [
+    "../spec-001.jsonld",
+    {
+      "ex": "https://example.org/"
+    }
+  ],
+  "@graph": [
+    {
+      "id": "ex:q1",
+      "type": "Quantity",
+      "original_expression": "about 40 metres",
+      "semantic_type": "approximate"
+    }
+  ]
+}
