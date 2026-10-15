@@ -154,3 +154,9 @@ version and the old term is deprecated, not removed.
   minted or changed. Controlled values are written by notation and read within
   their own property. Contexts for SPEC-002 to SPEC-004 wait for their RDF
   terms. Open for the owner: approval of the context; the namespace base.
+- Decision: the SHACL shapes for SPEC-001 §11 (`shapes/spec-001.ttl`) and the
+  JSON-LD context for the SPEC-001 record elements (`context/spec-001.jsonld`)
+  are approved as 0.1 (owner, 2026-10-15). Their provenance blocks keep the
+  lists of what was not checked. The vocabularies in `vocab/` they read remain
+  a first draft; a change to a concept IRI would change both. Before 1.0 a term
+  may still change by a recorded decision.

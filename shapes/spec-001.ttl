@@ -6,7 +6,7 @@
 @prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
 @prefix shape: <https://louisbaudry.github.io/epistemic-ontology/shapes/spec-001/> .
 
-# SHACL shapes for the conformance rules of SPEC-001 11 (first draft, version 0.1).
+# SHACL shapes for the conformance rules of SPEC-001 11 (version 0.1, approved by the owner on 2026-10-15).
 # The specification is the authority; each shape cites the rule it checks.
 # A shape checks one record at a time: "never changed" (rule 1) and "the three
 # required kinds supported" (rule 1) are properties of a system over time, not
