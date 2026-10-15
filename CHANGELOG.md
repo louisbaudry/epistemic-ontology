@@ -167,3 +167,15 @@ version and the old term is deprecated, not removed.
   as well, so the whole machine-readable set is now 0.1. Open for the owner: the
   namespace base (GitHub Pages) and a separate licence for the schema files.
   Before 1.0 a term may still change by a recorded decision.
+- SPEC-005 (mapping to the IC Analytic Standards, ICD 203) drafted
+  (2026-10-15). It is not approved and adopts no term. Read for it: the text of
+  ICD 203 (ODNI archive copy, with its 2022 technical amendments). Not read:
+  ICD 206 (the retrievable PDF is an image scan). Finding: the core carries the
+  likelihood bands, analytic confidence, evidence stance and append-only
+  revision that ICD 203 asks for, partly carries source quality and
+  alternatives, and has no way to record assumptions or indicators. Six
+  candidate decisions open (SPEC-005 §7). The seven likelihood terms were
+  checked against ICD 203's table and match; its second row of terms and its
+  percentage ranges are not in `vocab/likelihood-bands.ttl`, so the
+  "ICD 203 band wording" item in the 0.1 vocabulary approval is now checked
+  for the first row only.

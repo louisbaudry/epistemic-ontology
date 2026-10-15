@@ -57,9 +57,12 @@ checked.
   ordered collections now declare both, and the check above covers it.
   `skos:notation` is given as a plain literal; the Reference says its datatype
   is by convention tied to a notation system, and none is defined here.
-- **Not checked:** that the ICD 203 band wording matches ICD 203 itself (the
-  specification does not verify it either); SKOS validation beyond parsing
-  (no SHACL or `skosify` run); rendering.
+- **Checked 2026-10-15:** the seven likelihood terms and their order match the
+  first row of the table in ICD 203 D.6.e(2)(a) (text layer of the ODNI archive
+  copy). The directive also prints a second row of alternative terms and
+  percentage ranges; the vocabulary carries neither (SPEC-005 §4.4, draft).
+- **Not checked:** SKOS validation beyond parsing (no SHACL or `skosify` run);
+  rendering.
 - **Not decided here:** JSON-LD contexts for the other specifications. The
   SPEC-001 context in [../context/](../context/) and the SHACL shapes in
   [../shapes/](../shapes/) use these concept IRIs and are checked against them,
