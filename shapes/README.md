@@ -1,7 +1,7 @@
 # Shapes
 
 SHACL shapes for the conformance rules of [SPEC-001 §11](../specs/SPEC-001-core-assertion.md).
-**Version 0.1, first draft:** a draft until the owner approves it. The
+**Version 0.1, approved by the owner on 2026-10-15.** The
 specification is the authority; each shape message cites the rule it checks.
 
 | File | Content |
@@ -29,7 +29,7 @@ vocabulary graph needs loading.
 Also checked from SPEC-001 §4: the required elements, and a `basis` on a
 `finding` or an `assessment`.
 
-## Provenance of this draft
+## Provenance
 
 - **Read:** SPEC-001 §3, §4, §5.1, §5.3, §6, §7, §8, §10, §11 and the
   vocabularies in [../vocab/](../vocab/).

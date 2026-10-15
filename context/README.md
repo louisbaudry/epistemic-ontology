@@ -1,7 +1,7 @@
 # JSON-LD context
 
 A JSON-LD 1.1 context for the record elements of [SPEC-001](../specs/SPEC-001-core-assertion.md).
-**Version 0.1, first draft:** a draft until the owner approves it. It adds no
+**Version 0.1, approved by the owner on 2026-10-15.** It adds no
 term: every name comes from [../core/core.ttl](../core/core.ttl) (approved 0.1)
 and every value from [../vocab/](../vocab/).
 
@@ -39,7 +39,7 @@ Reference the context and write the record elements by their SPEC-001 names:
 
 Run the checks with `python3 context/run.py` (needs `rdflib` and `pyshacl`).
 
-## Provenance of this draft
+## Provenance
 
 - **Read:** SPEC-001 §3, §4, §5.1, §5.3, §6, §7, §8, §10, `core/core.ttl` and
   the 17 schemes in `vocab/`.
