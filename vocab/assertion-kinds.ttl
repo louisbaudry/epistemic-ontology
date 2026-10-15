@@ -3,7 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
 
-# Version 0.1, first draft. Generated from the approved specifications; the
+# Version 0.1, approved by the owner on 2026-10-15. Generated from the approved specifications; the
 # specification text is the authority. The namespace base is unconfirmed: these
 # IRIs resolve only once GitHub Pages is enabled for the repository.
 

@@ -1,7 +1,7 @@
 # Vocabularies
 
 SKOS concept schemes for the controlled values the approved specifications
-define. **Version 0.1, first draft:** a draft until the owner approves it.
+define. **Version 0.1, approved by the owner on 2026-10-15.**
 
 One Turtle file per concept scheme, 17 schemes and 84 concepts in all. Each
 concept's `skos:notation` is the identifier the specification uses, so
@@ -27,7 +27,7 @@ concept's `skos:notation` is the identifier the specification uses, so
 | [excerpt-kinds.ttl](excerpt-kinds.ttl) | Excerpt kinds | SPEC-003 §7 |
 | [crosswalk-strengths.ttl](crosswalk-strengths.ttl) | Crosswalk strengths | SPEC-004 §2 |
 
-## Provenance of this draft
+## Provenance
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
 owner's direction, on 2026-10-14. Everything below is a claim about what was
