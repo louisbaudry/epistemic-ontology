@@ -60,9 +60,10 @@ checked.
 - **Not checked:** that the ICD 203 band wording matches ICD 203 itself (the
   specification does not verify it either); SKOS validation beyond parsing
   (no SHACL or `skosify` run); rendering.
-- **Not decided here:** JSON-LD contexts, which follow once these files are
-  approved. The SHACL shapes in [../shapes/](../shapes/) use these concept
-  IRIs and are checked against them, but do not validate the vocabularies.
+- **Not decided here:** JSON-LD contexts for the other specifications. The
+  SPEC-001 context in [../context/](../context/) and the SHACL shapes in
+  [../shapes/](../shapes/) use these concept IRIs and are checked against them,
+  but do not validate the vocabularies.
 
 ## Open points for the owner
 

@@ -1,0 +1,41 @@
+{
+  "@context": [
+    "../spec-001.jsonld",
+    {
+      "ex": "https://example.org/"
+    }
+  ],
+  "@graph": [
+    {
+      "id": "ex:a1",
+      "type": "Assertion",
+      "kind": "finding",
+      "subject": "ex:bridge-1",
+      "content": "The footbridge opened to pedestrians.",
+      "asserted_at": "2026-03-01T10:00:00Z",
+      "asserter": "ex:agent-a",
+      "recorded_by": "ex:agent-b",
+      "review": "unreviewed",
+      "valid_time": {
+        "@value": "2021",
+        "@type": "xsd:gYear"
+      },
+      "basis": "Reasoning in prose."
+    },
+    {
+      "id": "ex:l1",
+      "type": "EvidenceLink",
+      "excerpt": "ex:ex-1",
+      "assertion": "ex:a1",
+      "stance": "supports"
+    },
+    {
+      "id": "ex:ex-1",
+      "type": "Excerpt",
+      "text": {
+        "@value": "The footbridge opens on Monday.",
+        "@language": "en"
+      }
+    }
+  ]
+}

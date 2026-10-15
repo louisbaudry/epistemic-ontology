@@ -148,3 +148,9 @@ version and the old term is deprecated, not removed.
   fields (owner, 2026-10-14). The shapes in `shapes/` stay a draft. The
   namespace base is still unconfirmed. Before 1.0 a term may still change by a
   recorded decision.
+- JSON-LD context drafted (`context/`): one JSON-LD 1.1 context for the SPEC-001
+  record elements, generated from `core/core.ttl` and `vocab/*.ttl`, with four
+  examples checked against the Turtle test files and the shapes. No core term
+  minted or changed. Controlled values are written by notation and read within
+  their own property. Contexts for SPEC-002 to SPEC-004 wait for their RDF
+  terms. Open for the owner: approval of the context; the namespace base.

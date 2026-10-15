@@ -58,7 +58,8 @@ Project profiles     one short document per adopting project, kept in that proje
 Vocabularies as SKOS: first draft in [vocab/](vocab/), 17 concept schemes for
 the controlled values the specifications define. SHACL shapes for the SPEC-001
 conformance rules, first draft, in [shapes/](shapes/), with the RDF names they
-use in [core/](core/) (approved 0.1). Planned, not yet written: JSON-LD contexts.
+use in [core/](core/) (approved 0.1). A JSON-LD context for the SPEC-001 record
+elements, first draft, in [context/](context/).
 
 ## Standards used
 
