@@ -12,7 +12,7 @@
     dcterms:source "SPEC-005 §4.3" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "The factors ICD 203 D.6.e(1) lists as affecting source quality and credibility. A factor names what a judgment about a source is about; it is not a level, a grade or a score, and factors are never combined. No definition is given: ICD 203 lists the factors without defining them, and none is invented here."@en ;
+    skos:scopeNote "The factors ICD 203 D.6.e(1) lists as affecting source quality and credibility; the glossary of ICD 206 lists the same ones under \"source descriptor\" (SPEC-005 §3.2). A factor names what a judgment about a source is about; it is not a level, a grade or a score, and factors are never combined. No definition is given: ICD 203 lists the factors without defining them, and none is invented here."@en ;
     skos:hasTopConcept :source-quality-factors-accuracy, :source-quality-factors-information-completeness, :source-quality-factors-denial-and-deception, :source-quality-factors-currency, :source-quality-factors-collection-technical, :source-quality-factors-access, :source-quality-factors-validation, :source-quality-factors-motivation, :source-quality-factors-bias, :source-quality-factors-expertise .
 
 :source-quality-factors-accuracy a skos:Concept ;

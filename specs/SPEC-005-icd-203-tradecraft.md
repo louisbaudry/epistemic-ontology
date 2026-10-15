@@ -1,6 +1,6 @@
-# SPEC-005 — Mapping to the IC Analytic Standards (ICD 203)
+# SPEC-005 — Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206)
 
-**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; decision 6 (ICD 206) open
+**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); ICS 206-01 open (§7, decision 7)
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-003 (sources, captures and excerpts)
 **Upstream:** none cited. The mapping is to an external directive, not to upstream decision records.
@@ -9,8 +9,8 @@
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
 owner's direction, on 2026-10-15. The owner decided §7 decisions 1 to 5 on the
-same day, each as recommended; decision 6 stays open until an ICD 206 text is
-supplied. The recommendations were implemented in the same change: SPEC-001
+same day, each as recommended. The owner then supplied a text of ICD 206 and
+decision 6 became the mapping in §3.2. The recommendations were implemented in the same change: SPEC-001
 (§3, §5.3, §5.4, §11), the vocabularies, the core terms, the shapes and the
 JSON-LD context. Those machine-readable files were run (22 shape tests and the
 context checks pass under pyshacl and rdflib); they were checked against this
@@ -27,11 +27,23 @@ text, not against any second tool.
 - **Compared:** the seven likelihood terms and their order in
   [`vocab/likelihood-bands.ttl`](../vocab/likelihood-bands.ttl) against the
   table in D.6.e(2)(a). The seven terms of the first row match, in order.
+- **Read (ICD 206, supplied by the owner on 2026-10-15):** *Sourcing
+  Requirements for Disseminated Analytic Products*, as a .docx converted from a
+  scan. It holds the signature block of 2 January 2015 (the technical amendment
+  in the same file says "signed 22 January 2015"; the two dates are as read and
+  not reconciled), the amendment adding Intelligence Community Standard 206-01,
+  the directive and its glossary. The conversion left artefacts (garbled stamp
+  text) and the paragraph numbers of the directive's own list are unreliable, so
+  quotations below may carry transcription errors, and ICD 206 is cited by
+  mechanism (D.3.a to D.3.d, the sections its own cross-references give) and
+  topic, not by paragraph number.
 - **Not verified:**
-  - **ICD 206**, *Sourcing Requirements for Disseminated Analytic Products*.
-    The PDF retrieved is an image scan with no text layer and was not read.
-    Everything this spec says about ICD 206 is what ICD 203 says about it.
-    No ICD 206 requirement is mapped here.
+  - **ICS 206-01**, *Citation and Reference for Publicly Available Information,
+    Commercially Available Information, and Open Source Intelligence*, which
+    ICD 206 names as the rule for citing open sources. It was not supplied or
+    read; it is the standard most relevant to open-source work (§7, decision 7).
+  - **ICD 710** (classification and control markings), **ICD 501** (discovery
+    and dissemination), named by ICD 206 and not read.
   - The ODNI evaluation rating criteria that ICD 203 refers to (E.1.b(1)); any
     IC element's supplemental standards (D.1); amendments to ICD 203 later than
     the copy read; how any agency applies the standards in practice.
@@ -58,7 +70,7 @@ needs. This specification lists those elements and the gaps.
 Tradecraft Standards to core elements; the gaps; candidate decisions to close
 them.
 
-**Out of scope:** ICD 206 (unread, see the provenance block); any source
+**Out of scope:** ICS 206-01 (unread); any source
 reliability or information credibility grading scale; alignment with a formal
 top-level or mid-level ontology; classification and dissemination markings;
 anything about a project's own products.
@@ -104,6 +116,40 @@ timing. A record cannot show them. One element is checkable: the fourth ("based
 on all available sources") asks analysts to "identify and address critical
 information gaps". The core carries that gap as an absence state, such as
 `not-researched` or `no-evidence-found` (SPEC-001 §6), which is `carried`.
+
+### 3.2 Sourcing requirements (ICD 206)
+
+ICD 206 sets what a disseminated analytic product must say about its sources.
+Like ICD 203 it governs products. Its four presentation mechanisms (D.3.a to
+D.3.d) are ways of printing source information, so most of what it asks is
+rendering. The table maps what a record can supply.
+
+| ICD 206 mechanism or rule | What it asks | Core element | Strength | What is missing |
+|---|---|---|---|---|
+| Source reference citation (SRC), D.3.a | A numbered endnote each time a source is directly cited, or "a specific aspect of analysis (i.e., judgment, assessment, estimate, alternative hypothesis or view, confidence level) depends on a source". | Evidence link from an excerpt to an assertion, with a stance (SPEC-001 §5.1) | carried | The link joins an excerpt to an assertion, not to the assertion's confidence level in particular. Endnote numbering is rendering. |
+| SRC: "the most original source that presents the relevant information" | Cite the original, not a copy. | Typed dependence relations; declared dependence on a source record (SPEC-001 §5.2, SPEC-003 §8) | partly | Choosing the most original source is the analyst's judgment. The core records the chain once the analyst states it. |
+| SRC elements: originator, unambiguous identifier, title, date of issuance, publication or posting (date of online access if posting date unknown), page | Enough to "locate and retrieve" the source. | Source record (identifier, type, roles of creation and publication, SPEC-003 §3.3, §8); capture with original capture time and retrieval time (§5.1); excerpt locus (§7) | carried | Nothing needed beyond a rendering. The "date of online access" corresponds to the capture time. |
+| SRC elements: portion marking, classification of the extracted information, overall classification | Classification markings (ICD 710). | None | not carried | By design: the core is for public-source material and carries no marking scheme. ICD 710 was not read. |
+| Relevance of a source | Apparent from the cited source, "otherwise the product text shall explain why the source pertains". | Excerpt, anchor and locus show where the passage is (SPEC-003 §6, §7) | partly | There is no prose field on an evidence link saying why the source pertains. |
+| Appended reference citation (ARC), D.3.b | Supplementary or background sources that do not "expressly affect or support a specific aspect or outcome of analysis", listed apart, with "a succinct explanation for why the ARC is being included". | Evidence link with stance `contextualizes` (SPEC-001 §5.1) | partly | The succinct explanation (same gap as the line above). |
+| Source descriptor, D.3.c | "A brief, narrative exposition of factors that affect or indicate the quality or credibility of a single source". The factors (glossary): "accuracy and completeness, possible denial and deception, age and continued currency of information, and technical elements of collection as well as source access, validation, motivation, possible bias, or expertise". Also used "when the time of pertinent information in a source is significantly different from the time of publication of the source". | Source-quality judgments (§4.3): an assessment of kind `assessment` about a source, one `factor` each, reasoning in `basis` | carried | A descriptor is a rendering of the judgments that are germane to a judgment of the product. The time difference between information and publication is partly carried by `valid_time` and the source's dates. For intelligence sources a descriptor is derived from the source document; that does not apply to open sources. |
+| Source summary statement, D.3.d | "Strongly encouraged"; a holistic assessment of sourcing: "strengths and weaknesses of the source base, which sources are most important to key judgments, what sources are meaningfully corroborative or conflicting", and the "specific subject matter expertise used". | Strengths and weaknesses: the source-quality judgments. Corroboration: independent origins (SPEC-001 §5.2). Conflict: `contradicts` links. | product-level; partly supplied | "Which sources are most important to key judgments" and "subject matter expertise used" have no counterpart. See §4.3. |
+| Preserve dynamic or ephemeral sources | A record of a source that is dynamic (an internet posting), ephemeral or not systematically stored must be preserved for at least one year, five years or the time horizon for estimates. | Holding and capture (SPEC-003 §4, §5) | carried | The retention period is an organisation's policy and belongs to a profile. |
+| Keep the product with its sourcing as a document of record; re-issue within 30 days if sourcing was omitted; exemptions | Process duties of IC elements. | None | product-level | — |
+| Sourcing removed from publicly released versions (D.3 on downgraded or sanitised copies) | Remove sourcing information on public release. | None | product-level | No conflict with the repository's rule that exports cite sources inline: that is a choice for deliverables of a project, not for the core. |
+
+**Findings.**
+
+1. ICD 206's source descriptor lists the same factors as ICD 203 D.6.e(1). The
+   ten factors of the `source-quality-factors` scheme (decision 3) are now
+   confirmed by both directives, and both describe the descriptor as narrative.
+   **Neither directive read prescribes a letter-and-number reliability or
+   credibility grade.** Whether any IC element adopts one in its supplemental
+   standards, or in ICS 206-01, is not established here.
+2. A source reference citation maps cleanly to what the core already holds. The
+   gaps are two small ones: a prose reason why a cited source pertains, and
+   anything for classification markings (not wanted).
+3. The source summary statement needs no stored element (§4.3).
 
 ## 4. Gaps and decisions
 
@@ -223,12 +269,17 @@ question (see §4.7).
 4. A letter-and-number reliability or credibility grade is not part of this
    decision (§4.7). A judgment of one factor is never converted to one.
 
-**Source summary statement.** ICD 203 calls it "strongly encouraged". It is a
-holistic statement about the whole source base and "which sources are most
-important to key analytic judgments". It belongs to a product or a body of
-analysis, not to a source or an assertion. The core has no object for either
-(see §1). This specification proposes no element for it, and defers to a
-reading of ICD 206 (§7, decision 6).
+**Source summary statement.** ICD 203 calls it "strongly encouraged"; ICD 206
+(D.3.d) says what it covers (§3.2). It is a holistic statement about the whole
+source base, so it belongs to a product or a body of analysis, not to a source
+or an assertion, and the core has no object for either (see §1). With ICD 206
+read, the conclusion is that **no stored element is needed**: a statement is
+written for a product from records the core already holds (the source-quality
+judgments, the independent origins of each assertion, the `contradicts` links)
+plus what the analyst adds (which sources matter most to the key judgments, the
+expertise used). A statement a process drafts is an automated contribution and
+enters as `draft` (SPEC-001 §10); it never becomes a reviewed statement without
+a person.
 
 ### 4.4 Likelihood: ranges and alternative terms (ICD 203 standard 2(a))
 
@@ -302,8 +353,8 @@ changed.
 - **Reliability and credibility grading scales** (letter-and-number schemes used
   in allied military doctrine). ICD 203 does not prescribe one. They are a
   separate decision with their own trade-offs and are not treated here.
-- **Source summary statement and ICD 206 sourcing rules** until ICD 206 has been
-  read (decision 6).
+- **ICS 206-01.** The open-source citation standard that ICD 206 names; not
+  read (decision 7).
 - **Formal-ontology alignment.** Not a tradecraft matter; a separate
   specification if wanted.
 
@@ -338,8 +389,16 @@ Decided by the owner on 2026-10-15, each as recommended in the section cited.
    labels and the printed ranges as documentation; no stored number.
 5. ~~**Same-sentence rule (§4.5).**~~ Decided: in the core, as a rendering rule
    (SPEC-001 §5.3, §11 item 9).
-6. **ICD 206.** Open. The owner supplies a text copy of ICD 206 (the retrievable
-   PDF is an image scan), after which a further pass maps its source
-   descriptors and source summary statement. Recommended before any further
-   source-quality element is built, since ICD 206 may define the descriptors
-   that §4.3 takes from ICD 203.
+6. ~~**ICD 206.**~~ Done: the owner supplied a text copy on 2026-10-15 and it is
+   mapped in §3.2. It confirmed the factor list of decision 3 and changed
+   nothing decided.
+7. **ICS 206-01 and a "why this source pertains" note.** Open, and the owner's
+   to supply: a text of ICS 206-01, *Citation and Reference for Publicly
+   Available Information, Commercially Available Information, and Open Source
+   Intelligence*, if it can be obtained. It is the rule for citing open
+   sources, so it may fix citation elements that the core does not yet carry.
+   Options for the one small gap found in §3.2 (a prose note on an evidence link
+   saying why the source pertains, also used for an appended reference): (A) add
+   an optional `note` to the evidence link; (B) leave it to the excerpt's
+   editorial context (SPEC-003 §7); (C) wait for ICS 206-01. *Recommended: C*,
+   because the standard may define the citation fields and A could be redone.

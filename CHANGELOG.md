@@ -198,3 +198,15 @@ version and the old term is deprecated, not removed.
   `context/spec-001.jsonld` (rebuilt). SPEC-001 is amended in place; its status
   line says so. Decision 6 stays open: the owner supplies an ICD 206 text.
   Adopting profiles that list their kinds need to add `assumption` if they use it.
+- SPEC-005 §3.2 (owner, 2026-10-15): the owner supplied a text of ICD 206 (a
+  .docx converted from a scan, with conversion artefacts) and decision 6 became
+  its mapping. Findings: a source reference citation maps to what the core
+  holds (evidence link, dependence relations, source record, capture, excerpt
+  locus); the source descriptor lists the same ten factors as ICD 203, so
+  decision 3 is confirmed and unchanged; a source summary statement needs no
+  stored element; neither ICD 203 nor ICD 206 prescribes a letter-and-number
+  reliability grade. One small gap (a prose reason why a cited source pertains)
+  is held for decision 7: ICS 206-01, the open-source citation standard that
+  ICD 206 names, has not been read and is the owner's to supply. Glossary: added
+  source descriptor and source summary statement. No identifier or schema
+  changed.

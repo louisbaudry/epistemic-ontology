@@ -63,6 +63,8 @@ reading by the drafter that the owner has not yet confirmed.
 | review state | One of `draft`, `unreviewed` or `reviewed` on every assertion; anything a process proposed starts as `draft`. | | SPEC-001 §10 |
 | role event | An assertion that an agent held a role in an organisation over a period. | | SPEC-002 §2, §6 |
 | source | A document, page, record, recording or other artefact that says something; an intellectual thing, not a file. | "File". | SPEC-001 §2, SPEC-003 §2 |
+| source descriptor | In ICD 206, a brief narrative of the factors that affect the quality or credibility of a single source; in the core it is a rendering of source-quality judgments, not a stored record. | A reliability grade; a stored field. | ICD 206 D.3.c, SPEC-005 §3.2 |
+| source summary statement | In ICD 206, a holistic statement about the sources behind a product; in the core it is written for a product from existing records and is not stored. | A stored record; a score of the source base. | ICD 206 D.3.d, SPEC-005 §3.2 |
 | source-quality factor | One of ten named aspects of a source that a judgment about it can address (`accuracy`, `information-completeness`, `denial-and-deception`, `currency`, `collection-technical`, `access`, `validation`, `motivation`, `bias`, `expertise`); it carries no level, grade or number. | A reliability grade; a combined source score. | SPEC-005 §4.3 |
 | split | An event that designates a successor set of referents, records a disposition for each assertion, and redirects to a disambiguation record. | | SPEC-002 §8 |
 | stance | The relation an evidence link has to an assertion: `supports`, `contradicts` or `contextualizes`. | | SPEC-001 §5.1 |
