@@ -3,7 +3,7 @@
 SKOS concept schemes for the controlled values the approved specifications
 define. **Version 0.1, approved by the owner on 2026-10-15.**
 
-One Turtle file per concept scheme, 17 schemes and 84 concepts in all. Each
+One Turtle file per concept scheme, 18 schemes and 95 concepts in all. Each
 concept's `skos:notation` is the identifier the specification uses, so
 `:assertion-kinds-finding` carries the notation `"finding"`.
 
@@ -26,6 +26,7 @@ concept's `skos:notation` is the identifier the specification uses, so
 | [completeness-values.ttl](completeness-values.ttl) | Holding completeness values | SPEC-003 §4 |
 | [excerpt-kinds.ttl](excerpt-kinds.ttl) | Excerpt kinds | SPEC-003 §7 |
 | [crosswalk-strengths.ttl](crosswalk-strengths.ttl) | Crosswalk strengths | SPEC-004 §2 |
+| [source-quality-factors.ttl](source-quality-factors.ttl) | Source-quality factors | SPEC-005 §4.3 |
 
 ## Provenance
 
@@ -57,9 +58,12 @@ checked.
   ordered collections now declare both, and the check above covers it.
   `skos:notation` is given as a plain literal; the Reference says its datatype
   is by convention tied to a notation system, and none is defined here.
-- **Not checked:** that the ICD 203 band wording matches ICD 203 itself (the
-  specification does not verify it either); SKOS validation beyond parsing
-  (no SHACL or `skosify` run); rendering.
+- **Checked 2026-10-15:** the seven likelihood terms and their order match the
+  first row of the table in ICD 203 D.6.e(2)(a) (text layer of the ODNI archive
+  copy). The directive also prints a second row of alternative terms and
+  percentage ranges; since 2026-10-15 the vocabulary carries both as documentation (SPEC-005 §4.4, decision B).
+- **Not checked:** SKOS validation beyond parsing (no SHACL or `skosify` run);
+  rendering.
 - **Not decided here:** JSON-LD contexts for the other specifications. The
   SPEC-001 context in [../context/](../context/) and the SHACL shapes in
   [../shapes/](../shapes/) use these concept IRIs and are checked against them,

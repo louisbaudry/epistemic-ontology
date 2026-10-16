@@ -1,6 +1,6 @@
 # SPEC-001 — Core assertion pattern
 
-**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04. Amended 2026-10-15 by SPEC-005 decisions 1, 2 and 5 (the kind `assumption`, §5.4, `indicators` and the rendering rule in §5.3, conformance items 8 and 9); see CHANGELOG.
 **Supersedes:** — | **Superseded by:** —
 **Upstream:** UkraineIndependenceWar DR-0024, DR-0025, DR-0026, DR-0028, DR-0029, DR-0030, DR-0065; its SPEC-0001 §2.1
 
@@ -55,6 +55,7 @@ RFC 8174, and only where a conformance check can follow.
 | **Evidence link** | A relation from an excerpt to an assertion, with a stance. |
 | **Assessment** | A judgment attached to an assertion: likelihood, analytic confidence, and any profile-defined dimension. |
 | **Asserter** | The agent who holds an assertion: a person, a source, an organisation or a process. |
+| **Dependency** | A relation from an assertion to an assumption it rests on, stating what follows for it if the assumption proves wrong (§5.4). |
 
 "Fact" is a word of ordinary speech, not a stored kind (decision recorded in
 CHANGELOG 0.1.0). It is a **display label**, derived and never stored:
@@ -72,7 +73,9 @@ CHANGELOG 0.1.0). It is a **display label**, derived and never stored:
 ## 3. Assertion kinds
 
 Every assertion carries exactly one kind. The identifiers are upstream's
-epistemic vocabulary v1 (DR-0025) and keep upstream's meaning.
+epistemic vocabulary v1 (DR-0025) and keep upstream's meaning, except
+`assumption`, which the core adds (SPEC-005 §4.1, owner, 2026-10-15) and which
+upstream does not define.
 
 | Identifier | Meaning |
 |---|---|
@@ -80,6 +83,7 @@ epistemic vocabulary v1 (DR-0025) and keep upstream's meaning.
 | `claim` | A proposition asserted by a source or actor, held by them, recorded with attribution. Recording a claim does not establish it. |
 | `assessment` | An evaluative judgment by a named assessor on a stated basis. |
 | `hypothesis` | A proposition put forward for testing, with no commitment that it is true. |
+| `assumption` | A supposition used to frame or support an argument, held by the analyst or project that adopts it and not asserted as true of the world (§5.4). |
 | `finding` | A conclusion of a defined investigation, with its scope and method. |
 | `project-conclusion` | A conclusion the project as a whole adopts after review. |
 
@@ -92,9 +96,10 @@ Rules:
 3. An attributed claim and a finding with the same wording are different
    assertions. "The company says X" and "X" are never the same record.
 4. `finding`, `claim` and `assessment` are **required**: every conforming
-   profile supports them. `observation`, `hypothesis` and `project-conclusion`
-   are **optional**: a profile uses them only if it needs them, and a profile
-   MUST NOT give any of the six identifiers another meaning.
+   profile supports them. `observation`, `hypothesis`, `assumption` and
+   `project-conclusion` are **optional**: a profile uses them only if it needs
+   them, and a profile MUST NOT give any of the seven identifiers another
+   meaning.
 5. A profile MUST NOT add a kind without a recorded decision in this
    repository.
 6. **Receiving an unsupported kind.** When assertions are exchanged and the
@@ -194,6 +199,38 @@ where the profile declares its prefix as a short lowercase token. The core
 defines no such dimension and no values for one, so two profiles that both
 use the word "relevance" never share an identifier.
 
+An assessment MAY carry **indicators**: short prose naming observable
+conditions that, if detected, would change the judgment, its likelihood or its
+confidence. They are text only, with no structure (SPEC-005 §4.2).
+
+**Rendering.** A text generated from assertions MUST NOT state a likelihood band
+and an analytic confidence level in the same sentence (ICD 203 D.6.e(2)(b); see
+SPEC-005 §4.5).
+
+### 5.4 Assumptions and dependencies
+
+An **assumption** is a supposition used to frame or support an argument. It is
+not a `claim` (nobody asserts it as true of the world), not a `finding` (no
+investigation concluded it), not an `assessment` and not a `hypothesis` (which
+is put forward for testing, not held so that an argument can proceed). The
+wording follows ICD 203 D.6.e(3) (SPEC-005 §4.1).
+
+1. An assertion of kind `assumption` is held by the analyst or project that
+   adopts it (its `asserter`). It follows every other rule of §4 and §10.
+2. An assertion rests on an assumption through a **dependency**: one record
+   that names the dependent assertion, the assumption, and, as required text,
+   what follows for the dependent assertion if the assumption proves wrong. The
+   text is on the dependency and not on the assumption, because the consequence
+   differs between dependents.
+3. A dependency MAY be withdrawn with a reason. It MUST NOT be deleted.
+4. An assumption is not evidence. It never counts toward the supporting link a
+   `finding` needs (§3 rule 2), which only an evidence link (§5.1) can give.
+5. When an assumption is superseded (§8) or found wrong, each assertion with an
+   active dependency on it MUST be flagged for review, not silently left
+   standing.
+6. That an assertion rests on an assumption nobody recorded cannot be checked.
+   Recording a dependency is how an assertion states that it does.
+
 ## 6. Absence
 
 A missing value never means "no". Where a gap matters it is recorded with one
@@ -246,6 +283,7 @@ vocabulary file). They are conceptual mappings, as upstream adopts them
 | Excerpt to source | PROV-O | `prov:wasQuotedFrom` (a subproperty of `prov:wasDerivedFrom`); PROV-O says the more specific subproperty should be used where it applies. | Verified |
 | Excerpt locator | Web Annotation | An annotation whose target (`oa:hasTarget`) is a `oa:SpecificResource` with `oa:hasSource` the preserved copy and `oa:hasSelector` a `oa:TextQuoteSelector` (`oa:exact`, `oa:prefix`, `oa:suffix`) and, where stable, a `oa:TextPositionSelector` (`oa:start`, `oa:end`, 0-based). | Verified |
 | Verbatim excerpt text | Web Annotation | `oa:exact` is defined as the selected text "after normalization", so it is not guaranteed verbatim. The excerpt therefore keeps the verbatim passage in its own field and uses the selector only to locate it. Position selectors hold only against the exact preserved copy they were made on, which is why upstream anchors to captures (DR-0018). | Verified: caveat |
+| Assumption, dependency (§5.4) | CRMinf, PROV-O | Not mapped. The CRMinf 1.2.1 and PROV-O terms were not read for this addition. | Not verified |
 | Vocabularies (kinds, stances, bands, absence) | SKOS | Each as a concept scheme, identifiers as concept notations. | Not verified |
 | `valid_time` | CIDOC CRM | A time-span on the event or state the proposition is about. | Not verified |
 
@@ -279,7 +317,12 @@ An implementation conforms to this core if, for every assertion it stores:
 5. quantities, dates and original-language text are kept as the source gave
    them;
 6. corrections supersede and never overwrite;
-7. automated output enters as `draft` with its marker.
+7. automated output enters as `draft` with its marker;
+8. a dependency names an assumption and states what follows if it proves wrong
+   (§5.4);
+9. a text generated from assertions never states a likelihood band and an
+   analytic confidence level in one sentence (§5.3). This concerns generated
+   text and is not checked by the shapes.
 
 Machine-readable conformance tests (SHACL shapes) are drafted in
 [`shapes/`](../shapes/spec-001.ttl) and not yet approved; they check what a

@@ -9,6 +9,7 @@
     "Assertion": "core:Assertion",
     "Assessment": "core:Assessment",
     "Automation": "core:Automation",
+    "Dependency": "core:Dependency",
     "EvidenceLink": "core:EvidenceLink",
     "Excerpt": "core:Excerpt",
     "Quantity": "core:Quantity",
@@ -53,6 +54,10 @@
       "@id": "core:assessment",
       "@type": "@id"
     },
+    "assumption": {
+      "@id": "core:assumption",
+      "@type": "@id"
+    },
     "basis": {
       "@id": "core:basis"
     },
@@ -66,15 +71,42 @@
     "date": {
       "@id": "core:date"
     },
+    "dependent": {
+      "@id": "core:dependent",
+      "@type": "@id"
+    },
     "excerpt": {
       "@id": "core:excerpt",
       "@type": "@id"
+    },
+    "factor": {
+      "@id": "core:factor",
+      "@type": "@vocab",
+      "@context": {
+        "access": "vocab:source-quality-factors-access",
+        "accuracy": "vocab:source-quality-factors-accuracy",
+        "bias": "vocab:source-quality-factors-bias",
+        "collection-technical": "vocab:source-quality-factors-collection-technical",
+        "currency": "vocab:source-quality-factors-currency",
+        "denial-and-deception": "vocab:source-quality-factors-denial-and-deception",
+        "expertise": "vocab:source-quality-factors-expertise",
+        "information-completeness": "vocab:source-quality-factors-information-completeness",
+        "motivation": "vocab:source-quality-factors-motivation",
+        "validation": "vocab:source-quality-factors-validation"
+      }
+    },
+    "if_wrong": {
+      "@id": "core:if_wrong"
+    },
+    "indicators": {
+      "@id": "core:indicators"
     },
     "kind": {
       "@id": "core:kind",
       "@type": "@vocab",
       "@context": {
         "assessment": "vocab:assertion-kinds-assessment",
+        "assumption": "vocab:assertion-kinds-assumption",
         "claim": "vocab:assertion-kinds-claim",
         "finding": "vocab:assertion-kinds-finding",
         "hypothesis": "vocab:assertion-kinds-hypothesis",

@@ -167,3 +167,51 @@ version and the old term is deprecated, not removed.
   as well, so the whole machine-readable set is now 0.1. Open for the owner: the
   namespace base (GitHub Pages) and a separate licence for the schema files.
   Before 1.0 a term may still change by a recorded decision.
+- SPEC-005 (mapping to the IC Analytic Standards, ICD 203) drafted
+  (2026-10-15). Read for it: the text of ICD 203 (ODNI archive copy, with its
+  2022 technical amendments). Not read: ICD 206 (the retrievable PDF is an
+  image scan). Finding: the core carries the likelihood bands, analytic
+  confidence, evidence stance and append-only revision that ICD 203 asks for,
+  partly carries source quality and alternatives, and had no way to record
+  assumptions or indicators. The seven likelihood terms were checked against
+  ICD 203's table and match.
+- Decision: SPEC-005 decisions 1 to 5, each as recommended (owner, 2026-10-15):
+  1. a seventh assertion kind, `assumption`, optional, with a dependency record
+     that states what follows if it is wrong (SPEC-001 §3, §5.4). It is the
+     core's own addition: upstream's epistemic vocabulary (DR-0025) does not
+     define it;
+  2. `indicators`, optional prose on an assessment (SPEC-001 §5.3);
+  3. source-quality factors: an assessment about a source carrying one `factor`
+     of ten taken from ICD 203 D.6.e(1), no level, grade or number (SPEC-005
+     §4.3; new scheme `source-quality-factors`);
+  4. the second row of ICD 203's likelihood terms as `skos:altLabel` and its
+     printed percentage ranges in the scope notes, as documentation only;
+  5. the rule that a generated text never states a likelihood band and a
+     confidence level in one sentence (SPEC-001 §5.3, §11 item 9).
+  Routine calls inside these: the implication if wrong sits on the dependency,
+  not on the assumption; an unjudged factor has no record and `not-assessed` is
+  not reused for it; `core:withdrawn_reason` no longer declares a domain, since
+  it now applies to evidence links and dependencies. Machine-readable files
+  updated to match: `core/core.ttl`, `vocab/assertion-kinds.ttl`,
+  `vocab/likelihood-bands.ttl`, `vocab/source-quality-factors.ttl` (18 schemes,
+  95 concepts), `shapes/spec-001.ttl` (22 test files pass under pyshacl),
+  `context/spec-001.jsonld` (rebuilt). SPEC-001 is amended in place; its status
+  line says so. Decision 6 stays open: the owner supplies an ICD 206 text.
+  Adopting profiles that list their kinds need to add `assumption` if they use it.
+- SPEC-005 §3.2 (owner, 2026-10-15): the owner supplied a text of ICD 206 (a
+  .docx converted from a scan, with conversion artefacts) and decision 6 became
+  its mapping. Findings: a source reference citation maps to what the core
+  holds (evidence link, dependence relations, source record, capture, excerpt
+  locus); the source descriptor lists the same ten factors as ICD 203, so
+  decision 3 is confirmed and unchanged; a source summary statement needs no
+  stored element; neither ICD 203 nor ICD 206 prescribes a letter-and-number
+  reliability grade. One small gap (a prose reason why a cited source pertains)
+  is held for decision 7: ICS 206-01, the open-source citation standard that
+  ICD 206 names, has not been read and is the owner's to supply. Glossary: added
+  source descriptor and source summary statement. No identifier or schema
+  changed.
+- SPEC-005 §8 (owner, 2026-10-16): ICD 710 read; ICD 501 only summarised. The
+  owner wants handling labels and discovery metadata implemented in a later
+  version (1 or 2). Recorded as deferred, with the trigger, six no-regret
+  habits, a proposed sequence and what to obtain. No term, vocabulary or shape
+  changed.

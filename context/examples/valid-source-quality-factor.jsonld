@@ -1,0 +1,23 @@
+{
+  "@context": [
+    "../spec-001.jsonld",
+    {
+      "ex": "https://example.org/"
+    }
+  ],
+  "@graph": [
+    {
+      "id": "ex:f1",
+      "type": "Assertion",
+      "kind": "assessment",
+      "subject": "ex:notice-1",
+      "content": "The author of the notice probably has direct access to the opening.",
+      "asserted_at": "2026-03-01T10:00:00Z",
+      "asserter": "ex:agent-a",
+      "recorded_by": "ex:agent-a",
+      "review": "unreviewed",
+      "factor": "access",
+      "basis": "The notice is signed by the works office and describes the opening ceremony first-hand."
+    }
+  ]
+}

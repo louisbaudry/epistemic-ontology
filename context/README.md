@@ -42,8 +42,8 @@ Run the checks with `python3 context/run.py` (needs `rdflib` and `pyshacl`).
 ## Provenance
 
 - **Read:** SPEC-001 §3, §4, §5.1, §5.3, §6, §7, §8, §10, `core/core.ttl` and
-  the 17 schemes in `vocab/`.
-- **Checked:** the context is current with its sources; each of the four
+  the 18 schemes in `vocab/`.
+- **Checked:** the context is current with its sources; each of the six
   examples expands, under rdflib 7.6.0, to a graph identical to the matching
   Turtle test file, and conforms to the shapes; a misspelled kind value is
   caught by the shapes.

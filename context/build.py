@@ -14,7 +14,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 CORE = "https://louisbaudry.github.io/epistemic-ontology/core/"
 VOCAB = "https://louisbaudry.github.io/epistemic-ontology/vocab/"
 
-# property -> concept scheme whose notations are its values (SPEC-001 3, 5.1, 5.3, 6, 7, 10)
+# property -> concept scheme whose notations are its values (SPEC-001 3, 5.1, 5.3, 6, 7, 10; SPEC-005 4.3)
 SCHEMES = {
     "kind": "assertion-kinds",
     "review": "review-states",
@@ -23,10 +23,11 @@ SCHEMES = {
     "analytic_confidence": "analytic-confidence-levels",
     "absence_state": "absence-states",
     "semantic_type": "quantity-types",
+    "factor": "source-quality-factors",
 }
 # properties whose value is another node, given by IRI
 NODE_VALUED = ["subject", "asserter", "recorded_by", "supersedes", "contributed_by",
-               "excerpt", "assertion", "assessment"]
+               "excerpt", "assertion", "assessment", "dependent", "assumption"]
 
 
 def build():

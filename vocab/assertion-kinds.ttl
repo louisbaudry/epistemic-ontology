@@ -12,8 +12,8 @@
     dcterms:source "SPEC-001 §3" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "Every assertion carries exactly one kind, never changed. `finding`, `claim` and `assessment` are required of every conforming profile; the other three are optional. A profile must not give any of the six identifiers another meaning. Identifiers follow upstream's epistemic vocabulary v1 (DR-0025)."@en ;
-    skos:hasTopConcept :assertion-kinds-observation, :assertion-kinds-claim, :assertion-kinds-assessment, :assertion-kinds-hypothesis, :assertion-kinds-finding, :assertion-kinds-project-conclusion .
+    skos:scopeNote "Every assertion carries exactly one kind, never changed. `finding`, `claim` and `assessment` are required of every conforming profile; the other four are optional. A profile must not give any of the seven identifiers another meaning. `assumption` was added by SPEC-005 §4.1 (owner, 2026-10-15). Identifiers follow upstream's epistemic vocabulary v1 (DR-0025)."@en ;
+    skos:hasTopConcept :assertion-kinds-observation, :assertion-kinds-claim, :assertion-kinds-assessment, :assertion-kinds-hypothesis, :assertion-kinds-assumption, :assertion-kinds-finding, :assertion-kinds-project-conclusion .
 
 :assertion-kinds-observation a skos:Concept ;
     skos:inScheme :assertion-kinds ;
@@ -46,6 +46,14 @@
     skos:prefLabel "hypothesis"@en ;
     skos:definition "A proposition put forward for testing, with no commitment that it is true."@en ;
     skos:scopeNote "Optional kind."@en .
+
+:assertion-kinds-assumption a skos:Concept ;
+    skos:inScheme :assertion-kinds ;
+    skos:topConceptOf :assertion-kinds ;
+    skos:notation "assumption" ;
+    skos:prefLabel "assumption"@en ;
+    skos:definition "A supposition used to frame or support an argument, held by the analyst or project that adopts it and not asserted as true of the world."@en ;
+    skos:scopeNote "Optional kind. Not evidence. A dependent assertion names it through a dependency that states what follows if it proves wrong (SPEC-001 §5.4)."@en .
 
 :assertion-kinds-finding a skos:Concept ;
     skos:inScheme :assertion-kinds ;

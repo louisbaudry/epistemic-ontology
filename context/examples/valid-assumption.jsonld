@@ -1,0 +1,48 @@
+{
+  "@context": [
+    "../spec-001.jsonld",
+    {
+      "ex": "https://example.org/"
+    }
+  ],
+  "@graph": [
+    {
+      "id": "ex:s1",
+      "type": "Assertion",
+      "kind": "assumption",
+      "subject": "ex:bridge-1",
+      "content": "The footbridge was not repaired between the two notices.",
+      "asserted_at": "2026-03-01T10:00:00Z",
+      "asserter": "ex:agent-a",
+      "recorded_by": "ex:agent-a",
+      "review": "unreviewed"
+    },
+    {
+      "id": "ex:a1",
+      "type": "Assertion",
+      "kind": "assessment",
+      "subject": "ex:bridge-1",
+      "content": "The footbridge opened to pedestrians.",
+      "asserted_at": "2026-03-01T10:05:00Z",
+      "asserter": "ex:agent-a",
+      "recorded_by": "ex:agent-a",
+      "review": "unreviewed",
+      "basis": "Two notices agree; the second is read on the assumption stated above.",
+      "assessment": "ex:j1"
+    },
+    {
+      "id": "ex:j1",
+      "type": "Assessment",
+      "likelihood": "likely",
+      "rationale": "The notices agree.",
+      "indicators": "A repair notice dated between the two would lower this."
+    },
+    {
+      "id": "ex:d1",
+      "type": "Dependency",
+      "dependent": "ex:a1",
+      "assumption": "ex:s1",
+      "if_wrong": "The opening date is unsupported; the judgment would fall to roughly-even-chance or lower."
+    }
+  ]
+}

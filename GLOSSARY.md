@@ -16,6 +16,7 @@ reading by the drafter that the owner has not yet confirmed.
 | assertion | A recorded statement about a referent, with a kind, a holder, a basis and its uncertainty. | `Statement` outside a crosswalk. | SPEC-001 §2 |
 | asserter | The agent who holds an assertion; for a `claim`, the source or actor making it, not the recorder. | "Recorder" (that is `recorded_by`). | SPEC-001 §4 |
 | assessment | A judgment by a named assessor on a stated basis, used in two related senses: the assertion kind `assessment`, and the likelihood and analytic confidence attached to another assertion. | Treating it as a score; mixing the two senses in one sentence. | SPEC-001 §2, §3, §5.3 |
+| `assumption` | An assertion kind: a supposition used to frame or support an argument, held by the analyst or project that adopts it and not asserted as true of the world; never evidence. | Treating it as a `claim`, a `hypothesis` or a source of support for a `finding`. | SPEC-001 §3, §5.4 |
 | candidate | The referent status of a provisionally distinct, not yet consolidated referent; a lead enters here. | | SPEC-002 §5 |
 | canonical | The referent status of a referent treated as real and distinct. | | SPEC-002 §5 |
 | capture | An event in which a custodian or another party acquired a state of an original resource and produced a holding. | | SPEC-003 §5 |
@@ -25,6 +26,7 @@ reading by the drafter that the owner has not yet confirmed.
 | completeness | A holding's stated degree of fullness: `original`, `archival-copy`, `derivative`, `screenshot`, `transcript`, `fragment` or `metadata-only`. | Leaving it implied. | SPEC-003 §4 |
 | crosswalk | A documented mapping between a core element and a term of an external standard, with the information the mapping loses; not a schema. | | SPEC-004 §2 |
 | custodian | The agent that holds a copy; not necessarily the project. | "Chain of custody" as a status. | SPEC-003 §2, §5.3 |
+| dependency | A record that an assertion rests on an assumption, with required text on what follows for it if the assumption proves wrong. | A field on the assumption; an evidence link. | SPEC-001 §5.4 |
 | `disproved` | The referent status of a referent shown to be a duplicate or an error, pointing to what replaced it. | Deleting it. | SPEC-002 §5 |
 | evidence link | A relation from one excerpt to one assertion, carrying a stance. | Putting the stance on the excerpt. | SPEC-001 §5.1 |
 | excerpt | A passage of a source, kept verbatim with a locator, annotated on an anchor. | A paraphrase or summary called a quote. | SPEC-001 §2, SPEC-003 §7 |
@@ -39,6 +41,7 @@ reading by the drafter that the owner has not yet confirmed.
 | identifier assignment | An assertion that an identifier from a scheme belongs to a referent. | Identifying a referent by an identifier alone. | SPEC-002 §2, §4 |
 | import | Reading data in an external standard's shape into core records; it enters as `draft` claims held by the exporter. | | SPEC-004 §2, §3.4 |
 | independent origin | A unit of corroboration counted by its ultimate origin, not by document; independence is a researched conclusion, never a default. | Counting documents. | SPEC-001 §5.2 |
+| indicators | Optional prose on an assessment naming observable conditions that, if detected, would change the judgment, its likelihood or its confidence. | A structured warning or monitoring record. | SPEC-001 §5.3, SPEC-005 §4.2 |
 | item | One individual copy of a manifestation. | | SPEC-003 §3 |
 | likelihood | How probable a proposition is, stored as one of seven ICD 203 band identifiers, never as a number. | A numeric probability. | SPEC-001 §5.3 |
 | lineage | The recorded history of merges and splits that produced a referent; permanent and queryable. | | SPEC-002 §2, §8 |
@@ -60,6 +63,9 @@ reading by the drafter that the owner has not yet confirmed.
 | review state | One of `draft`, `unreviewed` or `reviewed` on every assertion; anything a process proposed starts as `draft`. | | SPEC-001 §10 |
 | role event | An assertion that an agent held a role in an organisation over a period. | | SPEC-002 §2, §6 |
 | source | A document, page, record, recording or other artefact that says something; an intellectual thing, not a file. | "File". | SPEC-001 §2, SPEC-003 §2 |
+| source descriptor | In ICD 206, a brief narrative of the factors that affect the quality or credibility of a single source; in the core it is a rendering of source-quality judgments, not a stored record. | A reliability grade; a stored field. | ICD 206 D.3.c, SPEC-005 §3.2 |
+| source summary statement | In ICD 206, a holistic statement about the sources behind a product; in the core it is written for a product from existing records and is not stored. | A stored record; a score of the source base. | ICD 206 D.3.d, SPEC-005 §3.2 |
+| source-quality factor | One of ten named aspects of a source that a judgment about it can address (`accuracy`, `information-completeness`, `denial-and-deception`, `currency`, `collection-technical`, `access`, `validation`, `motivation`, `bias`, `expertise`); it carries no level, grade or number. | A reliability grade; a combined source score. | SPEC-005 §4.3 |
 | split | An event that designates a successor set of referents, records a disposition for each assertion, and redirects to a disambiguation record. | | SPEC-002 §8 |
 | stance | The relation an evidence link has to an assertion: `supports`, `contradicts` or `contextualizes`. | | SPEC-001 §5.1 |
 | strength | The rating of a crosswalk row: `exact`, `partial` or `none`. | | SPEC-004 §2 |

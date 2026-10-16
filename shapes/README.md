@@ -18,15 +18,17 @@ vocabulary graph needs loading.
 
 | SPEC-001 §11 | Checked |
 |---|---|
-| 1. exactly one kind | one kind, from the six of §3. "Never changed" and "the three required kinds supported" are properties of a system over time, not of a record: not checked |
+| 1. exactly one kind | one kind, from the seven of §3. "Never changed" and "the three required kinds supported" are properties of a system over time, not of a record: not checked |
 | 2. a `finding` has an active supporting link | a link counts when its stance is `supports` and it has no `withdrawn_reason`. The flagging on withdrawal is the system's job: not checked |
 | 3. stance on the link | one stance per link; none on an excerpt |
 | 4. no single score | a number on an assessment fails; likelihood, confidence and absence state are one of their listed values |
 | 5. values as given | `valid_time` is a typed date; an excerpt's text is language-tagged; a quantity keeps its original expression and one semantic type |
 | 6. corrections supersede | `supersedes` is an IRI and not the record itself. That the earlier record stays unchanged is not checked |
 | 7. automated output is `draft` | a record with `contributed_by` has the review state `draft`; the marker has process, role and date |
+| 8. a dependency states its implication | a dependency names one dependent and one assumption (an assertion of kind `assumption` in the graph checked) and non-empty `if_wrong` text; that a withdrawn assumption flags its dependents is the system's job: not checked |
+| 9. no likelihood and confidence in one sentence | concerns generated text: not checked |
 
-Also checked from SPEC-001 §4: the required elements, and a `basis` on a
+Also checked: a `factor` (SPEC-005 §4.3) is one of the ten listed and sits only on an assertion of kind `assessment`; `indicators` is one non-empty text. Also checked from SPEC-001 §4: the required elements, and a `basis` on a
 `finding` or an `assessment`.
 
 ## Provenance
@@ -34,7 +36,7 @@ Also checked from SPEC-001 §4: the required elements, and a `basis` on a
 - **Read:** SPEC-001 §3, §4, §5.1, §5.3, §6, §7, §8, §10, §11 and the
   vocabularies in [../vocab/](../vocab/).
 - **Checked:** both Turtle files parse; every concept IRI in the shapes exists
-  in `vocab/`; the 17 files in `tests/` give the expected result under pyshacl
+  in `vocab/`; the 22 files in `tests/` give the expected result under pyshacl
   0.40.1, each invalid file failing for its intended rule (the output names it).
 - **Not checked:**
   - the shapes against the SHACL Recommendation's text beyond what pyshacl

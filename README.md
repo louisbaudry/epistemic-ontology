@@ -54,8 +54,9 @@ Project profiles     one short document per adopting project, kept in that proje
 | [SPEC-002](specs/SPEC-002-persons-and-organisations.md) | Persons and organisations: names and identifiers as assignments, status, roles over time, matching, merge and split, the person policy a profile must declare | Approved 0.1 |
 | [SPEC-003](specs/SPEC-003-sources-captures-excerpts.md) | Sources, captures and excerpts: documentary layers, holdings and completeness, capture series, third-party captures, the anchoring rule, quotations and their derivations, declared dependence | Approved 0.1 |
 | [SPEC-004](specs/SPEC-004-crosswalks.md) | Crosswalks to FollowTheMoney, BODS and schema.org: term-by-term mappings, what each loses, and the rules for exports and imports | Approved 0.1 |
+| [SPEC-005](specs/SPEC-005-icd-203-tradecraft.md) | Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206): what the core carries of each, the gaps found (assumptions, indicators, source-quality factors) and the owner's decisions on them. ICS 206-01 (open-source citation) not yet read. | Approved 0.1 (decisions 1 to 5); ICS 206-01 open |
 
-Vocabularies as SKOS: approved 0.1 in [vocab/](vocab/), 17 concept schemes for
+Vocabularies as SKOS: approved 0.1 in [vocab/](vocab/), 18 concept schemes for
 the controlled values the specifications define. SHACL shapes for the SPEC-001
 conformance rules, approved 0.1, in [shapes/](shapes/), with the RDF names they
 use in [core/](core/) (approved 0.1). A JSON-LD context for the SPEC-001 record
@@ -70,7 +71,7 @@ elements, approved 0.1, in [context/](context/).
 | Provenance: who asserted what, derived from what | W3C PROV-O |
 | Pointing at a passage in a preserved copy | W3C Web Annotation (text quote and position selectors) |
 | Controlled vocabularies | SKOS, with the ISO/IEC 11179 registry pattern |
-| Probability wording | ICD 203 likelihood bands |
+| Probability wording; analytic tradecraft | ICD 203 likelihood bands; the nine tradecraft standards; ICD 206 sourcing requirements (both mapped in SPEC-005) |
 | Partial dates | ISO 8601, with EDTF where uncertainty must be expressed |
 | Languages and scripts | BCP 47 |
 | Interchange | FollowTheMoney, BODS, schema.org (crosswalks, not the model) |
