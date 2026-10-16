@@ -48,7 +48,8 @@ checked.
 - **Order:** the likelihood bands and the three analytic confidence levels are
   ordered collections (`skos:OrderedCollection`) in the order the specification
   lists them. `not-assessed` is in no order, as SPEC-001 §5.3 requires. The
-  bands carry no numeric ranges.
+  bands carry no numeric value: the percentage range ICD 203 prints for each is
+  quoted in the concept's scope note as documentation only (SPEC-005 §4.4).
 - **SKOS terms checked** on 2026-10-14 against the W3C SKOS Reference
   (`ConceptScheme`, `Concept`, `inScheme`, `hasTopConcept`, `topConceptOf`,
   `notation`, `prefLabel`, `definition`, `scopeNote`, `OrderedCollection`,

@@ -8,7 +8,7 @@ It is written once, as a common core, and adopted by several independent
 projects through short **profiles** that each declare the subset they use.
 It is built from established standards rather than invented terms.
 
-**Status:** version 0.1. SPEC-001 to SPEC-004 are approved. Before 1.0 any term may still change by a recorded decision; see
+**Status:** version 0.1. SPEC-001 to SPEC-004 are approved; SPEC-005 is approved except its decision 7 (ICS 206-01), which is open. Before 1.0 any term may still change by a recorded decision; see
 [CHANGELOG.md](CHANGELOG.md).
 
 ## Why a common core
