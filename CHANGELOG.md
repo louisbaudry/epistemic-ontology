@@ -210,3 +210,8 @@ version and the old term is deprecated, not removed.
   ICD 206 names, has not been read and is the owner's to supply. Glossary: added
   source descriptor and source summary statement. No identifier or schema
   changed.
+- SPEC-005 §8 (owner, 2026-10-16): ICD 710 read; ICD 501 only summarised. The
+  owner wants handling labels and discovery metadata implemented in a later
+  version (1 or 2). Recorded as deferred, with the trigger, six no-regret
+  habits, a proposed sequence and what to obtain. No term, vocabulary or shape
+  changed.

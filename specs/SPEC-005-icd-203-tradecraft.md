@@ -37,13 +37,19 @@ text, not against any second tool.
   quotations below may carry transcription errors, and ICD 206 is cited by
   mechanism (D.3.a to D.3.d, the sections its own cross-references give) and
   topic, not by paragraph number.
+- **Read (ICD 710, 2026-10-16):** *Classification Management and Control
+  Markings System*, 21 June 2013, from the ODNI copy: purpose, applicability,
+  policy D.1 and D.2 and implementation E.1 to E.5. The rest of the directive
+  was not read, and later revisions were not checked.
 - **Not verified:**
   - **ICS 206-01**, *Citation and Reference for Publicly Available Information,
     Commercially Available Information, and Open Source Intelligence*, which
     ICD 206 names as the rule for citing open sources. It was not supplied or
     read; it is the standard most relevant to open-source work (§7, decision 7).
-  - **ICD 710** (classification and control markings), **ICD 501** (discovery
-    and dissemination), named by ICD 206 and not read.
+  - **ICD 501** (discovery and dissemination or retrieval), named by ICD 206.
+    The full text could not be downloaded; only a search-engine summary of the
+    2009 text was seen. The CAPCO Register and Manual that ICD 710 relies on was
+    not read.
   - The ODNI evaluation rating criteria that ICD 203 refers to (E.1.b(1)); any
     IC element's supplemental standards (D.1); amendments to ICD 203 later than
     the copy read; how any agency applies the standards in practice.
@@ -402,3 +408,56 @@ Decided by the owner on 2026-10-15, each as recommended in the section cited.
    an optional `note` to the evidence link; (B) leave it to the excerpt's
    editorial context (SPEC-003 §7); (C) wait for ICS 206-01. *Recommended: C*,
    because the standard may define the citation fields and A could be redone.
+
+## 8. Deferred: handling labels and discovery metadata (ICD 710, ICD 501)
+
+Status: **deferred** to a later version (owner, 2026-10-16: "version 1 or 2").
+Nothing here is adopted, and no term, vocabulary or shape is added.
+
+**What the two directives are.** ICD 710 governs classification and control
+markings for intelligence information: a marking on every portion (title and
+metadata included), dissemination controls, carry-forward of controls into any
+new format, and the lifecycle of classification. ICD 501 (as summarised, not
+read in full) requires IC elements to make information discoverable by
+automated means to authorised personnel. They concern protecting and sharing
+inside the IC. They add nothing to the epistemic model of §3.
+
+**Why real markings are not for the core.** Under ICD 710 only designated
+original classification authorities, or derivative classifiers working from
+source documents, may classify. A project outside that system applying a real
+marking would invent authority. The markings themselves live in the CAPCO
+Register, which the IC controls. The core therefore never defines IC markings;
+a profile that receives markings from a counterparty carries them as given.
+
+**Trigger for building anything.** Work starts only when one of these holds:
+
+1. a named recipient requires markings or discovery metadata;
+2. a project must store material that is not public-source;
+3. different users need different access to the same record.
+
+**No-regret habits** (apply now, cost nothing):
+
+1. Keep one handling position per excerpt (the portion of this core), and do
+   not merge text with different handling into one excerpt.
+2. Keep derivation links complete (SPEC-001 §5.2, `supersedes`, dependencies),
+   because a derived item inherits the strictest handling of its sources
+   (ICD 710 D.1.d).
+3. Record handling and rights as fields with an explicit `unknown`
+   (SPEC-003 §8), never as free text in a note.
+4. Route every export through one allowlist, so a handling filter can later go
+   in one place.
+5. Keep markings out of the shared core; they are a profile term.
+6. Store no nonpublic material. Retrofitting handling onto stored material is
+   the hard part, and removal is a governed exception (SPEC-001 §8).
+
+**Proposed sequence** (a proposal, not a decision).
+
+| Stage | Work |
+|---|---|
+| Before v1 | Record the trigger and habits above. Draft a proposal for a small handling vocabulary, owned by a profile. |
+| v1 | Handling on source and excerpt; an export filter; a strictest-wins inheritance rule; a test that an export never contains anything above its recipient's clearance. |
+| v2, only with a counterparty | A mapping from the project's labels to the counterparty's markings, supplied by the counterparty; a catalogue export for discovery. |
+
+**To obtain, if the trigger occurs:** the current CAPCO Register (not public as
+far as is known), the full text of ICD 501, ICS 206-01 (decision 7), and the
+counterparty's format requirements.
