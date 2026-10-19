@@ -6,6 +6,16 @@ version and the old term is deprecated, not removed.
 
 ## 0.1.0 — unreleased
 
+- Decision: the repository cites no other repository, archive or
+  decision-record series (owner, 2026-10-19). All such citations (a layer in
+  the README, the README's upstream bullet, the `Upstream:` header of
+  SPEC-001 to SPEC-005, inline decision-record numbers in the specs and the
+  vocabulary scope notes, the `upstream` glossary row, and the CLAUDE.md rule
+  about it) are removed, and the 2026-10-04 decision that recorded the
+  one-way dependency is withdrawn as moot. Provenance blocks now say how many
+  earlier records were read without naming them. No term minted, changed or
+  retired; identifiers keep their meaning. Earlier commits in the history
+  still carry the old text.
 - Repository created.
 - SPEC-001 (core assertion pattern) drafted.
 - Decision: `fact` is a derived display label for a `finding` with at least one
@@ -20,10 +30,10 @@ version and the old term is deprecated, not removed.
   dimension are defined in profiles, not in the core (owner, 2026-10-03).
 - Decision: licence is CC BY 4.0 for everything; revisit a separate code
   licence when the first code or schema files are added (owner, 2026-10-03).
-- SPEC-001 verified against upstream DR-0024, 0028, 0030, 0031 and the
+- SPEC-001 verified against earlier decision records and the
   standards' own texts. Corrections: quantity types now include `greater-than`
-  and `fewer-than`, uncertainty and derivation method (DR-0030); source
-  dependence uses upstream's seven typed relations (DR-0028); `basis` maps to
+  and `fewer-than`, uncertainty and derivation method; source
+  dependence uses seven typed relations; `basis` maps to
   the CRMinf I1/I5/I7 pattern, not to a property of the belief; the
   excerpt-to-source link is `prov:wasQuotedFrom`; `oa:exact` is normalised, so
   the verbatim excerpt is kept in its own field; CRMinf 1.2.1 has no evidence
@@ -35,8 +45,8 @@ version and the old term is deprecated, not removed.
 - Decision: the core ships no default person policy; each profile that records
   persons declares its own (SPEC-002 §9; owner, 2026-10-03).
 - Decision: match confirmation is one rule in the core (a human, on
-  discriminating evidence); a profile may be stricter. Upstream's three review
-  tiers are not adopted (SPEC-002 §7; owner, 2026-10-03).
+  discriminating evidence); a profile may be stricter. A three-tier
+  review scheme is not adopted (SPEC-002 §7; owner, 2026-10-03).
 - Decision: name types stay a starting list in SPEC-002 §4; a SKOS vocabulary
   follows after the specs are approved (owner, 2026-10-03).
 - Decision: no named minor is recorded as a person unless the profile's policy
@@ -47,9 +57,6 @@ version and the old term is deprecated, not removed.
   derivation, declared dependence. Three candidate decisions open (SPEC-003
   §11). Verified against RFC 7089; LRMoo, PREMIS and WARC mappings not
   verified.
-- Decision: the upstream archive has no profile of the core and does not name
-  it; the core cites upstream decision records and follows them, and nothing
-  flows back (owner, 2026-10-04).
 - Decision: likelihood has no `not-assessed` value; a likelihood that is not
   given records why with a SPEC-001 §6 absence state, such as `not-applicable`
   (SPEC-001 §5.3, §12 item 5; owner, 2026-10-04).
@@ -178,8 +185,7 @@ version and the old term is deprecated, not removed.
 - Decision: SPEC-005 decisions 1 to 5, each as recommended (owner, 2026-10-15):
   1. a seventh assertion kind, `assumption`, optional, with a dependency record
      that states what follows if it is wrong (SPEC-001 §3, §5.4). It is the
-     core's own addition: upstream's epistemic vocabulary (DR-0025) does not
-     define it;
+     core's own addition;
   2. `indicators`, optional prose on an assessment (SPEC-001 §5.3);
   3. source-quality factors: an assessment about a source carrying one `factor`
      of ten taken from ICD 203 D.6.e(1), no level, grade or number (SPEC-005

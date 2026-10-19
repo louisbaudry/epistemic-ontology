@@ -2,23 +2,22 @@
 
 **Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04. Amended 2026-10-15 by SPEC-005 decisions 1, 2 and 5 (the kind `assumption`, §5.4, `indicators` and the rendering rule in §5.3, conformance items 8 and 9); see CHANGELOG.
 **Supersedes:** — | **Superseded by:** —
-**Upstream:** UkraineIndependenceWar DR-0024, DR-0025, DR-0026, DR-0028, DR-0029, DR-0030, DR-0065; its SPEC-0001 §2.1
 
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
 owner's direction. Approved by the owner on 2026-10-04; the text is otherwise unchanged by the approval.
 
-- **Read in full:** upstream DR-0024, DR-0025, DR-0026, DR-0028, DR-0029,
-  DR-0030, DR-0031, DR-0062; the band table of DR-0065 (identifiers match the
-  upstream registry); upstream SPEC-0001 §1–§2.1; one adopting project's
-  profile of this model.
+- **Read in full:** eight earlier decision records and a band table, and one
+  earlier specification (§1–§2.1), none cited here (CHANGELOG, 2026-10-19);
+  one adopting project's profile of this model.
 - **Verified against the standards' own texts (2026-10-03):** the CRMinf 1.2.1
   class and property definitions used in §9; the PROV-O ontology file (domain,
   range and subproperty of each property used); the Web Annotation vocabulary
   file (each class and property used). Fetched from cidoc-crm.org and w3.org.
 - **Not verified:** the CIDOC CRM time-span mapping, the SKOS mapping, the
-  wording of the ICD 203 bands beyond DR-0065's table, and EDTF and BCP 47
+  wording of the ICD 203 bands (the seven terms were later checked against
+  ICD 203's table; see CHANGELOG), and EDTF and BCP 47
   themselves. §9 marks each.
 
 ---
@@ -36,9 +35,8 @@ of automated assistance.
 
 **Out of scope:** persons and organisations (a later spec); sources, captures
 and excerpts beyond what an evidence link needs; vocabularies as data;
-argument structure (upstream's sixth layer, DR-0024; schemes and defeaters,
-DR-0032 to DR-0037); physical schema, storage and interchange formats.
-The pattern here covers upstream's layers 2 to 5: documentary assertions,
+argument structure (schemes and defeaters); physical schema, storage and
+interchange formats. The pattern here covers documentary assertions,
 evidence relations, project assertions and assessments.
 
 The key words MUST, MUST NOT, SHOULD and MAY are used as in RFC 2119 and
@@ -72,10 +70,8 @@ CHANGELOG 0.1.0). It is a **display label**, derived and never stored:
 
 ## 3. Assertion kinds
 
-Every assertion carries exactly one kind. The identifiers are upstream's
-epistemic vocabulary v1 (DR-0025) and keep upstream's meaning, except
-`assumption`, which the core adds (SPEC-005 §4.1, owner, 2026-10-15) and which
-upstream does not define.
+Every assertion carries exactly one kind. `assumption` is the core's own
+addition (SPEC-005 §4.1, owner, 2026-10-15).
 
 | Identifier | Meaning |
 |---|---|
@@ -110,8 +106,8 @@ Rules:
 
 ## 4. The assertion record
 
-An assertion carries the following elements. This is the upstream assertion
-pattern (SPEC-0001 §2.1) made implementation-neutral.
+An assertion carries the following elements. The pattern is
+implementation-neutral.
 
 | Element | Content | Required |
 |---|---|---|
@@ -152,7 +148,7 @@ An evidence link joins one excerpt to one assertion with a **stance**:
 
 Corroboration counts **independent origins**, not documents. Five reports
 repeating one release are one origin. Where it matters, a source's dependence on
-another is recorded as a typed relation, from this list (upstream DR-0028):
+another is recorded as a typed relation, from this list:
 `cites`, `reposts`, `syndicates`, `derives-from`,
 `shares-underlying-document`, `shares-underlying-witness`,
 `common-evidentiary-origin`. An implementation SHOULD be able to report how
@@ -164,16 +160,16 @@ count origins as independent from it alone.
 ### 5.3 Assessments
 
 Uncertainty has separate dimensions and they MUST NOT be collapsed into one
-number (upstream DR-0026):
+number:
 
 | Dimension | Meaning | Values |
 |---|---|---|
-| **Likelihood** | How probable the proposition is. | The ICD 203 bands, stored by identifier, never as a number: `almost-no-chance`, `very-unlikely`, `unlikely`, `roughly-even-chance`, `likely`, `very-likely`, `almost-certain` (upstream DR-0065). |
+| **Likelihood** | How probable the proposition is. | The ICD 203 bands, stored by identifier, never as a number: `almost-no-chance`, `very-unlikely`, `unlikely`, `roughly-even-chance`, `likely`, `very-likely`, `almost-certain`. |
 | **Analytic confidence** | How good the basis for the judgment is: evidence quality, independence of origin, strength of reasoning. | `low`, `moderate`, `high`, or `not-assessed`. |
 
 `not-assessed` is a state, not a level: it records that nobody has yet judged
 the basis, so it is never ordered between or compared with `low`, `moderate`
-and `high`. It is an addition to upstream's three-level scale (DR-0026); an
+and `high`. It is an addition to the three-level scale `low`, `moderate`, `high`; an
 exchange with a system that has only the three levels MUST drop the dimension,
 not map it to `low`.
 
@@ -234,7 +230,7 @@ wording follows ICD 203 D.6.e(3) (SPEC-005 §4.1).
 ## 6. Absence
 
 A missing value never means "no". Where a gap matters it is recorded with one
-of the absence states (upstream DR-0029):
+of the absence states:
 
 `unknown`, `not-researched`, `no-evidence-found`, `unavailable`, `withheld`,
 `redacted`, `lost-or-destroyed`, `not-applicable`, `indeterminate`.
@@ -252,7 +248,7 @@ A number taken from a source keeps its **original expression** as written
 source gives, and, for a computed value, its derivation method. A converted or
 normalised value is derived data, stored beside the original and never in place
 of it. Aggregation respects the semantic type: a sum of `at-least` values is an
-`at-least`. (Upstream DR-0030.)
+`at-least`.
 
 ## 8. Dates, language and revision
 
@@ -270,19 +266,18 @@ of it. Aggregation respects the semantic type: a sum of `at-least` values is an
 
 Verified means checked on 2026-10-03 against the standard's own published
 definitions (CRMinf 1.2.1, the PROV-O ontology file, the Web Annotation
-vocabulary file). They are conceptual mappings, as upstream adopts them
-(DR-0010, DR-0031), not a schema.
+vocabulary file). They are conceptual mappings, not a schema.
 
 | This spec | Standard | Mapping | Status |
 |---|---|---|---|
 | Assertion | CRMinf | An `I2 Belief` held by the asserter, `J4 that` an `I4 Proposition Set`, with `J5 holds to be` an `I6 Belief Value`. | Verified |
 | How an assertion came about (`basis`) | CRMinf | The belief is concluded (`J2 concluded that`) by an `I1 Argumentation`. For a `finding` or `assessment` that is an `I5 Inference Making`, whose premises are beliefs (`J1 used as premise`). For adopting what a source says it is an `I7 Belief Adoption`, which rests on trust in the source and is `J7 based on evidence from` an `E73 Information Object`, and yields an `I12 Adopted Belief`. A reviewer adopting an automated proposal (§10) is an `I7`. | Verified |
-| Evidence stance (`supports`, `contradicts`, `contextualizes`) | CRMinf | No stance property was found in CRMinf 1.2.1's property list; `J7` and `J1` say only that something is evidence or a premise. Stance is an extension, as upstream's evidence-relation layer (DR-0024, layer 3) treats it. | Verified: gap |
+| Evidence stance (`supports`, `contradicts`, `contextualizes`) | CRMinf | No stance property was found in CRMinf 1.2.1's property list; `J7` and `J1` say only that something is evidence or a premise. Stance is an extension. | Verified: gap |
 | Assertion, asserter, recording | PROV-O | The assertion as a `prov:Entity`; `prov:wasAttributedTo` an agent (domain Entity, range Agent); `prov:wasGeneratedBy` the recording activity (domain Entity, range Activity). | Verified |
 | `supersedes` | PROV-O | `prov:wasRevisionOf` (Entity to Entity, a subproperty of `prov:wasDerivedFrom`), where the new assertion revises the old; otherwise `prov:wasDerivedFrom`. | Verified |
 | Excerpt to source | PROV-O | `prov:wasQuotedFrom` (a subproperty of `prov:wasDerivedFrom`); PROV-O says the more specific subproperty should be used where it applies. | Verified |
 | Excerpt locator | Web Annotation | An annotation whose target (`oa:hasTarget`) is a `oa:SpecificResource` with `oa:hasSource` the preserved copy and `oa:hasSelector` a `oa:TextQuoteSelector` (`oa:exact`, `oa:prefix`, `oa:suffix`) and, where stable, a `oa:TextPositionSelector` (`oa:start`, `oa:end`, 0-based). | Verified |
-| Verbatim excerpt text | Web Annotation | `oa:exact` is defined as the selected text "after normalization", so it is not guaranteed verbatim. The excerpt therefore keeps the verbatim passage in its own field and uses the selector only to locate it. Position selectors hold only against the exact preserved copy they were made on, which is why upstream anchors to captures (DR-0018). | Verified: caveat |
+| Verbatim excerpt text | Web Annotation | `oa:exact` is defined as the selected text "after normalization", so it is not guaranteed verbatim. The excerpt therefore keeps the verbatim passage in its own field and uses the selector only to locate it. Position selectors hold only against the exact preserved copy they were made on, which is why the core anchors to captures (SPEC-003). | Verified: caveat |
 | Assumption, dependency (§5.4) | CRMinf, PROV-O | Not mapped. The CRMinf 1.2.1 and PROV-O terms were not read for this addition. | Not verified |
 | Vocabularies (kinds, stances, bands, absence) | SKOS | Each as a concept scheme, identifiers as concept notations. | Not verified |
 | `valid_time` | CIDOC CRM | A time-span on the event or state the proposition is about. | Not verified |
@@ -302,7 +297,7 @@ contributed to an assertion, the record MUST carry, fixed at creation: the
 process or model identifier, its role (for example `extraction`, `translation`,
 `suggested-match`) and the date. A reviewer's adoption is a separate, attributed
 act. Until then the assertion is a belief held by the automated agent, not by
-the project (upstream DR-0031).
+the project.
 
 ## 11. Conformance
 

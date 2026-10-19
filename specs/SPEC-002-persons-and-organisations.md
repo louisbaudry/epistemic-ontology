@@ -3,17 +3,17 @@
 **Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern)
-**Upstream:** UkraineIndependenceWar DR-0012, DR-0013, DR-0014, DR-0062, DR-0063, DR-0064; its SPEC-0002 (identity and entity resolution)
 
 ### Provenance of this draft
 
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
 owner's direction. Approved by the owner on 2026-10-04; the text is otherwise unchanged by the approval.
 
-- **Read in full:** upstream DR-0012, DR-0013, DR-0014, DR-0062, DR-0063,
-  DR-0064; upstream SPEC-0002.
-- **Read by outline only:** upstream POL-0001 (personal-data policy). It is a
-  legal posture specific to that archive, not reviewed by counsel, and is
+- **Read in full:** six earlier decision records and one earlier
+  specification on identity and entity resolution, none cited here
+  (CHANGELOG, 2026-10-19).
+- **Read by outline only:** one earlier personal-data policy. It is a legal
+  posture specific to the archive it came from, not reviewed by counsel, and is
   deliberately **not** imported here (see §9).
 - **Checked against how adopting projects store people:** only one project's
   person-to-organisation affiliation table (role, start, end), which fits §6.
@@ -72,8 +72,8 @@ immutable `id` that is never reused. It is never identified by a name.
 
 ## 4. Names and identifiers are assignments
 
-No bare name or identifier field carries a referent's identity (upstream
-DR-0012). Each is an assertion of its own:
+No bare name or identifier field carries a referent's identity. Each is an
+assertion of its own:
 
 | Element | Content | Required |
 |---|---|---|
@@ -97,7 +97,7 @@ Rules:
 
 ## 5. Referent status
 
-Every referent carries one status (upstream DR-0062):
+Every referent carries one status:
 
 | Status | Meaning |
 |---|---|
@@ -115,7 +115,7 @@ Every referent carries one status (upstream DR-0062):
 
 ## 6. Roles and membership
 
-Membership, office and role are **temporal events** (upstream DR-0013), never a
+Membership, office and role are **temporal events**, never a
 field on the person.
 
 | Element | Content | Required |
@@ -141,8 +141,7 @@ field on the person.
 
 A match proposes that two identity bearers (a candidate and a canonical
 referent, a listed name and a referent, an account and an actor, an
-external-dataset entity and a referent) refer to the same referent (upstream
-DR-0063).
+external-dataset entity and a referent) refer to the same referent.
 
 1. **States:** `proposed`, `under-review`, `confirmed`, `rejected`, and
    `withdrawn` for a proposer's retraction. A state change is a superseding
@@ -166,7 +165,7 @@ reviewer for a link that supports a legal conclusion). It MUST state the rule.
 
 ## 8. Merging and splitting
 
-Merge and split are events (upstream DR-0064).
+Merge and split are events.
 
 1. A **merge** designates a successor referent and marks the predecessors
    `disproved` as distinct, with permanent redirects so every published
@@ -261,7 +260,7 @@ All four are decided.
    requires each profile that records persons to declare a policy (§9), and
    gives none of its own. Recorded in CHANGELOG 0.1.0.
 2. ~~**Review levels.**~~ Decided: one rule in the core (§7), and a profile may
-   be stricter if it states the rule. Upstream's three tiers are not adopted.
+   be stricter if it states the rule. A three-tier scheme is not adopted.
    Recorded in CHANGELOG 0.1.0.
 3. ~~**Name types.**~~ Decided: a starting list in the spec (§4); a SKOS
    vocabulary follows once the specs are approved. Recorded in CHANGELOG 0.1.0.

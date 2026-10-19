@@ -3,7 +3,6 @@
 **Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); ICS 206-01 text filed in `references/` and not yet mapped (§7, decision 7)
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-003 (sources, captures and excerpts)
-**Upstream:** none cited. The mapping is to an external directive, not to upstream decision records.
 
 ### Provenance of this draft
 
@@ -201,8 +200,7 @@ wrong is required text on the **dependency** (one record per dependent), because
 it differs between judgments that rest on the same assumption. A dependency is
 not required of every assertion, because whether a judgment rests on an
 unrecorded assumption cannot be checked (SPEC-001 §5.4 rule 6). The kind is the
-core's own addition: upstream's epistemic vocabulary (DR-0025) does not define
-it.
+core's own addition.
 
 ### 4.2 Indicators (ICD 203 standards 2, 3 and 4)
 

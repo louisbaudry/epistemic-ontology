@@ -3,7 +3,6 @@
 **Version:** 0.1 | **Status:** Approved by the owner, 2026-10-13
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-002 (persons and organisations), SPEC-003 (sources, captures and excerpts)
-**Upstream:** none cited. The mappings here are to external standards, not to upstream decision records.
 
 ### Provenance of this draft
 

@@ -12,7 +12,7 @@
     dcterms:source "SPEC-002 §5" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "Every referent carries one status (upstream DR-0062). A new referent starts as `candidate`. `fabricated` and `disproved` referents are kept, never deleted."@en ;
+    skos:scopeNote "Every referent carries one status. A new referent starts as `candidate`. `fabricated` and `disproved` referents are kept, never deleted."@en ;
     skos:hasTopConcept :referent-statuses-canonical, :referent-statuses-candidate, :referent-statuses-fabricated, :referent-statuses-disproved .
 
 :referent-statuses-canonical a skos:Concept ;
