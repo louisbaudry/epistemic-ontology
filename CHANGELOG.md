@@ -215,3 +215,10 @@ version and the old term is deprecated, not removed.
   version (1 or 2). Recorded as deferred, with the trigger, six no-regret
   habits, a proposed sequence and what to obtain. No term, vocabulary or shape
   changed.
+- SPEC-005 decision 7 (owner, 2026-10-19): the owner supplied a text of ICS 206-01
+  (ODNI, 2 December 2024, Markdown conversion). It is filed unchanged at
+  `references/ICS-206-01.md`, except that the signatory's name is omitted
+  because this repository keeps no personal names. It was not compared with the
+  ODNI original and has not been mapped; decision 7 stays open. New folder
+  `references/` for third-party texts, which are outside the repository's
+  CC BY 4.0 licence (README updated). No term, vocabulary or shape changed.
