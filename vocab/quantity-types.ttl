@@ -12,7 +12,7 @@
     dcterms:source "SPEC-001 §7" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "The semantic type of a number taken from a source, kept with its original expression (upstream DR-0030). Aggregation respects the type: a sum of `at-least` values is an `at-least`. The specification gives no definition text for the values of this scheme; none is added here."@en ;
+    skos:scopeNote "The semantic type of a number taken from a source, kept with its original expression. Aggregation respects the type: a sum of `at-least` values is an `at-least`. The specification gives no definition text for the values of this scheme; none is added here."@en ;
     skos:hasTopConcept :quantity-types-exact, :quantity-types-approximate, :quantity-types-at-least, :quantity-types-at-most, :quantity-types-range, :quantity-types-greater-than, :quantity-types-fewer-than .
 
 :quantity-types-exact a skos:Concept ;

@@ -12,7 +12,7 @@
     dcterms:source "SPEC-001 §3" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "Every assertion carries exactly one kind, never changed. `finding`, `claim` and `assessment` are required of every conforming profile; the other four are optional. A profile must not give any of the seven identifiers another meaning. `assumption` was added by SPEC-005 §4.1 (owner, 2026-10-15). Identifiers follow upstream's epistemic vocabulary v1 (DR-0025)."@en ;
+    skos:scopeNote "Every assertion carries exactly one kind, never changed. `finding`, `claim` and `assessment` are required of every conforming profile; the other four are optional. A profile must not give any of the seven identifiers another meaning. `assumption` was added by SPEC-005 §4.1 (owner, 2026-10-15)."@en ;
     skos:hasTopConcept :assertion-kinds-observation, :assertion-kinds-claim, :assertion-kinds-assessment, :assertion-kinds-hypothesis, :assertion-kinds-assumption, :assertion-kinds-finding, :assertion-kinds-project-conclusion .
 
 :assertion-kinds-observation a skos:Concept ;

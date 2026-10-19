@@ -24,8 +24,6 @@ different projects exchange work without translating it.
 ```
 Standards            CIDOC CRM · CRMinf · PROV-O · W3C Web Annotation · SKOS · ISO 11179 · ICD 203
    ↓ grounds
-Upstream decisions   UkraineIndependenceWar decision records (public), cited by DR number
-   ↓ generalised by
 Common core          specs/ in this repository
    ↓ narrowed by
 Project profiles     one short document per adopting project, kept in that project
@@ -38,13 +36,6 @@ Project profiles     one short document per adopting project, kept in that proje
   vocabularies the project uses, any stricter rules it applies, and any term
   it adds. A profile may leave out part of the core and may add terms of its
   own; it may not give a core identifier a different meaning.
-- **Upstream**: the [UkraineIndependenceWar](https://github.com/louisbaudry/UkraineIndependenceWar_dot_org)
-  archive settled most of this model through numbered Decision Records. This
-  repository cites them rather than restating their reasoning, and follows
-  them where it adopts a term. If an upstream record is superseded, the core
-  follows by a new version, not an edit. The upstream archive keeps no
-  profile of this core and does not refer to it: the dependency runs one way
-  only (owner, 2026-10-04).
 
 ## Specifications
 

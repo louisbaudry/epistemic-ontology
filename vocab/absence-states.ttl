@@ -12,7 +12,7 @@
     dcterms:source "SPEC-001 §6" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "A missing value never means \"no\". Where a gap matters it is recorded with one of these states (upstream DR-0029). The specification gives no definition text for the values of this scheme; none is added here."@en ;
+    skos:scopeNote "A missing value never means \"no\". Where a gap matters it is recorded with one of these states. The specification gives no definition text for the values of this scheme; none is added here."@en ;
     skos:hasTopConcept :absence-states-unknown, :absence-states-not-researched, :absence-states-no-evidence-found, :absence-states-unavailable, :absence-states-withheld, :absence-states-redacted, :absence-states-lost-or-destroyed, :absence-states-not-applicable, :absence-states-indeterminate .
 
 :absence-states-unknown a skos:Concept ;

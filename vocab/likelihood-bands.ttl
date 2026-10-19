@@ -12,7 +12,7 @@
     dcterms:source "SPEC-001 §5.3" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "The ICD 203 likelihood bands, stored by identifier and never as a number. Listed here from least to most probable in the ordered collection. ICD 203 prints a second row of alternative terms and a percentage range for each band; the alternative terms are `skos:altLabel` and the printed range is quoted in each concept's scope note as documentation of what the term means (SPEC-005 §4.4). A range is never a value an assessment carries. There is no `not-assessed` likelihood: a likelihood that is not given records why with an absence state. Identifiers follow upstream DR-0065."@en ;
+    skos:scopeNote "The ICD 203 likelihood bands, stored by identifier and never as a number. Listed here from least to most probable in the ordered collection. ICD 203 prints a second row of alternative terms and a percentage range for each band; the alternative terms are `skos:altLabel` and the printed range is quoted in each concept's scope note as documentation of what the term means (SPEC-005 §4.4). A range is never a value an assessment carries. There is no `not-assessed` likelihood: a likelihood that is not given records why with an absence state."@en ;
     skos:hasTopConcept :likelihood-bands-almost-no-chance, :likelihood-bands-very-unlikely, :likelihood-bands-unlikely, :likelihood-bands-roughly-even-chance, :likelihood-bands-likely, :likelihood-bands-very-likely, :likelihood-bands-almost-certain .
 
 :likelihood-bands-almost-no-chance a skos:Concept ;

@@ -72,6 +72,5 @@ reading by the drafter that the owner has not yet confirmed.
 | summary | A condensed account of a larger passage, labelled as such. | "Quote". | SPEC-003 §7 |
 | `supersedes` | The element naming the earlier assertion a correction replaces; the earlier one stays readable. | Editing or overwriting. | SPEC-001 §4, §8 |
 | `truncated` | A flag on a holding whose capture was cut short, recorded with the captured length; whatever its completeness value, it is not presented as the document. | Marking a cut-short capture `fragment`. | SPEC-003 §4, §5.1 |
-| upstream | The UkraineIndependenceWar archive's numbered decision records, cited by DR number and followed; nothing flows back. | | README |
 | `valid_time` | When a proposition holds in the world, partial dates allowed. | Using it for when the record was made. | SPEC-001 §4 |
 | work | The intellectual creation, the first of the four documentary layers. | | SPEC-003 §3 |

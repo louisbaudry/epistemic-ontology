@@ -12,7 +12,7 @@
     dcterms:source "SPEC-002 §7" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "The states of a match between two identity bearers (upstream DR-0063). A state change is a superseding assertion with an asserter and a basis. Automated matchers may create only `proposed` matches; confirmation is a human decision on discriminating evidence."@en ;
+    skos:scopeNote "The states of a match between two identity bearers. A state change is a superseding assertion with an asserter and a basis. Automated matchers may create only `proposed` matches; confirmation is a human decision on discriminating evidence."@en ;
     skos:hasTopConcept :match-states-proposed, :match-states-under-review, :match-states-confirmed, :match-states-rejected, :match-states-withdrawn .
 
 :match-states-proposed a skos:Concept ;

@@ -12,7 +12,7 @@
     dcterms:source "SPEC-001 §5.2" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:hasVersion "0.1" ;
-    skos:scopeNote "The typed relations by which one source's dependence on another is recorded (upstream DR-0028). Corroboration counts independent origins, not documents. The specification gives no definition text for the values of this scheme; none is added here."@en ;
+    skos:scopeNote "The typed relations by which one source's dependence on another is recorded. Corroboration counts independent origins, not documents. The specification gives no definition text for the values of this scheme; none is added here."@en ;
     skos:hasTopConcept :source-dependence-relations-cites, :source-dependence-relations-reposts, :source-dependence-relations-syndicates, :source-dependence-relations-derives-from, :source-dependence-relations-shares-underlying-document, :source-dependence-relations-shares-underlying-witness, :source-dependence-relations-common-evidentiary-origin .
 
 :source-dependence-relations-cites a skos:Concept ;
