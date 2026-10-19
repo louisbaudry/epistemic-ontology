@@ -1,6 +1,6 @@
 # SPEC-005 — Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206)
 
-**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); ICS 206-01 open (§7, decision 7)
+**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); ICS 206-01 text filed in `references/` and not yet mapped (§7, decision 7)
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-003 (sources, captures and excerpts)
 **Upstream:** none cited. The mapping is to an external directive, not to upstream decision records.
@@ -44,8 +44,11 @@ text, not against any second tool.
 - **Not verified:**
   - **ICS 206-01**, *Citation and Reference for Publicly Available Information,
     Commercially Available Information, and Open Source Intelligence*, which
-    ICD 206 names as the rule for citing open sources. It was not supplied or
-    read; it is the standard most relevant to open-source work (§7, decision 7).
+    ICD 206 names as the rule for citing open sources. A text copy (Markdown
+    conversion, 2 December 2024 edition) was supplied on 2026-10-19 and is filed
+    at `references/ICS-206-01.md`; it has not been read against this
+    specification or mapped, and was not compared with the ODNI original. It is
+    the standard most relevant to open-source work (§7, decision 7).
   - **ICD 501** (discovery and dissemination or retrieval), named by ICD 206.
     The full text could not be downloaded; only a search-engine summary of the
     2009 text was seen. The CAPCO Register and Manual that ICD 710 relies on was
@@ -76,7 +79,7 @@ needs. This specification lists those elements and the gaps.
 Tradecraft Standards to core elements; the gaps; candidate decisions to close
 them.
 
-**Out of scope:** ICS 206-01 (unread); any source
+**Out of scope:** ICS 206-01 (filed, not yet mapped); any source
 reliability or information credibility grading scale; alignment with a formal
 top-level or mid-level ontology; classification and dissemination markings;
 anything about a project's own products.
@@ -359,8 +362,8 @@ changed.
 - **Reliability and credibility grading scales** (letter-and-number schemes used
   in allied military doctrine). ICD 203 does not prescribe one. They are a
   separate decision with their own trade-offs and are not treated here.
-- **ICS 206-01.** The open-source citation standard that ICD 206 names; not
-  read (decision 7).
+- **ICS 206-01.** The open-source citation standard that ICD 206 names; text
+  filed in `references/` on 2026-10-19, not yet mapped (decision 7).
 - **Formal-ontology alignment.** Not a tradecraft matter; a separate
   specification if wanted.
 
@@ -398,10 +401,11 @@ Decided by the owner on 2026-10-15, each as recommended in the section cited.
 6. ~~**ICD 206.**~~ Done: the owner supplied a text copy on 2026-10-15 and it is
    mapped in §3.2. It confirmed the factor list of decision 3 and changed
    nothing decided.
-7. **ICS 206-01 and a "why this source pertains" note.** Open, and the owner's
-   to supply: a text of ICS 206-01, *Citation and Reference for Publicly
+7. **ICS 206-01 and a "why this source pertains" note.** Open. The owner
+   supplied a text of ICS 206-01, *Citation and Reference for Publicly
    Available Information, Commercially Available Information, and Open Source
-   Intelligence*, if it can be obtained. It is the rule for citing open
+   Intelligence*, on 2026-10-19; it is filed at `references/ICS-206-01.md` and
+   mapping it is the next step. It is the rule for citing open
    sources, so it may fix citation elements that the core does not yet carry.
    Options for the one small gap found in §3.2 (a prose note on an evidence link
    saying why the source pertains, also used for an appended reference): (A) add
