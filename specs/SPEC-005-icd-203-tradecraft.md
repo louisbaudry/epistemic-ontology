@@ -1,6 +1,6 @@
 # SPEC-005 — Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206)
 
-**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); ICS 206-01 text filed in `references/` and not yet mapped (§7, decision 7)
+**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); decision 7 approved by the owner, 2026-10-21; ICS 206-01 mapped (§3.3, §4.8); decision 8 open (§7)
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-003 (sources, captures and excerpts)
 
@@ -9,7 +9,11 @@
 Drafted by an AI assistant (Anthropic Claude Code agent session) at the
 owner's direction, on 2026-10-15. The owner decided §7 decisions 1 to 5 on the
 same day, each as recommended. The owner then supplied a text of ICD 206 and
-decision 6 became the mapping in §3.2. The recommendations were implemented in the same change: SPEC-001
+decision 6 became the mapping in §3.2. The owner later supplied ICS 206-01;
+§3.3 and §4.8 map it (2026-10-21), and the owner decided 7 as recommended the same
+day. The `note` property of decision 7 is in the core terms, the shapes and the
+JSON-LD context; the shape tests and the context checks pass under pyshacl 0.40.1
+and rdflib 7.6.0, checked against SPEC-001 §5.1, not against a second tool. The recommendations were implemented in the same change: SPEC-001
 (§3, §5.3, §5.4, §11), the vocabularies, the core terms, the shapes and the
 JSON-LD context. Those machine-readable files were run (22 shape tests and the
 context checks pass under pyshacl and rdflib); they were checked against this
@@ -40,14 +44,16 @@ text, not against any second tool.
   Markings System*, 21 June 2013, from the ODNI copy: purpose, applicability,
   policy D.1 and D.2 and implementation E.1 to E.5. The rest of the directive
   was not read, and later revisions were not checked.
+- **Read (ICS 206-01, supplied by the owner on 2026-10-19; read in full on
+  2026-10-21):** *Citation and Reference for Publicly Available Information,
+  Commercially Available Information, and Open Source Intelligence*, which ICD
+  206 names as the rule for citing open sources. The text is the Markdown
+  conversion of the 2 December 2024 edition filed at
+  `references/ICS-206-01.md` (sections A to F and Appendices A to C). It was
+  not compared with the ODNI original, so quotations in §3.3 and §4.8 may carry
+  conversion errors; they are cited by section of the supplied text. The 2017
+  edition it replaces was not read.
 - **Not verified:**
-  - **ICS 206-01**, *Citation and Reference for Publicly Available Information,
-    Commercially Available Information, and Open Source Intelligence*, which
-    ICD 206 names as the rule for citing open sources. A text copy (Markdown
-    conversion, 2 December 2024 edition) was supplied on 2026-10-19 and is filed
-    at `references/ICS-206-01.md`; it has not been read against this
-    specification or mapped, and was not compared with the ODNI original. It is
-    the standard most relevant to open-source work (§7, decision 7).
   - **ICD 501** (discovery and dissemination or retrieval), named by ICD 206.
     The full text could not be downloaded; only a search-engine summary of the
     2009 text was seen. The CAPCO Register and Manual that ICD 710 relies on was
@@ -78,7 +84,7 @@ needs. This specification lists those elements and the gaps.
 Tradecraft Standards to core elements; the gaps; candidate decisions to close
 them.
 
-**Out of scope:** ICS 206-01 (filed, not yet mapped); any source
+**Out of scope:** any source
 reliability or information credibility grading scale; alignment with a formal
 top-level or mid-level ontology; classification and dissemination markings;
 anything about a project's own products.
@@ -136,10 +142,10 @@ rendering. The table maps what a record can supply.
 |---|---|---|---|---|
 | Source reference citation (SRC), D.3.a | A numbered endnote each time a source is directly cited, or "a specific aspect of analysis (i.e., judgment, assessment, estimate, alternative hypothesis or view, confidence level) depends on a source". | Evidence link from an excerpt to an assertion, with a stance (SPEC-001 §5.1) | carried | The link joins an excerpt to an assertion, not to the assertion's confidence level in particular. Endnote numbering is rendering. |
 | SRC: "the most original source that presents the relevant information" | Cite the original, not a copy. | Typed dependence relations; declared dependence on a source record (SPEC-001 §5.2, SPEC-003 §8) | partly | Choosing the most original source is the analyst's judgment. The core records the chain once the analyst states it. |
-| SRC elements: originator, unambiguous identifier, title, date of issuance, publication or posting (date of online access if posting date unknown), page | Enough to "locate and retrieve" the source. | Source record (identifier, type, roles of creation and publication, SPEC-003 §3.3, §8); capture with original capture time and retrieval time (§5.1); excerpt locus (§7) | carried | Nothing needed beyond a rendering. The "date of online access" corresponds to the capture time. |
+| SRC elements: originator, unambiguous identifier, title, date of issuance, publication or posting (date of online access if posting date unknown), page | Enough to "locate and retrieve" the source. | Source record (identifier, type, roles of creation and publication, SPEC-003 §3.3, §8); capture with original capture time and retrieval time (§5.1); excerpt locus (§7) | partly | SPEC-003 does not name a title among a source record's minimum fields (§3.3 below). The rest needs only a rendering. The "date of online access" corresponds to the capture time. |
 | SRC elements: portion marking, classification of the extracted information, overall classification | Classification markings (ICD 710). | None | not carried | By design: the core is for public-source material and carries no marking scheme. ICD 710 was not read. |
-| Relevance of a source | Apparent from the cited source, "otherwise the product text shall explain why the source pertains". | Excerpt, anchor and locus show where the passage is (SPEC-003 §6, §7) | partly | There is no prose field on an evidence link saying why the source pertains. |
-| Appended reference citation (ARC), D.3.b | Supplementary or background sources that do not "expressly affect or support a specific aspect or outcome of analysis", listed apart, with "a succinct explanation for why the ARC is being included". | Evidence link with stance `contextualizes` (SPEC-001 §5.1) | partly | The succinct explanation (same gap as the line above). |
+| Relevance of a source | Apparent from the cited source, "otherwise the product text shall explain why the source pertains". | Excerpt, anchor and locus show where the passage is (SPEC-003 §6, §7) | carried | The optional `note` on the evidence link says why the source pertains (SPEC-001 §5.1 item 4; decision 7). |
+| Appended reference citation (ARC), D.3.b | Supplementary or background sources that do not "expressly affect or support a specific aspect or outcome of analysis", listed apart, with "a succinct explanation for why the ARC is being included". | Evidence link with stance `contextualizes` (SPEC-001 §5.1) | carried | The succinct explanation is the link's `note` (the line above). |
 | Source descriptor, D.3.c | "A brief, narrative exposition of factors that affect or indicate the quality or credibility of a single source". The factors (glossary): "accuracy and completeness, possible denial and deception, age and continued currency of information, and technical elements of collection as well as source access, validation, motivation, possible bias, or expertise". Also used "when the time of pertinent information in a source is significantly different from the time of publication of the source". | Source-quality judgments (§4.3): an assessment of kind `assessment` about a source, one `factor` each, reasoning in `basis` | carried | A descriptor is a rendering of the judgments that are germane to a judgment of the product. The time difference between information and publication is partly carried by `valid_time` and the source's dates. For intelligence sources a descriptor is derived from the source document; that does not apply to open sources. |
 | Source summary statement, D.3.d | "Strongly encouraged"; a holistic assessment of sourcing: "strengths and weaknesses of the source base, which sources are most important to key judgments, what sources are meaningfully corroborative or conflicting", and the "specific subject matter expertise used". | Strengths and weaknesses: the source-quality judgments. Corroboration: independent origins (SPEC-001 §5.2). Conflict: `contradicts` links. | product-level; partly supplied | "Which sources are most important to key judgments" and "subject matter expertise used" have no counterpart. See §4.3. |
 | Preserve dynamic or ephemeral sources | A record of a source that is dynamic (an internet posting), ephemeral or not systematically stored must be preserved for at least one year, five years or the time horizon for estimates. | Holding and capture (SPEC-003 §4, §5) | carried | The retention period is an organisation's policy and belongs to a profile. |
@@ -153,11 +159,99 @@ rendering. The table maps what a record can supply.
    confirmed by both directives, and both describe the descriptor as narrative.
    **Neither directive read prescribes a letter-and-number reliability or
    credibility grade.** Whether any IC element adopts one in its supplemental
-   standards, or in ICS 206-01, is not established here.
-2. A source reference citation maps cleanly to what the core already holds. The
-   gaps are two small ones: a prose reason why a cited source pertains, and
-   anything for classification markings (not wanted).
+   standards, is not established here; ICS 206-01 as read prescribes none
+   (§3.3).
+2. A source reference citation maps cleanly to what the core already holds,
+   with one correction (§3.3, Findings, item 1). The gaps are two small ones: a prose reason why a cited source pertains
+   (closed by decision 7, the `note` on the evidence link), and anything for
+   classification markings (not wanted).
 3. The source summary statement needs no stored element (§4.3).
+
+### 3.3 Citation and reference (ICS 206-01)
+
+ICS 206-01 (2 December 2024; it replaces the 26 September 2017 edition, which
+was not read) sets how publicly available information (PAI), commercially
+available information (CAI) and open source intelligence (OSINT) are cited in
+disseminated and covered analytic products. Like ICD 206 it governs products.
+A source reference citation (SRC) is an endnote of pipe-separated elements
+(Appendix B, 1.b), so most of what it asks is rendering. It does not apply to
+raw data, dashboards, internal bulk storage or data objects shared between
+elements for a retention decision (D.1); records of that kind are outside it.
+The tables map what a record can supply. References are to the sections of the
+supplied text (`references/ICS-206-01.md`): "B.1.d(6)(f)" is Appendix B,
+section 1.d, item (6), sub-item (f).
+
+**SRC body elements** (Appendix B, 1.c and the formats of B.2).
+
+| ICS 206-01 element | Core element | Strength | What is missing |
+|---|---|---|---|
+| Source type (journal, blog, newspaper, magazine, website, social media, photo, video, commercial database, AI system, and others) | `type` of the source record (SPEC-003 §8) | carried | The core fixes no list of source types; a profile does. |
+| Name of publication, site, platform, blog, database | Identifier of the source record; the publisher role of its manifestation (SPEC-003 §3, item 3) | carried | — |
+| Title of the article, post, video or output | None named. SPEC-003 §8 does not list a title among a source record's minimum fields. | partly | A title is an ordinary descriptive attribute of an expression; the core neither requires nor forbids it. Corrects §3.2 (see Findings). |
+| Author, creator, photographer | The creation roles: stated author, actual author, signer (SPEC-003 §3, item 3); an agent as in SPEC-002 | carried | Whether to mask or label a U.S. person's name (B.1.c(2)) is a person-policy matter, declared by a profile (SPEC-002 §9). The core ships none. |
+| Volume, issue, pages cited | Excerpt locus gives the page (SPEC-003 §7, item 2) | partly | Volume and issue are bibliographic attributes of a periodical and are not named in the core. A profile that cites periodicals adds them. |
+| Date of publication ("Day Month Year") | The publication event and its date (SPEC-003 §3, items 3 and 5); partial dates (SPEC-001 §8) | carried | — |
+| URL ("the most stable and permanent location"; the database URL, not the article's, for a commercial database) | The original resource locator and, for a third-party capture, the archive record locator (SPEC-003 §5.1); the live locator kept as context on the anchor (SPEC-003 §6, item 2) | carried | Which locator to print is rendering. |
+| Date of access ("when data was accessed directly via browser or when tools accessed data") | Original capture time and retrieval time; the capturing agent may be a person or a tool (SPEC-003 §5.1, §5.3) | carried | — |
+| Coordinates (ground photos) | None as a source field. A location is the content of an assertion about the photograph, with its `valid_time` (SPEC-001 §4). | partly | By design: where a photograph was taken and what it shows are claims, not attributes of the source. |
+| Serialized number and name of the producing element (an organisation's own products) | Identifier and publisher role of a source record whose source is that organisation's product | carried | The placeholder numbers of B.1.c(3), kept by the IC OSINT Executive, have no counterpart and are not wanted. |
+| "OSINT Analysis by" tagline (the Analysis-Information Threshold, B.1.c(1)) | `asserter` and the kind `assessment`, as against `finding` or `claim` (SPEC-001 §3, §4) | partly | The ICS draws the line at "we assess" statements and thesis-driven arguments, as against gathering, summation, broad or reused geolocation, translation, repackaging and curation. The core's cut is close but not identical: a translation is a derived expression, not an assertion (SPEC-003 §3, item 2). Not mapped term by term; a product-level label a profile may derive from the kind. |
+| Overall classification and portion marks | None | not carried | By design (§3.2, §8). |
+
+**Source descriptor** (Appendix B, 1.d; definition in Appendix A).
+
+| ICS 206-01 content | Core element | Strength | What is missing |
+|---|---|---|---|
+| Credibility, biases and quality of information (d.2) | Source-quality judgments: an `assessment` about the source, one `factor` each (§4.3) | carried | The ICS adds the words "reliability" and "validity" to the descriptor's list (B.1.b, item 2) and says source validation "often focuses more on determining accuracy or reliability" (Appendix A). It gives no scale, definition or level for any of them, so no factor is added. |
+| Collector: the entity that researched, gathered or collected the data (d.3) | The capturing agent (SPEC-003 §5.1, §5.3 item 1) | carried | The ICS asks for the element, not the individual: a person-policy matter (SPEC-002 §9). |
+| Commercial database: name, nature, login required (d.4) | The capturing agent or custodian; the source record's rights position (SPEC-003 §8) | partly | Whether a login or subscription was needed is an access condition the core does not name. A profile may. |
+| Tool, search interface or service used; to be cited when it provides "value added analytics", and always for AI, ML or computer vision (d.5) | The capture's method (SPEC-003 §5.1); for an automated contribution, the process identifier, role and date (SPEC-001 §10) | partly | See the next row. |
+| AI-generated reporting or services (d.6; formats B.2.a(1) and B.2.b(2)): system type, model name, a plain explanation, accuracy (precision and recall in percent), settings, training-data information, version, code link, date of use; for generative AI, the prompt | SPEC-001 §10: the process or model identifier, its role and the date, fixed at creation | partly | **A gap** (§4.8): version, prompt or parameters, settings, training-data information and a provider's stated performance have no place. |
+| Third-party data provider: who owns or created the original, where it is hosted, and any enrichment or change (d.7) | A capturing agent that is not the custodian (SPEC-003 §5.3); the origin source's rights govern; derivation (SPEC-003 §3, item 2) and dependence (SPEC-001 §5.2) | carried | "Value added analytics" is an automated contribution, as in the row above. |
+| Data sets: the criteria used to derive the information, such as keywords, language, time frame, version and machine settings, and a link to the data set (d.8) | The capture's method (SPEC-003 §5.1) | partly | The core has no structured record of selection criteria; as prose in the method they are held. A profile working with searched data sets may structure them. Not proposed. |
+| Evaluated or unevaluated status (B.1.b, item 2; "Unevaluated PAI or CAI", Appendix A) | None | not carried | The ICS defines it by three legal tests: relation to the element's authority, the presence of U.S.-person information, and the criteria for retention under the element's procedures. These concern the element's authority, not the epistemic standing of a source. The nearest core idea, `review` (SPEC-001 §10), belongs to assertions. A profile that must carry the legal status defines its own. B.1.d(6)(f) says AI-assisted data is not to be labelled "unevaluated" wholesale; the core records what was done instead. |
+| An explanation of the source's relevance, when "unlikely to be apparent if a reader consults the source report directly" (Appendix A, source descriptor) | The evidence link's `note` (SPEC-001 §5.1 item 4; decision 7). The excerpt's editorial context (SPEC-003 §7, item 6) is about how a passage reads, not why it pertains | carried | — |
+
+**Other rules.**
+
+- *Discoverability and direct links (D.3, Appendix C).* Linking words in a
+  product to the underlying source, with in-line descriptors, "does not negate
+  the need to capture necessary source metadata". This is rendering and
+  security practice for products. The chain from assertion to evidence link to
+  excerpt to pinned representation (SPEC-001 §5.1, SPEC-003 §6) is what a
+  renderer would link along. No stored element.
+- *Retention (D.4).* A dynamic source "important in shaping the bottom-line
+  message" is preserved for at least one year from issuance; for a product with
+  a longer horizon, the horizon or five years, "whichever is shorter". Binary
+  copies ("screen prints") follow the element's records schedule, which prevails
+  in a conflict. The core holds the preserved representation (SPEC-003 §4 to
+  §6) and sets no retention period or deletion rule; both are profile policy,
+  and removal from the core is a governed exception (SPEC-001 §8). ICD 206
+  has a corresponding rule (§3.2).
+- *Training and responsibilities (D.5, E).* Process duties of IC elements and
+  offices. None for a record.
+
+**Findings.**
+
+1. A source reference citation maps to what the core holds, as ICD 206's did.
+   One correction to §3.2: its row for the SRC elements said `carried` for
+   "originator, unambiguous identifier, title, date of issuance, publication or
+   posting, page". SPEC-003 names the roles, the identifier, the dates and the
+   locus, but not a title, so that row is `partly` and says why.
+2. **ICS 206-01 as read prescribes no letter-and-number reliability or
+   credibility grade**, and defines no field names, vocabularies or levels. This
+   settles the question §3.2 left open. It also removes the reason decision 7
+   gave for waiting (that the standard might define the citation fields).
+3. Two gaps: the relevance explanation, closed by decision 7 (the `note` on the
+   evidence link), and the description of an AI process (§4.8, decision 8,
+   open). Everything else is rendering, a profile
+   attribute, or specific to IC elements.
+4. Not carried by design: classification and portion marks, placeholder numbers
+   and the legal evaluated or unevaluated status.
+5. Tension, not conflict. The ICS cites AI output as a source with a
+   descriptor; the core never lets automated output become evidence
+   (SPEC-001 §10). The ICS asks that the use of AI be disclosed in the
+   citation; the core asks for the same disclosure and a person's adoption.
 
 ## 4. Gaps and decisions
 
@@ -360,10 +454,46 @@ changed.
 - **Reliability and credibility grading scales** (letter-and-number schemes used
   in allied military doctrine). ICD 203 does not prescribe one. They are a
   separate decision with their own trade-offs and are not treated here.
-- **ICS 206-01.** The open-source citation standard that ICD 206 names; text
-  filed in `references/` on 2026-10-19, not yet mapped (decision 7).
+- **Fields for what ICS 206-01 lists.** Source types, volume and issue, a login
+  flag, selection criteria for data sets, and evaluated or unevaluated status
+  are profile matters or specific to IC elements (§3.3). The two gaps found are
+  decisions 7 and 8.
 - **Formal-ontology alignment.** Not a tradecraft matter; a separate
   specification if wanted.
+
+### 4.8 Citing an automated process (ICS 206-01 D.5 and D.6)
+
+**Gap.** ICS 206-01 requires a tool to be cited when it provides judgments,
+recommendations, inferences or predictions, and an AI system to be cited with
+enough detail to repeat its use: for a classification model the system type,
+model name, a plain explanation, performance (precision and recall), settings,
+training-data information, version, code link and date of use; for generative
+AI the platform or model and the prompt, "since the outputs are stochastic"
+(D.5, D.6, B.2.a(1)). SPEC-001 §10 requires, fixed at creation, the process or
+model identifier, its role and the date. Version, prompt or parameters,
+settings, training-data information and performance figures have no place.
+
+**Constraints that already hold.** Automated output never becomes evidence and
+enters as `draft` (SPEC-001 §10). A provider's stated accuracy is the
+provider's claim about the system; it is not a likelihood or an analytic
+confidence and MUST NOT be mapped to either (SPEC-001 §5.3). That argues
+against numeric fields.
+
+**Options.**
+
+- **A. One optional prose field, `process_note`,** on the SPEC-001 §10 record:
+  version, prompt or parameters, settings, training-data information, and any
+  performance figures as the provider states them. Fixed at creation with the
+  rest of the record. No structure and no vocabulary.
+- **B. Leave to profiles.** Each defines what it records about a process.
+- **C. Structured fields** for each item the ICS lists.
+
+**Recommendation: A.** The ICS names the elements but says the list will move
+("emerging technologies", B.2.b(11)); prose cannot be read as a score, and C
+would fix a list the standard itself expects to change. B would leave projects
+without a shared place for the details when they exchange work.
+
+**Not decided.** Candidate decision 8 (§7).
 
 ## 5. What may be claimed
 
@@ -384,6 +514,7 @@ stays at the text read; the provenance block records which text. Reading ICD
 ## 7. Decisions
 
 Decided by the owner on 2026-10-15, each as recommended in the section cited.
+Decision 7 was decided on 2026-10-21; decision 8 is open.
 
 1. ~~**Assumptions (§4.1).**~~ Decided: an optional kind `assumption` with a
    dependency record that states what follows if it is wrong (SPEC-001 §3, §5.4).
@@ -399,17 +530,25 @@ Decided by the owner on 2026-10-15, each as recommended in the section cited.
 6. ~~**ICD 206.**~~ Done: the owner supplied a text copy on 2026-10-15 and it is
    mapped in §3.2. It confirmed the factor list of decision 3 and changed
    nothing decided.
-7. **ICS 206-01 and a "why this source pertains" note.** Open. The owner
-   supplied a text of ICS 206-01, *Citation and Reference for Publicly
-   Available Information, Commercially Available Information, and Open Source
-   Intelligence*, on 2026-10-19; it is filed at `references/ICS-206-01.md` and
-   mapping it is the next step. It is the rule for citing open
-   sources, so it may fix citation elements that the core does not yet carry.
-   Options for the one small gap found in §3.2 (a prose note on an evidence link
-   saying why the source pertains, also used for an appended reference): (A) add
-   an optional `note` to the evidence link; (B) leave it to the excerpt's
-   editorial context (SPEC-003 §7); (C) wait for ICS 206-01. *Recommended: C*,
-   because the standard may define the citation fields and A could be redone.
+7. ~~**A note on why a source pertains (§3.2, §3.3).**~~ Decided (owner,
+   2026-10-21), as recommended: **A**, an optional prose `note` on the evidence
+   link (SPEC-001 §5.1 item 4). ICS 206-01 defines no field and calls the
+   relevance explanation optional (a source descriptor "may" include it,
+   Appendix A); ICD 206 says that when relevance is not apparent the product
+   "shall explain why the source pertains", and asks a succinct explanation of an
+   appended reference citation (§3.2). Pertinence belongs to the use of a source
+   for an assertion, so the note is on the link, not on the source or the
+   excerpt. Not taken: (B) the excerpt's editorial context, which is about how a
+   passage reads, and one excerpt can serve several links; (C) storing nothing,
+   since a renderer cannot write a reason the analyst did not record. Done in
+   SPEC-001 §5.1, `core/core.ttl`, `shapes/spec-001.ttl` (three test files) and
+   the regenerated `context/spec-001.jsonld`. The earlier recommendation (C,
+   wait for ICS 206-01) lapsed: the standard defines no field.
+8. **Describing an automated process (§4.8).** Open. Options: (A) one optional
+   prose `process_note` on the SPEC-001 §10 record; (B) leave to profiles; (C)
+   structured fields for each item ICS 206-01 lists. *Recommended: A*, for the
+   reasons in §4.8. Cost: one optional property in SPEC-001 §10, in `core/`,
+   `context/` and `shapes/`, with tests.
 
 ## 8. Deferred: handling labels and discovery metadata (ICD 710, ICD 501)
 
@@ -461,5 +600,5 @@ a profile that receives markings from a counterparty carries them as given.
 | v2, only with a counterparty | A mapping from the project's labels to the counterparty's markings, supplied by the counterparty; a catalogue export for discovery. |
 
 **To obtain, if the trigger occurs:** the current CAPCO Register (not public as
-far as is known), the full text of ICD 501, ICS 206-01 (decision 7), and the
+far as is known), the full text of ICD 501, and the
 counterparty's format requirements.

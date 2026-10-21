@@ -127,6 +127,9 @@
         "very-unlikely": "vocab:likelihood-bands-very-unlikely"
       }
     },
+    "note": {
+      "@id": "core:note"
+    },
     "original_expression": {
       "@id": "core:original_expression"
     },

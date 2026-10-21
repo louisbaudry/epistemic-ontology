@@ -1,0 +1,12 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: fails SPEC-001 5.1 (two notes on one link).
+
+ex:l1 a core:EvidenceLink ;
+    core:excerpt ex:ex-1 ;
+    core:assertion ex:a1 ;
+    core:stance vocab:evidence-stances-supports ;
+    core:note "First reason the source pertains." ;
+    core:note "A second reason." .

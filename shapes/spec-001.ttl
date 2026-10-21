@@ -150,7 +150,10 @@ shape:EvidenceLink a sh:NodeShape ;
         sh:in ( vocab:evidence-stances-supports vocab:evidence-stances-contradicts vocab:evidence-stances-contextualizes ) ;
         sh:message "SPEC-001 5.1, 11.3: a link has exactly one stance." ] ;
     sh:property [ sh:path core:withdrawn_reason ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ;
-        sh:message "SPEC-001 5.1: a withdrawn link carries a non-empty reason." ] .
+        sh:message "SPEC-001 5.1: a withdrawn link carries a non-empty reason." ] ;
+    sh:property [ sh:path core:note ; sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ; sh:minLength 1 ;
+        sh:message "SPEC-001 5.1: a link carries at most one note, and it is non-empty text." ] .
 
 shape:Excerpt a sh:NodeShape ;
     sh:targetClass core:Excerpt ;
