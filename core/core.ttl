@@ -131,3 +131,5 @@ core:role a rdf:Property ; rdfs:domain core:Automation ; rdfs:label "role"@en ;
     rdfs:comment "The process's role, for example extraction, translation or suggested-match."@en .
 core:date a rdf:Property ; rdfs:domain core:Automation ; rdfs:label "date"@en ;
     rdfs:comment "The date of the contribution, fixed at creation."@en .
+core:process_note a rdf:Property ; rdfs:domain core:Automation ; rdfs:label "process_note"@en ;
+    rdfs:comment "Optional prose describing the process well enough to repeat its use: version, prompt or parameters, settings, training-data information, and any performance figures as the provider states them. Fixed at creation. A stated figure is the provider's claim about the process; it is not a likelihood or an analytic confidence (SPEC-001 10)."@en .

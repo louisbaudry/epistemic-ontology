@@ -28,7 +28,7 @@ vocabulary graph needs loading.
 | 8. a dependency states its implication | a dependency names one dependent and one assumption (an assertion of kind `assumption` in the graph checked) and non-empty `if_wrong` text; that a withdrawn assumption flags its dependents is the system's job: not checked |
 | 9. no likelihood and confidence in one sentence | concerns generated text: not checked |
 
-Also checked: a `factor` (SPEC-005 §4.3) is one of the ten listed and sits only on an assertion of kind `assessment`; `indicators` is one non-empty text; a link carries at most one `note` (SPEC-001 §5.1), non-empty. Also checked from SPEC-001 §4: the required elements, and a `basis` on a
+Also checked: a `factor` (SPEC-005 §4.3) is one of the ten listed and sits only on an assertion of kind `assessment`; `indicators` is one non-empty text; a link carries at most one `note` (SPEC-001 §5.1), non-empty; a marker carries at most one `process_note` (SPEC-001 §10), non-empty. Also checked from SPEC-001 §4: the required elements, and a `basis` on a
 `finding` or an `assessment`.
 
 ## Provenance
@@ -36,7 +36,7 @@ Also checked: a `factor` (SPEC-005 §4.3) is one of the ten listed and sits only
 - **Read:** SPEC-001 §3, §4, §5.1, §5.3, §6, §7, §8, §10, §11 and the
   vocabularies in [../vocab/](../vocab/).
 - **Checked:** both Turtle files parse; every concept IRI in the shapes exists
-  in `vocab/`; the 25 files in `tests/` give the expected result under pyshacl
+  in `vocab/`; the 27 files in `tests/` give the expected result under pyshacl
   0.40.1, each invalid file failing for its intended rule (the output names it).
 - **Not checked:**
   - the shapes against the SHACL Recommendation's text beyond what pyshacl

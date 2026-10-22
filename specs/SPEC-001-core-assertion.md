@@ -1,6 +1,6 @@
 # SPEC-001 — Core assertion pattern
 
-**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04. Amended 2026-10-15 by SPEC-005 decisions 1, 2 and 5 (the kind `assumption`, §5.4, `indicators` and the rendering rule in §5.3, conformance items 8 and 9) and 2026-10-21 by decision 7 (the optional `note` on an evidence link, §5.1); see CHANGELOG.
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04. Amended 2026-10-15 by SPEC-005 decisions 1, 2 and 5 (the kind `assumption`, §5.4, `indicators` and the rendering rule in §5.3, conformance items 8 and 9) and 2026-10-21 by decision 7 (the optional `note` on an evidence link, §5.1) and 2026-10-22 by decision 8 (the optional `process_note` on the marker of an automated contribution, §10); see CHANGELOG.
 **Supersedes:** — | **Superseded by:** —
 
 ### Provenance of this draft
@@ -305,6 +305,14 @@ process or model identifier, its role (for example `extraction`, `translation`,
 `suggested-match`) and the date. A reviewer's adoption is a separate, attributed
 act. Until then the assertion is a belief held by the automated agent, not by
 the project.
+
+The record MAY also carry one `process_note`: prose describing the process well
+enough to repeat its use, such as its version, the prompt or parameters, its
+settings, information about its training data, and any performance figures the
+provider states. It is fixed at creation with the rest of the record. A stated
+performance figure is the provider's claim about the process: it is not a
+likelihood or an analytic confidence, MUST NOT be mapped to either (§5.3), and
+does not make automated output evidence (SPEC-005 §7, decision 8).
 
 ## 11. Conformance
 

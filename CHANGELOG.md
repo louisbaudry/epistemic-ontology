@@ -6,6 +6,16 @@ version and the old term is deprecated, not removed.
 
 ## 0.1.0 — unreleased
 
+- SPEC-005 decision 8 (owner, 2026-10-22, as recommended): an optional prose
+  `process_note` on the SPEC-001 §10 marker of an automated contribution:
+  version, prompt or parameters, settings, training-data information and any
+  performance figures the provider states. A stated figure is the provider's
+  claim, never a likelihood or an analytic confidence. New term `process_note`
+  (core, GLOSSARY); no vocabulary. Added to `core/core.ttl`, the Automation
+  shape (at most one, non-empty) with two test files, and the regenerated
+  context. The §3.3 row for AI-generated reporting or services is now
+  `carried`. Verified: 27 shape tests and the context checks pass under pyshacl
+  0.40.1 and rdflib 7.6.0.
 - SPEC-005 decision 7 (owner, 2026-10-21, as recommended): an optional prose
   `note` on the evidence link, saying why the source pertains to the assertion
   or why a `contextualizes` link is included (SPEC-001 §5.1 item 4). New term

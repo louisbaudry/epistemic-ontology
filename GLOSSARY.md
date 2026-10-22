@@ -56,6 +56,7 @@ reading by the drafter that the owner has not yet confirmed.
 | paraphrase | A restatement in the recorder's words, labelled as such. | "Quote". | SPEC-003 §7 |
 | person | A real, living or historical human individual, or one assumed to be, as the sources refer to them. | | SPEC-002 §2 |
 | person policy | The declaration each profile using `person` makes of who may be recorded, what, how allegations are recorded, how errors are removed and how automated output is held. | A default policy in the core. | SPEC-002 §9 |
+| `process_note` | Optional prose on the marker of an automated contribution describing the process well enough to repeat its use: version, prompt or parameters, settings, training-data information and any performance figures the provider states. | A score; a likelihood or confidence; a structured list of fields. | SPEC-001 §10, SPEC-005 §7 |
 | profile | A short document in an adopting project declaring the subset of the core it uses, any stricter rules and any terms it adds; it never gives a core identifier another meaning. | | README, SPEC-001 §3 |
 | quotation | The exact passage of a source, verbatim, in its original language. | Normalised text called verbatim. | SPEC-003 §7 |
 | referent | Anything a statement can be about: a person, organisation, place, event, product type, document. | Identifying one by a name. | SPEC-001 §2 |
