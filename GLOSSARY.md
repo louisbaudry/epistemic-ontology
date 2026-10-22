@@ -51,6 +51,7 @@ reading by the drafter that the owner has not yet confirmed.
 | match | An assertion that two identity bearers refer to the same referent, in one of the states `proposed`, `under-review`, `confirmed`, `rejected` or `withdrawn`. | A merge; confirming on name similarity alone. | SPEC-002 §7 |
 | merge | An event that designates a successor referent and marks its predecessors `disproved` as distinct, with permanent redirects. | Moving assertions in bulk. | SPEC-002 §8 |
 | name assignment | An assertion that a name is used for a referent. | Identifying a referent by its name. | SPEC-002 §2, §4 |
+| `note` | Optional prose on an evidence link saying why the source pertains to the assertion, or why a `contextualizes` link is included. | A relevance score; a stance; a credibility judgment of the source. | SPEC-001 §5.1, SPEC-005 §7 |
 | organisation | A company, agency, association, unit or other group that acts collectively, with or without legal personality. | | SPEC-002 §2, §10 |
 | paraphrase | A restatement in the recorder's words, labelled as such. | "Quote". | SPEC-003 §7 |
 | person | A real, living or historical human individual, or one assumed to be, as the sources refer to them. | | SPEC-002 §2 |

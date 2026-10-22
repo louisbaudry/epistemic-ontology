@@ -1,6 +1,6 @@
 # SPEC-001 — Core assertion pattern
 
-**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04. Amended 2026-10-15 by SPEC-005 decisions 1, 2 and 5 (the kind `assumption`, §5.4, `indicators` and the rendering rule in §5.3, conformance items 8 and 9); see CHANGELOG.
+**Version:** 0.1 | **Status:** Approved by the owner, 2026-10-04. Amended 2026-10-15 by SPEC-005 decisions 1, 2 and 5 (the kind `assumption`, §5.4, `indicators` and the rendering rule in §5.3, conformance items 8 and 9) and 2026-10-21 by decision 7 (the optional `note` on an evidence link, §5.1); see CHANGELOG.
 **Supersedes:** — | **Superseded by:** —
 
 ### Provenance of this draft
@@ -143,6 +143,13 @@ An evidence link joins one excerpt to one assertion with a **stance**:
 3. An excerpt MUST keep the passage verbatim in its original language. A
    translation is stored beside it, with its method, and is never evidence in
    place of the original.
+4. A link MAY carry one `note`: prose saying why the source pertains to this
+   assertion, or, on a `contextualizes` link, why it is included. It explains
+   pertinence only. It is not a stance, not an assessment of the source and not
+   evidence, and it carries no level or score. It is optional: where the
+   excerpt makes the pertinence apparent, none is needed. Pertinence is a
+   property of the use of a source for an assertion, which is why the note is on
+   the link and not on the source or the excerpt (SPEC-005 §7, decision 7).
 
 ### 5.2 Independence of origin
 

@@ -6,6 +6,20 @@ version and the old term is deprecated, not removed.
 
 ## 0.1.0 — unreleased
 
+- SPEC-005 decision 7 (owner, 2026-10-21, as recommended): an optional prose
+  `note` on the evidence link, saying why the source pertains to the assertion
+  or why a `contextualizes` link is included (SPEC-001 §5.1 item 4). New term
+  `note` (core, GLOSSARY); no vocabulary. Added to `core/core.ttl`, the
+  EvidenceLink shape (at most one, non-empty) with three test files, and the
+  regenerated context. ICS 206-01 read in full (the supplied text, not
+  compared with the ODNI original) and mapped in SPEC-005 §3.3. Findings: it
+  prescribes no letter-and-number grade and defines no field, so decision 7's
+  reason for waiting lapsed; one correction to §3.2 (a title is not named
+  among a source record's minimum fields, so that row is `partly`); a second
+  gap, the description of an automated process (version, prompt, settings,
+  training data), is recorded as open decision 8 (§4.8), recommended A, an
+  optional prose `process_note`. Verified: 25 shape tests and the context
+  checks pass under pyshacl 0.40.1 and rdflib 7.6.0.
 - Decision: the repository cites no other repository, archive or
   decision-record series (owner, 2026-10-19). All such citations (a layer in
   the README, the README's upstream bullet, the `Upstream:` header of

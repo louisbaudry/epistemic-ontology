@@ -81,6 +81,8 @@ core:excerpt a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range core:Ex
 core:assertion a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range core:Assertion ; rdfs:label "assertion"@en .
 core:stance a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:range skos:Concept ; rdfs:label "stance"@en ;
     rdfs:comment "Exactly one concept of the evidence-stances scheme. Stance belongs to the link, never to the excerpt."@en .
+core:note a rdf:Property ; rdfs:domain core:EvidenceLink ; rdfs:label "note"@en ;
+    rdfs:comment "Optional prose saying why the source pertains to this assertion, or why a contextualizes link is included (SPEC-001 5.1). It explains pertinence only: it is not a stance, an assessment of the source, or evidence, and it carries no level or score."@en .
 core:withdrawn_reason a rdf:Property ; rdfs:label "withdrawn_reason"@en ;
     rdfs:comment "Present when an evidence link (SPEC-001 5.1) or a dependency (SPEC-001 5.4) has been withdrawn, with the reason. A link is withdrawn, never deleted; one without this property is active. No domain is declared, since it applies to two classes."@en .
 core:text a rdf:Property ; rdfs:domain core:Excerpt ; rdfs:label "text"@en ;

@@ -1,0 +1,34 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix vocab: <https://louisbaudry.github.io/epistemic-ontology/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: conforms. A supporting link and a contextualizing link, each with a note on why the source pertains.
+ex:a1 a core:Assertion ;
+    core:kind vocab:assertion-kinds-finding ;
+    core:subject ex:bridge-1 ;
+    core:content "The footbridge opened to pedestrians." ;
+    core:asserted_at "2026-03-01T10:00:00Z"^^xsd:dateTime ;
+    core:asserter ex:agent-a ;
+    core:recorded_by ex:agent-b ;
+    core:review vocab:review-states-unreviewed ;
+    core:valid_time "2021"^^xsd:gYear ;
+    core:basis "Reasoning in prose." .
+
+ex:l1 a core:EvidenceLink ;
+    core:excerpt ex:ex-1 ;
+    core:assertion ex:a1 ;
+    core:stance vocab:evidence-stances-supports ;
+    core:note "The notice is from the body that runs the bridge, so it speaks for the opening date."@en .
+
+ex:l2 a core:EvidenceLink ;
+    core:excerpt ex:ex-2 ;
+    core:assertion ex:a1 ;
+    core:stance vocab:evidence-stances-contextualizes ;
+    core:note "Included for the earlier closure the opening followed; it does not bear on the date itself." .
+
+ex:ex-1 a core:Excerpt ;
+    core:text "The footbridge opens on Monday."@en .
+
+ex:ex-2 a core:Excerpt ;
+    core:text "The footbridge was closed for repairs in the spring."@en .
