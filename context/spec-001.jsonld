@@ -136,6 +136,9 @@
     "process": {
       "@id": "core:process"
     },
+    "process_note": {
+      "@id": "core:process_note"
+    },
     "rationale": {
       "@id": "core:rationale"
     },

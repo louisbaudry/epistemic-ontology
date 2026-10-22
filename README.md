@@ -8,7 +8,7 @@ It is written once, as a common core, and adopted by several independent
 projects through short **profiles** that each declare the subset they use.
 It is built from established standards rather than invented terms.
 
-**Status:** version 0.1. SPEC-001 to SPEC-004 are approved; SPEC-005 is approved except its decision 8 (describing an automated process), which is open; ICS 206-01 is mapped and its text is filed in [references/](references/). Before 1.0 any term may still change by a recorded decision; see
+**Status:** version 0.1. SPEC-001 to SPEC-004 are approved; SPEC-005 is approved; ICS 206-01 is mapped and its text is filed in [references/](references/). Before 1.0 any term may still change by a recorded decision; see
 [CHANGELOG.md](CHANGELOG.md).
 
 ## Why a common core
@@ -45,7 +45,7 @@ Project profiles     one short document per adopting project, kept in that proje
 | [SPEC-002](specs/SPEC-002-persons-and-organisations.md) | Persons and organisations: names and identifiers as assignments, status, roles over time, matching, merge and split, the person policy a profile must declare | Approved 0.1 |
 | [SPEC-003](specs/SPEC-003-sources-captures-excerpts.md) | Sources, captures and excerpts: documentary layers, holdings and completeness, capture series, third-party captures, the anchoring rule, quotations and their derivations, declared dependence | Approved 0.1 |
 | [SPEC-004](specs/SPEC-004-crosswalks.md) | Crosswalks to FollowTheMoney, BODS and schema.org: term-by-term mappings, what each loses, and the rules for exports and imports | Approved 0.1 |
-| [SPEC-005](specs/SPEC-005-icd-203-tradecraft.md) | Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206): what the core carries of each, the gaps found (assumptions, indicators, source-quality factors) and the owner's decisions on them. ICS 206-01 (open-source citation) mapped, with a `note` on the evidence link. | Approved 0.1 (decisions 1 to 5 and 7); decision 8 open |
+| [SPEC-005](specs/SPEC-005-icd-203-tradecraft.md) | Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206): what the core carries of each, the gaps found (assumptions, indicators, source-quality factors) and the owner's decisions on them. ICS 206-01 (open-source citation) mapped, with a `note` on the evidence link and a `process_note` on an automated contribution. | Approved 0.1 (decisions 1 to 5, 7 and 8) |
 
 Vocabularies as SKOS: approved 0.1 in [vocab/](vocab/), 18 concept schemes for
 the controlled values the specifications define. SHACL shapes for the SPEC-001

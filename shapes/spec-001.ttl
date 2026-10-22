@@ -136,7 +136,10 @@ shape:Automation a sh:NodeShape ;
         sh:message "SPEC-001 10: the marker names the process's role." ] ;
     sh:property [ sh:path core:date ; sh:minCount 1 ; sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:date ] [ sh:datatype xsd:dateTime ] ) ;
-        sh:message "SPEC-001 10: the marker carries the date, fixed at creation." ] .
+        sh:message "SPEC-001 10: the marker carries the date, fixed at creation." ] ;
+    sh:property [ sh:path core:process_note ; sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ; sh:minLength 1 ;
+        sh:message "SPEC-001 10: a marker carries at most one process note, and it is non-empty text." ] .
 
 # --- Rule 3: stance lives on the evidence link -------------------------------
 

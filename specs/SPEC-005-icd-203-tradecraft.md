@@ -1,6 +1,6 @@
 # SPEC-005 — Mapping to the IC Analytic Standards (ICD 203) and Sourcing Requirements (ICD 206)
 
-**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); decision 7 approved by the owner, 2026-10-21; ICS 206-01 mapped (§3.3, §4.8); decision 8 open (§7)
+**Version:** 0.1 | **Status:** Decisions 1 to 5 approved by the owner, 2026-10-15; ICD 206 mapped (§3.2); decision 7 approved by the owner, 2026-10-21; ICS 206-01 mapped (§3.3, §4.8); decision 8 approved by the owner, 2026-10-22
 **Supersedes:** — | **Superseded by:** —
 **Builds on:** SPEC-001 (core assertion pattern), SPEC-003 (sources, captures and excerpts)
 
@@ -13,7 +13,9 @@ decision 6 became the mapping in §3.2. The owner later supplied ICS 206-01;
 §3.3 and §4.8 map it (2026-10-21), and the owner decided 7 as recommended the same
 day. The `note` property of decision 7 is in the core terms, the shapes and the
 JSON-LD context; the shape tests and the context checks pass under pyshacl 0.40.1
-and rdflib 7.6.0, checked against SPEC-001 §5.1, not against a second tool. The recommendations were implemented in the same change: SPEC-001
+and rdflib 7.6.0, checked against SPEC-001 §5.1, not against a second tool. The owner decided 8 as
+recommended on 2026-10-22, and the `process_note` property is in the core terms, the shapes and the
+context in the same way (SPEC-001 §10). The recommendations were implemented in the same change: SPEC-001
 (§3, §5.3, §5.4, §11), the vocabularies, the core terms, the shapes and the
 JSON-LD context. Those machine-readable files were run (22 shape tests and the
 context checks pass under pyshacl and rdflib); they were checked against this
@@ -206,7 +208,7 @@ section 1.d, item (6), sub-item (f).
 | Collector: the entity that researched, gathered or collected the data (d.3) | The capturing agent (SPEC-003 §5.1, §5.3 item 1) | carried | The ICS asks for the element, not the individual: a person-policy matter (SPEC-002 §9). |
 | Commercial database: name, nature, login required (d.4) | The capturing agent or custodian; the source record's rights position (SPEC-003 §8) | partly | Whether a login or subscription was needed is an access condition the core does not name. A profile may. |
 | Tool, search interface or service used; to be cited when it provides "value added analytics", and always for AI, ML or computer vision (d.5) | The capture's method (SPEC-003 §5.1); for an automated contribution, the process identifier, role and date (SPEC-001 §10) | partly | See the next row. |
-| AI-generated reporting or services (d.6; formats B.2.a(1) and B.2.b(2)): system type, model name, a plain explanation, accuracy (precision and recall in percent), settings, training-data information, version, code link, date of use; for generative AI, the prompt | SPEC-001 §10: the process or model identifier, its role and the date, fixed at creation | partly | **A gap** (§4.8): version, prompt or parameters, settings, training-data information and a provider's stated performance have no place. |
+| AI-generated reporting or services (d.6; formats B.2.a(1) and B.2.b(2)): system type, model name, a plain explanation, accuracy (precision and recall in percent), settings, training-data information, version, code link, date of use; for generative AI, the prompt | SPEC-001 §10: the process or model identifier, its role and the date, fixed at creation | carried | Version, prompt or parameters, settings, training-data information and a provider's stated performance go in the marker's `process_note` (SPEC-001 §10; decision 8). The code link is part of the prose. |
 | Third-party data provider: who owns or created the original, where it is hosted, and any enrichment or change (d.7) | A capturing agent that is not the custodian (SPEC-003 §5.3); the origin source's rights govern; derivation (SPEC-003 §3, item 2) and dependence (SPEC-001 §5.2) | carried | "Value added analytics" is an automated contribution, as in the row above. |
 | Data sets: the criteria used to derive the information, such as keywords, language, time frame, version and machine settings, and a link to the data set (d.8) | The capture's method (SPEC-003 §5.1) | partly | The core has no structured record of selection criteria; as prose in the method they are held. A profile working with searched data sets may structure them. Not proposed. |
 | Evaluated or unevaluated status (B.1.b, item 2; "Unevaluated PAI or CAI", Appendix A) | None | not carried | The ICS defines it by three legal tests: relation to the element's authority, the presence of U.S.-person information, and the criteria for retention under the element's procedures. These concern the element's authority, not the epistemic standing of a source. The nearest core idea, `review` (SPEC-001 §10), belongs to assertions. A profile that must carry the legal status defines its own. B.1.d(6)(f) says AI-assisted data is not to be labelled "unevaluated" wholesale; the core records what was done instead. |
@@ -243,8 +245,8 @@ section 1.d, item (6), sub-item (f).
    settles the question §3.2 left open. It also removes the reason decision 7
    gave for waiting (that the standard might define the citation fields).
 3. Two gaps: the relevance explanation, closed by decision 7 (the `note` on the
-   evidence link), and the description of an AI process (§4.8, decision 8,
-   open). Everything else is rendering, a profile
+   evidence link), and the description of an AI process, closed by decision 8
+   (the `process_note` on the marker, §4.8). Everything else is rendering, a profile
    attribute, or specific to IC elements.
 4. Not carried by design: classification and portion marks, placeholder numbers
    and the legal evaluated or unevaluated status.
@@ -493,7 +495,20 @@ against numeric fields.
 would fix a list the standard itself expects to change. B would leave projects
 without a shared place for the details when they exchange work.
 
-**Not decided.** Candidate decision 8 (§7).
+**Decided: A** (owner, 2026-10-22, as recommended). Normative rules:
+
+1. The SPEC-001 §10 marker MAY carry one `process_note`, prose, fixed at
+   creation with the rest of the marker. It describes the process well enough to
+   repeat its use: version, prompt or parameters, settings, training-data
+   information, and any performance figures the provider states.
+2. A stated performance figure is the provider's claim about the process. It is
+   not a likelihood or an analytic confidence and MUST NOT be mapped to either
+   (SPEC-001 §5.3).
+3. The note does not make automated output evidence: the output still enters as
+   `draft`, and a person's adoption is a separate, attributed act (SPEC-001 §10).
+4. No structure and no vocabulary are added. A profile that needs structured
+   fields (a model version as its own field, for instance) defines them under
+   its own prefix.
 
 ## 5. What may be claimed
 
@@ -514,7 +529,7 @@ stays at the text read; the provenance block records which text. Reading ICD
 ## 7. Decisions
 
 Decided by the owner on 2026-10-15, each as recommended in the section cited.
-Decision 7 was decided on 2026-10-21; decision 8 is open.
+Decision 7 was decided on 2026-10-21 and decision 8 on 2026-10-22; none is open.
 
 1. ~~**Assumptions (§4.1).**~~ Decided: an optional kind `assumption` with a
    dependency record that states what follows if it is wrong (SPEC-001 §3, §5.4).
@@ -544,11 +559,15 @@ Decision 7 was decided on 2026-10-21; decision 8 is open.
    SPEC-001 §5.1, `core/core.ttl`, `shapes/spec-001.ttl` (three test files) and
    the regenerated `context/spec-001.jsonld`. The earlier recommendation (C,
    wait for ICS 206-01) lapsed: the standard defines no field.
-8. **Describing an automated process (§4.8).** Open. Options: (A) one optional
-   prose `process_note` on the SPEC-001 §10 record; (B) leave to profiles; (C)
-   structured fields for each item ICS 206-01 lists. *Recommended: A*, for the
-   reasons in §4.8. Cost: one optional property in SPEC-001 §10, in `core/`,
-   `context/` and `shapes/`, with tests.
+8. ~~**Describing an automated process (§4.8).**~~ Decided (owner, 2026-10-22),
+   as recommended: **A**, one optional prose `process_note` on the SPEC-001 §10
+   marker. ICS 206-01 asks for enough detail to repeat the use of an AI system
+   (version, prompt or parameters, settings, training data, stated performance)
+   and says the list will move (B.2.b(11)); prose cannot be read as a score. Not
+   taken: (B) leaving it to profiles, which would leave projects without a shared
+   place for the details; (C) structured fields, which fix a list the standard
+   expects to change. Done in SPEC-001 §10, `core/core.ttl`, `shapes/spec-001.ttl`
+   (two test files) and the regenerated `context/spec-001.jsonld`.
 
 ## 8. Deferred: handling labels and discovery metadata (ICD 710, ICD 501)
 

@@ -1,0 +1,11 @@
+@prefix core: <https://louisbaudry.github.io/epistemic-ontology/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/> .
+
+# Invented, neutral example data. Expected: fails SPEC-001 10 (an empty process note).
+
+ex:auto-1 a core:Automation ;
+    core:process "extraction-pipeline" ;
+    core:role "proposed the record" ;
+    core:date "2026-03-01"^^xsd:date ;
+    core:process_note "" .
