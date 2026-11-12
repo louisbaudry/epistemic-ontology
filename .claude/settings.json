@@ -1,5 +1,19 @@
 {
   "permissions": {
-    "allow": ["Bash(git merge origin/main)"]
+    "allow": [
+      "Bash(git merge origin/main)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-start-model-speed.sh\""
+          }
+        ]
+      }
+    ]
   }
 }
